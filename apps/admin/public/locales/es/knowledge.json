@@ -27,5 +27,29 @@
     "generating": "Generando...",
     "emptyResponse": "Las respuestas de la vista previa aparecerán aquí cuando ejecute la recepcionista.",
     "disabled": "Inicie sesión y cree un negocio para ejecutar la vista previa real."
+  },
+  "agentAssist": {
+    "menu": "Preparar con tu propio agente de IA",
+    "title": "Prepara conocimiento con tu propio agente de IA",
+    "description": "Usa tu propia cuenta de ChatGPT, Claude o Hermes. No compartes credenciales con LobbyStack. Revisa el resultado antes de importarlo.",
+    "website": "Sitio web",
+    "company": "Nombre de la empresa",
+    "generate": "Generar prompt",
+    "prompt": "Prompt",
+    "copy": "Copiar prompt",
+    "copied": "Prompt copiado. Pégalo en tu propio agente.",
+    "copyFallback": "Portapapeles no disponible. Selecciona y copia el prompt manualmente.",
+    "next": "Ejecuta el prompt en tu agente y sube su archivo o pega el Markdown abajo. Nada se importa automáticamente.",
+    "file": "Archivo Markdown o de texto del agente",
+    "paste": "Pegar el Markdown del agente",
+    "preview": "Vista previa del conocimiento",
+    "confirm": "He revisado los datos y las fuentes, eliminado información privada y aprobado este contenido como conocimiento de la empresa, no como instrucciones del sistema.",
+    "indexing": "Usa la importación de documentos existente. La indexación requiere un proveedor de embeddings configurado; esto no conecta tu agente ni activa IA de pago.",
+    "import": "Importar conocimiento revisado",
+    "importing": "Importando…",
+    "importFailed": "La importación falló. Tu texto sigue aquí; inténtalo de nuevo.",
+    "invalidFile": "Elige un archivo UTF-8 .md o .txt de hasta 256 KiB.",
+    "invalidText": "Usa texto UTF-8 no vacío de hasta 256 KiB, sin caracteres de control binarios.",
+    "invalidUrl": "Introduce una URL HTTP(S) completa sin credenciales de acceso."
   }
 }

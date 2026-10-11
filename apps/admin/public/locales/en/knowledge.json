@@ -27,5 +27,29 @@
     "generating": "Generating...",
     "emptyResponse": "Preview responses will appear here after you run the receptionist.",
     "disabled": "Sign in and create a business to run the real preview flow."
+  },
+  "agentAssist": {
+    "invalidText": "Use nonempty UTF-8 text up to 256 KiB, without binary control characters.",
+    "copied": "Prompt copied. Paste it into your own agent.",
+    "copyFallback": "Clipboard unavailable. Select and copy the prompt below manually.",
+    "invalidFile": "Choose a UTF-8 .md or .txt file up to 256 KiB.",
+    "importFailed": "Import failed. Your text is still here; please try again.",
+    "title": "Prepare knowledge with your own AI agent",
+    "description": "Use your own ChatGPT, Claude or Hermes account. No login credentials are shared with LobbyStack. Check the result before importing it.",
+    "website": "Website",
+    "company": "Company name",
+    "invalidUrl": "Enter a full HTTP(S) website URL without login credentials.",
+    "generate": "Generate prompt",
+    "prompt": "Prompt",
+    "copy": "Copy prompt",
+    "next": "Run the prompt in your agent, then upload its file or paste the Markdown below. Nothing is imported automatically.",
+    "file": "Agent’s Markdown or text file",
+    "paste": "Paste the agent’s Markdown",
+    "preview": "Knowledge preview",
+    "confirm": "I checked the facts and sources, removed private information, and approve this content as company knowledge — not system instructions.",
+    "indexing": "This uses the existing document import. Search indexing still requires a configured embedding provider; this does not connect your agent or enable paid AI.",
+    "importing": "Importing…",
+    "import": "Import reviewed knowledge",
+    "menu": "Prepare with your own AI agent"
   }
 }

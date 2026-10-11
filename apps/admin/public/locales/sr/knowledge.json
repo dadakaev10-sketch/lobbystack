@@ -27,5 +27,29 @@
     "generating": "Generisanje...",
     "emptyResponse": "Odgovori iz pregleda pojaviće se ovde kada pokrenete recepcionera.",
     "disabled": "Prijavite se i kreirajte firmu da biste pokrenuli pravi pregled."
+  },
+  "agentAssist": {
+    "menu": "Pripremite uz svog AI agenta",
+    "title": "Pripremite znanje uz svog AI agenta",
+    "description": "Koristite svoj ChatGPT, Claude ili Hermes nalog. Pristupni podaci se ne dele sa LobbyStack-om. Proverite rezultat pre uvoza.",
+    "website": "Veb-sajt",
+    "company": "Naziv preduzeća",
+    "generate": "Generiši prompt",
+    "prompt": "Prompt",
+    "copy": "Kopiraj prompt",
+    "copied": "Prompt je kopiran. Nalepite ga u svog agenta.",
+    "copyFallback": "Kopiranje nije dostupno. Ručno označite i kopirajte prompt.",
+    "next": "Pokrenite prompt u svom agentu, pa otpremite datoteku ili nalepite Markdown ispod. Ništa se ne uvozi automatski.",
+    "file": "Markdown ili tekstualna datoteka agenta",
+    "paste": "Nalepite Markdown agenta",
+    "preview": "Pregled znanja",
+    "confirm": "Proverio/la sam činjenice i izvore, uklonio/la privatne podatke i odobravam ovaj sadržaj kao znanje preduzeća, a ne kao sistemska uputstva.",
+    "indexing": "Koristi postojeći uvoz dokumenata. Indeksiranje zahteva podešen embedding servis; ovo ne povezuje vašeg agenta niti uključuje plaćenu AI.",
+    "import": "Uvezi provereno znanje",
+    "importing": "Uvoz…",
+    "importFailed": "Uvoz nije uspeo. Tekst je sačuvan; pokušajte ponovo.",
+    "invalidFile": "Izaberite UTF-8 .md ili .txt datoteku do 256 KiB.",
+    "invalidText": "Koristite neprazan UTF-8 tekst do 256 KiB, bez binarnih kontrolnih znakova.",
+    "invalidUrl": "Unesite punu HTTP(S) adresu bez pristupnih podataka."
   }
 }

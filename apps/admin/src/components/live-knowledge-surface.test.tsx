@@ -30,6 +30,19 @@ function setup({ snippet = false, active = true, role = "business_owner", status
   return Object.assign(fetchMock, { client });
 }
 describe("original knowledge row interactions", () => {
+  it('offers the own-agent flow to managers without sending network writes', async () => {
+    const fetchMock = setup();
+    fireEvent.keyDown(screen.getByRole('button', { name: 'sections.knowledge.addKnowledge' }), { key: 'ArrowDown' });
+    await userEvent.click(await screen.findByRole('menuitem', {name:'knowledge:agentAssist.menu'}));
+    expect(screen.getByRole('dialog')).toBeTruthy();
+    expect(screen.getByText('agentAssist.title')).toBeTruthy();
+    expect(fetchMock.mock.calls.filter(([, init]) => init?.method)).toHaveLength(0);
+  });
+  it('does not expose the knowledge creation menu to business members', () => {
+    setup({role:'business_member'});
+    expect(screen.queryByRole('button', {name:'sections.knowledge.addKnowledge'})).toBeNull();
+    expect(screen.queryByText('knowledge:agentAssist.menu')).toBeNull();
+  });
   it("renders a queued website import before its pages exist", () => {
     setup({ sourceType: "website", status: "processing", textContent: "", websiteImport: { id: "job", status: "queued", websiteUrl: "https://www.example.invalid/help/", importedCount: 0, indexedCount: 0 } });
     expect(screen.getByText("example.invalid/help")).toBeTruthy();
