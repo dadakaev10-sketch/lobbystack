@@ -25,7 +25,10 @@ Email verification is disabled only for this unconfigured-mail preview; password
 reset, invites, and delivery are unavailable. Do not process real customer data.
 
 Model configuration deliberately replaces upstream's implicit `gpt-6-luna`:
-`gpt-4.1-mini` for chat/summary/delegation and `text-embedding-3-small` for embeddings.
+`gpt-5-mini-2025-08-07` for chat/summary/delegation and `text-embedding-3-small` for embeddings.
+The reasoning model supports the upstream Responses API and reasoning-effort
+options (unlike non-reasoning GPT-4.1 models). See the official model page:
+https://developers.openai.com/api/docs/models/gpt-5-mini .
 These are configuration choices, not a claim of tested provider integration. No AI
 key is supplied and no inference request is made. Voice remains disabled pending
 separately approved OpenAI/Twilio credentials and compatible live runtime review.

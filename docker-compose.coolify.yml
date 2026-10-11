@@ -20,7 +20,6 @@ services:
         is required}
     volumes:
     - postgres_data:/var/lib/postgresql/data
-    - ./docker/postgres/init/roles.sh:/docker-entrypoint-initdb.d/10-roles.sh:ro
     healthcheck:
       test:
       - CMD-SHELL
@@ -79,9 +78,16 @@ services:
       dockerfile: Dockerfile.migrator
       args:
         SERVICE_VERSION: ddda7f01376d6cd48bd16fc4313a4aaa961dd1ee
+    command: [sh, -c, 'node_modules/.bin/tsx dist/cli.js migrate && node_modules/.bin/tsx dist/cli.js bootstrap']
     environment:
       DATABASE_URL: postgres://postgres:${POSTGRES_PASSWORD:?POSTGRES_PASSWORD is
         required}@postgres:5432/lobbystack
+      LOBBYSTACK_MIGRATOR_PASSWORD: ${LOBBYSTACK_MIGRATOR_PASSWORD:?required}
+      LOBBYSTACK_AUTH_PASSWORD: ${LOBBYSTACK_AUTH_PASSWORD:?required}
+      LOBBYSTACK_APP_PASSWORD: ${LOBBYSTACK_APP_PASSWORD:?required}
+      LOBBYSTACK_WORKER_PASSWORD: ${LOBBYSTACK_WORKER_PASSWORD:?required}
+      LOBBYSTACK_DISPATCHER_PASSWORD: ${LOBBYSTACK_DISPATCHER_PASSWORD:?required}
+      LOBBYSTACK_READONLY_PASSWORD: ${LOBBYSTACK_READONLY_PASSWORD:?required}
       OTEL_SERVICE_NAME: lobbystack-migrator
       OTEL_EXPORTER_OTLP_ENDPOINT: ''
       OTEL_EXPORTER_OTLP_HEADERS: ''
@@ -126,7 +132,7 @@ services:
       OPENAI_API_KEY: ''
       AI_CHAT_API_KEY: ''
       AI_CHAT_BASE_URL: ${AI_CHAT_BASE_URL:-https://api.openai.com/v1}
-      AI_CHAT_MODEL: gpt-4.1-mini
+      AI_CHAT_MODEL: gpt-5-mini-2025-08-07
       AI_CHAT_PROVIDER_NAME: ${AI_CHAT_PROVIDER_NAME:-openai}
       AI_CHAT_REASONING_EFFORT: ''
       LIVE_PROTOTYPE_ENABLED: 'false'
@@ -204,8 +210,8 @@ services:
       DEPLOYMENT_MODE: self_hosted_standard
       AUTH_TRUSTED_ORIGINS: https://lobby.apps.dadakaev.tech
       NEXT_TELEMETRY_DISABLED: '1'
-      AI_SUMMARY_MODEL: gpt-4.1-mini
-      AI_DELEGATION_MODEL: gpt-4.1-mini
+      AI_SUMMARY_MODEL: gpt-5-mini-2025-08-07
+      AI_DELEGATION_MODEL: gpt-5-mini-2025-08-07
       AI_DELEGATION_SERVICE_TIER: default
       AI_SUMMARY_REASONING_EFFORT: ''
       AI_DELEGATION_REASONING_EFFORT: ''
@@ -292,12 +298,12 @@ services:
       OPENAI_API_KEY: ''
       AI_CHAT_API_KEY: ''
       AI_CHAT_BASE_URL: ${AI_CHAT_BASE_URL:-https://api.openai.com/v1}
-      AI_CHAT_MODEL: gpt-4.1-mini
+      AI_CHAT_MODEL: gpt-5-mini-2025-08-07
       AI_CHAT_PROVIDER_NAME: ${AI_CHAT_PROVIDER_NAME:-openai}
       AI_CHAT_REASONING_EFFORT: ''
-      AI_SUMMARY_MODEL: gpt-4.1-mini
+      AI_SUMMARY_MODEL: gpt-5-mini-2025-08-07
       AI_SUMMARY_REASONING_EFFORT: ''
-      AI_DELEGATION_MODEL: gpt-4.1-mini
+      AI_DELEGATION_MODEL: gpt-5-mini-2025-08-07
       AI_DELEGATION_REASONING_EFFORT: ''
       AI_DELEGATION_SERVICE_TIER: default
       LIVE_PROTOTYPE_ENABLED: 'false'
