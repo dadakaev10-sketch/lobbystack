@@ -258,6 +258,7 @@ services:
     cpus: 2.0
     networks:
       default: {}
+      embedding_private: {}
       proxy:
         aliases:
         - lobby-admin-dadakaev
@@ -399,12 +400,16 @@ services:
         aliases:
         - lobby-worker-dadakaev
       firecrawl_integration: {}
+      embedding_private: {}
     image: lobbystack-dadakaev-worker:ddda7f01376d6cd48bd16fc4313a4aaa961dd1ee
 volumes:
   postgres_data: {}
   redis_data: {}
   storage_data: {}
 networks:
+  embedding_private:
+    external: true
+    name: lobby-embedding-private
   firecrawl_integration:
     external: true
     name: lobby-firecrawl-integration

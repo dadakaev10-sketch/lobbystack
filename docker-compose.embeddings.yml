@@ -3,7 +3,7 @@ services:
     build:
       context: ./services/embeddings
     image: lobbystack-local-embeddings:gte-a9af15a-chunked
-    restart: "no"
+    restart: unless-stopped
     environment:
       EMBEDDING_BEARER_SECRET: ${EMBEDDING_BEARER_SECRET:?Runtime bearer secret required}
     volumes:
@@ -29,7 +29,9 @@ services:
         max-file: "2"
     networks: [embedding_private]
 volumes:
-  embedding_cache: {}
+  embedding_cache:
+    external: true
+    name: lobby-embedding-probe_embedding_cache
 networks:
   embedding_private:
     name: lobby-embedding-private
