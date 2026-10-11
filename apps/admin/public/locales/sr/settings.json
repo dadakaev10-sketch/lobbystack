@@ -566,7 +566,9 @@
         "mismatch": "Nove lozinke se ne podudaraju.",
         "failed": "Nije moguće ažurirati lozinku."
       }
-    }
+    },
+    "loading": "Učitavanje naloga…",
+    "unavailable": "Podaci naloga nisu dostupni."
   },
   "workspaceTeam": {
     "members": {

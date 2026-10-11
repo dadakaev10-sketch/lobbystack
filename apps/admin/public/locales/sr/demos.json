@@ -92,5 +92,6 @@
       "publish": "Nije moguće objaviti demo. Pokušajte ponovo.",
       "revoke": "Nije moguće opozvati demo. Pokušajte ponovo."
     }
-  }
+  },
+  "openingSecureLink": "Otvaranje bezbedne demo veze…"
 }

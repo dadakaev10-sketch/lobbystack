@@ -40,6 +40,7 @@ function assertAuthDatabaseRoles(): Promise<void> {
 }
 
 const EXISTING_ACCOUNT_SUBJECTS: Record<SupportedLocale, string> = {
+  de: "Sie haben bereits ein LobbyStack-Konto",
   en: "You already have a LobbyStack account",
   fr: "Votre compte LobbyStack existe déjà",
   es: "Ya tiene una cuenta de LobbyStack",

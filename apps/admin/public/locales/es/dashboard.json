@@ -84,7 +84,8 @@
         "labels": {
           "other": "Otro"
         }
-      }
+      },
+      "unavailable": "Las estadísticas no están disponibles."
     },
     "metrics": {
       "loading": "Cargando la comparación mensual...",

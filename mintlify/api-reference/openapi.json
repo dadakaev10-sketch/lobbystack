@@ -4015,7 +4015,8 @@
               "en",
               "fr",
               "es",
-              "sr"
+              "sr",
+              "de"
             ],
             "description": "Language for the contact's reminders and confirmations: en, fr, es or sr."
           },
@@ -4067,7 +4068,8 @@
                   "en",
                   "fr",
                   "es",
-                  "sr"
+                  "sr",
+                  "de"
                 ],
                 "description": "Language for the contact's reminders and confirmations: en, fr, es or sr."
               },

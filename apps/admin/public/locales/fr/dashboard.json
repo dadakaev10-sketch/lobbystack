@@ -84,7 +84,8 @@
         "labels": {
           "other": "Autre"
         }
-      }
+      },
+      "unavailable": "Les analyses sont indisponibles."
     },
     "metrics": {
       "loading": "Chargement de la comparaison mensuelle...",

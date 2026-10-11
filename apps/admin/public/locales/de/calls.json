@@ -1,0 +1,173 @@
+{
+  "page": {
+    "title": "Anrufe",
+    "liveUnavailable": "Live-Status nicht verfügbar",
+    "description": "Überprüfen Sie die letzten Anrufe und hören Sie sich die aufgezeichneten Audiodaten an.",
+    "emptyPreview": "Noch kein Transkript.",
+    "selectCall": "Wählen Sie einen Anruf aus, um das Transkript zu überprüfen.",
+    "yesterday": "Gestern",
+    "unknownShort": "Vereinigtes Königreich"
+  },
+  "filters": {
+    "searchPlaceholder": "Anrufe suchen...",
+    "status": "Status",
+    "allStatuses": "Alle"
+  },
+  "table": {
+    "caller": "Anrufer",
+    "number": "Nummer",
+    "purpose": "Zweck",
+    "time": "Zeit",
+    "play": "Spielen",
+    "startedAt": "Begonnen",
+    "status": "Status",
+    "disposition": "Anordnung",
+    "transcript": "Transkript",
+    "audio": "Audio",
+    "noNumber": "Keine Nummer",
+    "noDisposition": "Nicht festgelegt",
+    "empty": "Keine Anrufe entsprechen den aktuellen Filtern."
+  },
+  "actions": {
+    "viewTranscript": "Transkript ansehen",
+    "pendingTranscript": "Transkript öffnen",
+    "listen": "Hören",
+    "download": "Audio herunterladen",
+    "copy": "Kopie",
+    "play": "Spielen",
+    "pause": "Pause",
+    "audioPending": "Aufnahme steht noch aus",
+    "audioUnavailable": "Keine Aufnahme"
+  },
+  "followUp": {
+    "title": "Folgeaufgabe",
+    "titleWithContact": "{{message}} für {{name}}",
+    "createdAt": "Erstellt {{time}}",
+    "markDone": "Mark fertig",
+    "markingDone": "Markierung fertig...",
+    "kind": {
+      "callback": "Rückruf"
+    },
+    "urgent": "Dringend",
+    "callUnavailable": "Der ursprüngliche Anruf ist nicht verfügbar, aber diese Rückrufaufgabe ist noch offen.",
+    "completeFailed": "Die Rückrufaufgabe konnte nicht als erledigt markiert werden.",
+    "fields": {
+      "callback": "Rückruf",
+      "callbackWindow": "Bevorzugter Rückruf"
+    }
+  },
+  "pagination": {
+    "rowsPerPage": "Zeilen pro Seite",
+    "pageOf": "Seite {{page}} von {{total}}",
+    "firstPage": "Gehen Sie zur ersten Seite",
+    "previousPage": "Gehen Sie zur vorherigen Seite",
+    "nextPage": "Gehen Sie zur nächsten Seite",
+    "lastPage": "Gehe zur letzten Seite",
+    "goToPage": "Gehen Sie zur Seite {{page}}"
+  },
+  "panel": {
+    "title": "Letzte Anrufe",
+    "description": "Überprüfen Sie erfasste Anrufe, öffnen Sie Transkripte und laden Sie die aufgezeichneten Audiodaten herunter.",
+    "captured": "{{count}} erfasst",
+    "transcriptReady": "Transkript fertig",
+    "transcriptPending": "Transkript ausstehend",
+    "audioReady": "Audio bereit",
+    "recordingPending": "Aufnahme steht noch aus",
+    "viewTranscript": "Transkript ansehen",
+    "downloadAudio": "Audio herunterladen",
+    "noCalls": "Es wurden noch keine Anrufe erfasst.",
+    "noBusinessTitle": "Letzte Anrufe",
+    "noBusinessDescription": "Gründen Sie ein Unternehmen, um Aufzeichnungen und Transkripte zu überprüfen."
+  },
+  "transcript": {
+    "title": "Anrufprotokoll",
+    "description": "Überprüfen Sie die gespeicherten Anrufer- und Assistentenrunden von {{date}}.",
+    "emptyDescription": "Wählen Sie einen Anruf aus, um das gespeicherte Gespräch zu überprüfen.",
+    "descriptionWithDate": "Überprüfen Sie die gespeicherten Anrufer- und Assistentenrunden von {{date}}.",
+    "descriptionEmpty": "Wählen Sie einen Anruf aus, um das gespeicherte Gespräch zu überprüfen.",
+    "noSegments": "Für diesen Anruf sind noch keine Transkriptsegmente verfügbar."
+  },
+  "outcome": {
+    "label": "Zusammenfassung",
+    "booked": "Der Anrufer hat {{serviceName}} für {{startsAt}} gebucht.",
+    "scheduling": "Der Anrufer hat mit der Terminvereinbarung begonnen, aber es wurde kein Termin bestätigt.",
+    "schedulingWithService": "Der Anrufer besprach die Terminvereinbarung {{serviceName}}, es wurde jedoch kein Termin bestätigt.",
+    "schedulingWithServiceAndTime": "Der Anrufer besprach die Planung von {{serviceName}} für {{startsAt}}, es wurde jedoch kein Termin bestätigt.",
+    "messageTaken": "Der Anrufer hat eine Nachricht zur Nachverfolgung hinterlassen.",
+    "contactBlocked": "Der Anruf wurde blockiert, bevor der Assistent antwortete.",
+    "abuse": "KI beendete dies als missbräuchlichen Anruf.",
+    "spam": "KI hat dies als Spam-Anruf abgetan.",
+    "voicemail": "Der Anruf wurde durch Voicemail oder Nachrichtenerfassung beendet.",
+    "busy": "Der Anruf wurde beendet, weil die Leitung besetzt war.",
+    "noAnswer": "Anruf wurde ohne Antwort beendet.",
+    "canceled": "Der Anruf wurde abgebrochen, bevor ein endgültiges Ergebnis festgehalten wurde.",
+    "completed": "Anruf abgeschlossen, aber es wurde kein Buchungsergebnis erfasst.",
+    "technicalIssue": "Der Anruf wurde aufgrund eines technischen Problems beendet, bevor ein endgültiges Ergebnis festgehalten werden konnte.",
+    "transferCompleted": "Anruf wurde erfolgreich weitergeleitet.",
+    "transferBusy": "Es wurde versucht, eine Weiterleitung durchzuführen, aber die Zielleitung war besetzt.",
+    "transferFailed": "Es wurde ein Übertragungsversuch unternommen, der jedoch nicht erfolgreich abgeschlossen werden konnte.",
+    "none": "Der Anrufer stellte Fragen, es wurde jedoch noch kein endgültiges Ergebnis erfasst.",
+    "genericService": "einen Termin",
+    "unspecifiedTime": "eine unbestimmte Zeit"
+  },
+  "detail": {
+    "backToList": "Anrufe",
+    "callLabel": "Anruf",
+    "noNumber": "Keine Nummer",
+    "metadata": {
+      "from": "Aus",
+      "duration": "Dauer",
+      "started": "Begonnen",
+      "id": "AUSWEIS"
+    },
+    "status": {
+      "in_progress": "Im Gange",
+      "completed": "Abgeschlossen",
+      "failed": "Fehlgeschlagen",
+      "unknown": "Unbekannt"
+    },
+    "events": {
+      "title": "Rufen Sie Veranstaltungen an",
+      "received": "Erhalten",
+      "connected": "Verbunden",
+      "transferred": "Weitergeleitet",
+      "blocked": "Blockiert",
+      "completed": "Abgeschlossen",
+      "failed": "Fehlgeschlagen"
+    },
+    "tabs": {
+      "transcript": "Transkript",
+      "recording": "Aufnahme",
+      "details": "Details"
+    },
+    "transcript": {
+      "caller": "Anrufer",
+      "assistant": "Assistent",
+      "empty": "Für diesen Anruf sind noch keine Transkriptsegmente verfügbar."
+    },
+    "recording": {
+      "unavailable": "Für diesen Anruf ist keine Aufzeichnung verfügbar.",
+      "pending": "Die Aufnahme wird noch bearbeitet."
+    },
+    "blocking": {
+      "badge": "Blockiert",
+      "blockedAtInline": "Blockiert auf {{time}}"
+    },
+    "details": {
+      "outcomeTitle": "Ergebnis",
+      "followUpTitle_one": "Folgeaufgabe",
+      "followUpTitle_other": "Folgeaufgaben",
+      "callInfoTitle": "Anrufinformationen",
+      "twilioCallSid": "Twilio-Anruf-SID",
+      "gatewaySession": "Gateway-Sitzung",
+      "disposition": "Anordnung",
+      "providerStatus": "Anbieterstatus",
+      "noDisposition": "Keiner",
+      "noFollowUp": "Für diesen Anruf gibt es keine Folgeaufgabe.",
+      "markDone": "Mark fertig",
+      "markingDone": "Markierung…"
+    },
+    "notFound": "Anruf nicht gefunden.",
+    "notFoundDescription": "Dieser Anruf existiert nicht oder Sie haben keinen Zugriff darauf."
+  }
+}

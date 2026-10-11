@@ -88,6 +88,12 @@ export function LocaleProvider({
       writeStoredLocaleCookie(initialLocale);
       return;
     }
+    // The request cookie is the latest explicit choice and outranks stale storage.
+    if (initialLocaleSource === "cookie") {
+      writeStoredLocale(initialLocale);
+      writeStoredLocaleCookie(initialLocale);
+      return;
+    }
     // A canonical redirect removes ?lng= before this page renders, but the
     // redirect has already persisted that explicit choice in the locale cookie.
     if (initialLocaleSource === "path" && storedCookieLocale === initialLocale && storedLocale !== initialLocale) {
@@ -104,8 +110,6 @@ export function LocaleProvider({
     if (initialLocaleSource === "path") {
       writeStoredLocale(initialLocale);
       writeStoredLocaleCookie(initialLocale);
-    } else if (initialLocaleSource === "cookie") {
-      writeStoredLocaleCookie(initialLocale);
     }
   }, [i18n, initialLocale, initialLocaleSource, storedCookieLocale, storedLocale]);
 
@@ -119,7 +123,7 @@ export function LocaleProvider({
   const preferredLocale = publicPage ? undefined : accountLocale.data?.locale;
 
   useEffect(() => {
-    if (!preferredLocale || userChangedLocale.current || initialLocaleSource === "query") {
+    if (!preferredLocale || userChangedLocale.current || initialLocaleSource === "query" || initialLocaleSource === "cookie") {
       return;
     }
     const preferred = resolveLocale(preferredLocale);

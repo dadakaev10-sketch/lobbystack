@@ -8,6 +8,7 @@ import { versionedAssetUrl } from "@/lib/versioned-assets"
 import { localizePublicPath } from "@/lib/locale-path"
 
 const labels = {
+  de: { login: "Anmelden", tryFree: "Kostenlos testen" },
   en: { login: "Log in", tryFree: "Try for free" },
   fr: { login: "Connexion", tryFree: "Essayer gratuitement" },
   es: { login: "Iniciar sesión", tryFree: "Pruébelo gratis" },

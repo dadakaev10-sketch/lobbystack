@@ -5,13 +5,13 @@ import { apiAppointmentCreateSchema, apiAppointmentRescheduleSchema, apiContactC
 // API and MCP clients get these details back as error.details, so a zod upgrade must not reword them.
 describe("parseApiInput", () => {
   it("reports field problems with stable paths and messages", () => {
-    expect(parseApiInput(apiContactCreateSchema, { name: "", phone: "123", email: "nope", locale: "de", timezone: 5, extra: 1 })).toEqual({
+    expect(parseApiInput(apiContactCreateSchema, { name: "", phone: "123", email: "nope", locale: "it", timezone: 5, extra: 1 })).toEqual({
       ok: false,
       details: [
         { path: "name", message: "Too small: expected string to have >=1 characters" },
         { path: "phone", message: "Use E.164 format, for example +14165550134." },
         { path: "email", message: "Invalid email address" },
-        { path: "locale", message: "Invalid option: expected one of \"en\"|\"fr\"|\"es\"|\"sr\"" },
+        { path: "locale", message: "Invalid option: expected one of \"en\"|\"fr\"|\"es\"|\"sr\"|\"de\"" },
         { path: "timezone", message: "Invalid input: expected string, received number" },
         { path: "(body)", message: "Unrecognized key: \"extra\"" },
       ],

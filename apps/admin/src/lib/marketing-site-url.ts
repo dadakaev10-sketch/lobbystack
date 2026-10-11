@@ -1,6 +1,6 @@
 import { isInterfaceLocale } from "@lobbystack/shared";
 
-import { DEFAULT_LOCALE, type SupportedLocale } from "./locale";
+import { type SupportedLocale } from "./locale";
 
 const LANDING_SITE_URL =
   process.env.NEXT_PUBLIC_LANDING_SITE_URL?.replace(/\/$/, "") ??
@@ -50,7 +50,7 @@ function stripLocaleFromPath(path = "/"): string {
   const normalized = normalizedPath(path);
   const [, maybeLocale, ...rest] = normalized.split("/");
 
-  if (!isInterfaceLocale(maybeLocale) || maybeLocale === DEFAULT_LOCALE) {
+  if (!isInterfaceLocale(maybeLocale) || maybeLocale === "en") {
     return normalized;
   }
 
@@ -64,7 +64,8 @@ export function localizeMarketingPath(
 ): string {
   const basePath = stripLocaleFromPath(path);
 
-  if (locale === DEFAULT_LOCALE) {
+  // The separate marketing site has no German pages; keep its English root.
+  if (locale === "en" || locale === "de") {
     return basePath;
   }
   if (!translatedBasePaths.has(basePath)) {

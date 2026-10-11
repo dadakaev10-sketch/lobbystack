@@ -1,5 +1,7 @@
 "use client";
 
+import { useTranslation } from "react-i18next";
+
 import { useParams } from "next/navigation";
 import { useEffect } from "react";
 
@@ -16,5 +18,6 @@ export function DemoTokenCompatibilityRoute() {
     window.location.replace(secureDemoRedirect(token, locale));
   }, [locale, token]);
 
-  return <main className="grid min-h-svh place-items-center p-6 text-sm text-muted-foreground">Opening secure demo link...</main>;
+  const { t } = useTranslation("demos");
+  return <main className="grid min-h-svh place-items-center p-6 text-sm text-muted-foreground">{t("openingSecureLink")}</main>;
 }

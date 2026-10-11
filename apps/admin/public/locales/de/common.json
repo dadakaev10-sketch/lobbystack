@@ -1,0 +1,193 @@
+{
+  "appName": "LobbyStack",
+  "accessibility": {
+    "close": "Schließen",
+    "toggleSidebar": "Seitenleiste umschalten",
+    "skipToContent": "Zum Hauptinhalt springen",
+    "sidebar": "Seitenleiste",
+    "mobileSidebarDescription": "Zeigt die mobile Seitenleiste an."
+  },
+  "errors": {
+    "unexpected": "Etwas ist schief gelaufen. Bitte versuchen Sie es erneut."
+  },
+  "loading": {
+    "title": "Laden...",
+    "retry": "Versuchen Sie den Ladevorgang erneut",
+    "failed": "Einige Übersetzungen konnten nicht geladen werden.",
+    "description": "Ihr Arbeitsbereich und die Einstellungen Ihrer KI-Rezeption werden synchronisiert."
+  },
+  "language": {
+    "label": "Sprache",
+    "ariaLabel": "Wählen Sie die Dashboard-Sprache aus",
+    "english": "Englisch",
+    "french": "Französisch",
+    "spanish": "Spanisch",
+    "serbian": "Srpski",
+    "german": "Deutsch"
+  },
+  "badges": {
+    "live": "Live",
+    "configured": "Konfiguriert",
+    "active": "Aktiv",
+    "inactive": "Inaktiv",
+    "voice": "Sprachanruf",
+    "sms": "SMS"
+  },
+  "channels": {
+    "phoneCall": "Telefonanruf",
+    "webCall": "Webanruf",
+    "sms": "SMS",
+    "webChat": "Website-Chat",
+    "dashboard": "Dashboard",
+    "api": "API"
+  },
+  "contactFallback": {
+    "phoneCaller": "Anrufer",
+    "webCaller": "Web-Anrufer",
+    "websiteVisitor": "Website-Besucher",
+    "unknown": "Unbekannter Kontakt"
+  },
+  "labels": {
+    "customer": "Kunde",
+    "receptionist": "Rezeptionistin",
+    "prompt": "Prompt"
+  },
+  "aiPhoneNumber": {
+    "copy": "KI-Telefonnummer kopieren",
+    "copied": "KI-Telefonnummer kopiert"
+  },
+  "errorBoundary": {
+    "title": "Etwas ist schief gelaufen",
+    "description": "Laden Sie das Dashboard neu und versuchen Sie es erneut. Der Fehler wurde gemeldet.",
+    "reload": "Neu laden"
+  },
+  "feedback": {
+    "trigger": "Feedback",
+    "title": "Feedback senden",
+    "description": "Sagen Sie uns, was dieses Dashboard verbessern würde.",
+    "label": "Feedback-Nachricht",
+    "placeholder": "Haben Sie eine Idee, LobbyStack zu verbessern? Sagen Sie es dem Team.",
+    "characterCount": "{{count}} / {{max}} Zeichen",
+    "helpText": "Brauchen Sie Hilfe?",
+    "helpCenter": "Hilfecenter",
+    "contactLink": "Kontaktieren Sie uns",
+    "helpTextSeparator": "oder",
+    "docsLink": "siehe Dokumente.",
+    "submit": "Senden",
+    "toast": {
+      "sent": "Feedback gesendet.",
+      "failed": "Dieses Feedback konnten wir nicht speichern."
+    }
+  },
+  "testCall": {
+    "trigger": "Testanruf",
+    "title": "Testen Sie Ihre KI-Rezeptionistin",
+    "description": "Starten Sie einen Live-Browseranruf mit Ihrem konfigurierten Rezeptionisten.",
+    "connecting": "Verbinden...",
+    "hangUp": "Auflegen",
+    "status": {
+      "idle": "Bereit, wenn Sie es sind",
+      "requesting_microphone": "Bitte um Zugriff auf das Mikrofon",
+      "connecting": "Verbindung zu Ihrer KI-Rezeption herstellen",
+      "connected": "Live mit Ihrer KI-Rezeption",
+      "ending": "Beenden des Anrufs",
+      "ended": "Anruf beendet",
+      "error": "Der Anruf konnte nicht gestartet werden"
+    },
+    "aria": {
+      "start": "Testanruf starten",
+      "connecting": "Testanruf wird hergestellt",
+      "waitingForMicrophone": "Warten auf Mikrofonerlaubnis",
+      "end": "Testanruf beenden",
+      "endMuted": "Stummgeschalteten Testanruf beenden",
+      "ending": "Testanruf wird beendet",
+      "retry": "Testanruf erneut versuchen"
+    },
+    "errors": {
+      "microphoneBlocked": "Der Mikrofonzugriff wurde blockiert.",
+      "microphoneNotFound": "Auf diesem Gerät wurde kein Mikrofon gefunden.",
+      "microphoneInUse": "Das Mikrofon wird bereits von einer anderen App verwendet.",
+      "gatewayTimeout": "Es dauerte zu lange, bis die Verbindung hergestellt wurde.",
+      "gatewayUnreachable": "Diese Seite kann LobbyStack nicht erreichen, um den Anruf zu starten.",
+      "connectionDropped": "Die Sprachverbindung wurde unterbrochen.",
+      "browserNoMicrophone": "Dieser Browser unterstützt keine Mikrofonanrufe.",
+      "browserNoWebRtc": "Dieser Browser unterstützt keine Live-Sprachanrufe.",
+      "businessNotFound": "Wir konnten diesen Arbeitsbereich nicht finden. Wechseln Sie zu einem aktiven Arbeitsbereich und versuchen Sie es erneut.",
+      "rateLimited": "Es wurden zu viele Testanrufe gestartet. Bitte versuchen Sie es in Kürze noch einmal.",
+      "unavailable": "Ihre KI-Rezeptionistin ist derzeit nicht erreichbar.",
+      "generic": "Beim Starten des Anrufs ist ein Fehler aufgetreten."
+    }
+  },
+  "appointments": {
+    "title": "Termine",
+    "summary_one": "{{name}} · {{count}} bevorstehender Termin",
+    "summary_other": "{{name}} · {{count}} bevorstehende Termine",
+    "chooseWorkspace": "Wählen Sie einen Arbeitsbereich, um Termine anzuzeigen.",
+    "refresh": "Aktualisieren",
+    "time": "Zeit",
+    "customer": "Kunde",
+    "service": "Dienstleistung",
+    "staff": "Mitarbeitende",
+    "status": "Status",
+    "calendar": "Kalender",
+    "loading": "Termine werden geladen…",
+    "unavailable": "Termine sind nicht möglich.",
+    "empty": "Keine bevorstehenden Termine.",
+    "statuses": {
+      "confirmed": "Bestätigt",
+      "cancelled": "Abgesagt",
+      "completed": "Abgeschlossen",
+      "no_show": "Nicht erschienen",
+      "pending": "Ausstehend"
+    },
+    "calendarStates": {
+      "not_required": "Nicht erforderlich",
+      "pending": "Ausstehend",
+      "synced": "Synchronisiert",
+      "failed": "Fehlgeschlagen",
+      "error": "Fehler",
+      "cancelled": "Abgesagt"
+    },
+    "actions": "Aktionen",
+    "cancel": {
+      "action": "Abbrechen",
+      "actionLabel": "Termin absagen: {{time}}",
+      "approve": "Stornierung genehmigen",
+      "title": "Diesen Termin absagen?",
+      "description": "{{appointment}}. Wir entfernen es aus Ihrem verbundenen Kalender und überspringen die Erinnerung.",
+      "requestDescription": "{{appointment}}. Wir entfernen es aus Ihrem verbundenen Kalender, überspringen die Erinnerung und schließen die Anfrage.",
+      "confirm": "Termin absagen",
+      "keep": "Termin einhalten",
+      "done": "Termin abgesagt",
+      "failed": "Wir konnten den Termin nicht absagen. Versuchen Sie es erneut.",
+      "summary": "{{service}} für {{name}} auf {{time}}",
+      "summaryNoService": "Termin für {{name}} auf {{time}}"
+    }
+  },
+  "abandonIntent": {
+    "title": "Bevor Sie gehen",
+    "description": "Zwei kurze Fragen. Beides hilft.",
+    "issue": {
+      "label": "Ist ein Problem aufgetreten?",
+      "placeholder": "Beschreiben Sie, was passiert ist, damit wir es beheben können."
+    },
+    "missing": {
+      "label": "Fehlt etwas?",
+      "placeholder": "Sagen Sie uns, was Sie als nächstes sehen möchten."
+    },
+    "notNow": "Nicht jetzt",
+    "submit": "Senden",
+    "sentTitle": "Danke",
+    "sentDescription": "Wir lesen jedes davon.",
+    "close": "Schließen"
+  },
+  "websiteImport": {
+    "runningTitle": "Lesen von {{host}}",
+    "runningHint": "Bisher {{imported}} Seiten gelesen, {{indexed}} für Fragen bereit.",
+    "doneTitle": "Ihr Agent hat {{host}} gelesen",
+    "doneHint_one": "{{count}} Seite steht für Fragen bereit.",
+    "doneHint_other": "{{count}} Seiten stehen für Fragen bereit.",
+    "failedTitle": "Wir konnten {{host}} nicht lesen",
+    "failedHint": "Fügen Sie Ihre Geschäftsdaten manuell hinzu oder versuchen Sie den Import erneut über Ihr Dashboard."
+  }
+}

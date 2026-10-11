@@ -1,0 +1,121 @@
+{
+  "eyebrow": "Partnerprogramm",
+  "title": "Partnerprogramm",
+  "description": "Teilen Sie LobbyStack mit Betreibern und Agenturen. Von hier aus verfolgen wir Empfehlungen, Provisionen und monatliche PayPal-Auszahlungen.",
+  "referral": {
+    "title": "Empfehlungslink",
+    "description": "Teilen Sie diesen Link überall dort, wo Sie LobbyStack empfehlen.",
+    "active": "Aktiv",
+    "copy": "Link kopieren",
+    "code": "Referenzcode: {{code}}"
+  },
+  "terms": {
+    "title": "Belohnungen",
+    "description": "PayPal-Auszahlungen nach Ablauf der Haltefrist.",
+    "commission": "Kommission",
+    "hold": "Haltedauer",
+    "minimum": "Mindestauszahlung",
+    "days": "{{count}} Tage",
+    "link": "Nutzungsbedingungen anzeigen",
+    "reward": "Verdienen Sie {{rate}} pro Verkauf für {{duration}}",
+    "oneYear": "1 Jahr",
+    "months": "{{count}} Monate"
+  },
+  "stats": {
+    "clicks": "Klicks",
+    "clicksDescription": "Verfolgte Empfehlungsbesuche.",
+    "referrals": "Empfehlungen",
+    "referralsDescription": "Unternehmen, die Ihrem Link zugeordnet sind.",
+    "conversions": "Konvertierungen",
+    "conversionsDescription": "Bezahlte Transaktionen mit Provision.",
+    "pending": "Ausstehend",
+    "pendingDescription": "Warten auf die 30-tägige Sperre.",
+    "eligible": "Berechtigt",
+    "eligibleReady": "Bereit für den nächsten Auszahlungslauf.",
+    "eligibleWaiting": "Zählt auf den Mindestbetrag von 100 $.",
+    "paid": "Bezahlt",
+    "paidDescription": "Nach Auszahlung als bezahlt markiert."
+  },
+  "tabs": {
+    "quickstart": "Schnellstart",
+    "earnings": "Ergebnis",
+    "payouts": "Auszahlungen",
+    "faq": "FAQ"
+  },
+  "quickstart": {
+    "share": {
+      "title": "Teilen Sie Ihren Link",
+      "description": "Verwenden Sie Ihren Empfehlungslink in Beiträgen, Newslettern, Websites und direkten Empfehlungen."
+    },
+    "resources": {
+      "title": "Verwenden Sie genaue Behauptungen",
+      "description": "Beschreiben Sie LobbyStack ehrlich und geben Sie an, dass Sie möglicherweise eine Provision verdienen."
+    },
+    "receive": {
+      "title": "Erhalten Sie Einnahmen",
+      "description": "Berechtigte Guthaben von 100 $ oder mehr werden monatlich überprüft und über PayPal ausgezahlt."
+    }
+  },
+  "earnings": {
+    "date": "Datum",
+    "sale": "Verkauf",
+    "commission": "Kommission",
+    "clears": "Löscht",
+    "status": "Status",
+    "empty": "Noch keine Provisionen."
+  },
+  "payouts": {
+    "date": "Datum",
+    "amount": "Menge",
+    "paypal": "PayPal",
+    "status": "Status",
+    "reference": "Referenz",
+    "empty": "Noch keine Auszahlungsaufzeichnungen.",
+    "noReference": "Noch nicht bezahlt"
+  },
+  "settings": {
+    "open": "Einstellungen",
+    "title": "PayPal-E-Mail",
+    "description": "E-Mail-Adresse, die für Auszahlungen verwendet wird.",
+    "paypalEmail": "PayPal-E-Mail",
+    "paypalPlaceholder": "Neue PayPal-E-Mail",
+    "currentEmail": "{{email}}",
+    "noEmail": "Keine PayPal-E-Mail gespeichert.",
+    "change": "Ändern",
+    "dialogTitle": "PayPal-E-Mail ändern",
+    "save": "Speichern",
+    "saving": "Wird gespeichert…"
+  },
+  "statuses": {
+    "pending": "Ausstehend",
+    "paid": "Bezahlt",
+    "voided": "Entwertet",
+    "draft": "Entwurf",
+    "ready": "Bereit",
+    "skipped": "Übersprungen"
+  },
+  "faq": {
+    "when": {
+      "question": "Ab wann werden Provisionen fällig?",
+      "answer": "Provisionen werden 30 Tage nach der Zahlung des geworbenen Kunden anspruchsberechtigt."
+    },
+    "minimum": {
+      "question": "Wie hoch ist die Mindestauszahlung?",
+      "answer": "Anspruchsberechtigte unbezahlte Provisionen müssen 100 $ erreichen, bevor sie in einen monatlichen Auszahlungslauf einbezogen werden."
+    },
+    "method": {
+      "question": "Wie werden Auszahlungen versendet?",
+      "answer": "LobbyStack bezahlt Partner über PayPal unter Verwendung der in den Einstellungen gespeicherten PayPal-E-Mail-Adresse."
+    },
+    "refunds": {
+      "question": "Was passiert nach einer Rückerstattung?",
+      "answer": "Nicht gezahlte Provisionen können ungültig oder rückgängig gemacht werden, wenn die zugrunde liegende Zahlung zurückerstattet oder angefochten wird."
+    }
+  },
+  "toast": {
+    "profileFailed": "Ihr Affiliate-Dashboard konnte nicht vorbereitet werden.",
+    "copied": "Empfehlungslink kopiert.",
+    "paypalSaved": "PayPal-E-Mail gespeichert.",
+    "paypalFailed": "PayPal-E-Mail konnte nicht gespeichert werden."
+  }
+}

@@ -1,0 +1,360 @@
+{
+  "shell": {
+    "signOut": "Abmelden",
+    "terms": "Nutzungsbedingungen",
+    "privacy": "Datenschutz"
+  },
+  "errors": {
+    "tooManyBusinesses": "Sie besitzen bereits 10 Arbeitsbereiche, das Limit für ein Konto."
+  },
+  "adminRequired": {
+    "eyebrow": "Arbeitsbereichseinrichtung",
+    "title": "Das Setup wartet auf einen Administrator",
+    "description": "Dieser Arbeitsbereich wird noch konfiguriert. Bitten Sie einen Geschäftsinhaber oder Administrator, die Einrichtung abzuschließen, bevor Sie es verwenden.",
+    "descriptionWithBusiness": "{{businessName}} wird noch konfiguriert. Bitten Sie einen Geschäftsinhaber oder Administrator, die Einrichtung abzuschließen, bevor Sie es verwenden.",
+    "statusTitle": "Ihr Zugang ist aktiv",
+    "statusDescription": "Sie können den Arbeitsbereich nutzen, sobald ein Administrator das Onboarding abgeschlossen hat. Setup-Änderungen sind auf Geschäftsinhaber und Administratoren beschränkt.",
+    "goToWorkspace": "Gehen Sie zum Arbeitsbereich"
+  },
+  "businessName": {
+    "title": "Erstens: Wie heißt Ihr Unternehmen?",
+    "description": "",
+    "createTitle": "Arbeitsbereich erstellen",
+    "createDescription": "Diese Details bilden die Grundlage für den Empfangskontext.",
+    "existingTitle": "Arbeitsbereich existiert bereits",
+    "existingDescription": "Setzen Sie die Einrichtung mit dem aktiven Arbeitsbereich fort.",
+    "configured": "Die Geschäftsdetails sind bereits konfiguriert.",
+    "continueSetup": "Setzen Sie die Einrichtung fort",
+    "loading": "Arbeitsbereiche werden geladen...",
+    "unavailable": "Die Arbeitsbereichseinrichtung ist nicht verfügbar.",
+    "label": "Unternehmensname",
+    "placeholder": "Bar George",
+    "slugLabel": "URL-Kennung",
+    "slugPlaceholder": "maple-family-clinic",
+    "timezoneLabel": "Zeitzone",
+    "timezonePlaceholder": "America/Toronto",
+    "typeLabel": "Geschäftstyp",
+    "types": {
+      "serviceCompany": "Dienstleistungsunternehmen",
+      "clinic": "Klinik",
+      "salon": "Salon oder Spa",
+      "professionalServices": "Professionelle Dienstleistungen",
+      "other": "Andere"
+    },
+    "create": "Erstellen und fortfahren",
+    "continue": "Weiter",
+    "submitting": "Wird gespeichert…",
+    "submitFailed": "Wir konnten dieses Unternehmen momentan nicht speichern. Bitte versuchen Sie es erneut."
+  },
+  "website": {
+    "title": "Lassen Sie uns nun LobbyStack auf Ihrer Website trainieren",
+    "description": "",
+    "label": "Webseite",
+    "placeholder": "yourcompany.com",
+    "sourceName": "Quellenname",
+    "sourceNameHint": "Optionale Bezeichnung für die importierte Quelle.",
+    "sourceNamePlaceholder": "Firmenwebsite",
+    "continue": "Weiter",
+    "submitting": "Import wird gestartet...",
+    "skip": "Ich habe keine Website",
+    "skipping": "Überspringen...",
+    "submitFailed": "Wir konnten den Website-Import momentan nicht starten. Bitte versuchen Sie es erneut.",
+    "invalidUrl": "Geben Sie Ihre Website-Adresse ein, z. B. yourcompany.com.",
+    "skipFailed": "Wir konnten diesen Schritt im Moment nicht überspringen. Bitte versuchen Sie es erneut."
+  },
+  "knowledge": {
+    "title": "Wissensdokumente hinzufügen",
+    "description": "Helfen Sie Ihrer KI, Ihr Unternehmen zu verstehen.",
+    "tabs": {
+      "upload": "Dateien hochladen",
+      "paste": "Text einfügen"
+    },
+    "upload": {
+      "headline": "Zum Hochladen per Drag & Drop oder Klicken",
+      "formats": "PDF, DOCX, TXT, MD werden unterstützt",
+      "remove": "Entfernen",
+      "tooLarge": "Dokumente dürfen maximal 10 MB groß sein.",
+      "unsupportedType": "Unterstützte Typen sind PDF, DOCX, TXT und Markdown.",
+      "failed": "Wir konnten dieses Dokument nicht hochladen. Bitte versuchen Sie es erneut."
+    },
+    "paste": {
+      "placeholder": "Fügen Sie alle Unternehmensinformationen ein: Dienstleistungen, FAQ, Öffnungszeiten, Richtlinien ...",
+      "hint": "Wir fügen dies sofort der Wissensdatenbank Ihrer KI hinzu.",
+      "defaultTitle": "Onboarding-Notizen"
+    },
+    "continue": "Weiter",
+    "continuing": "Wird gespeichert…",
+    "skip": "Vorerst überspringen",
+    "skipping": "Überspringen...",
+    "continueFailed": "Wir konnten im Moment nicht weitermachen. Bitte versuchen Sie es erneut.",
+    "skipFailed": "Wir konnten diesen Schritt im Moment nicht überspringen. Bitte versuchen Sie es erneut."
+  },
+  "greeting": {
+    "title": "Wie sollen wir Ihre Anrufer begrüßen?",
+    "description": "Das sagt Ihre KI zuerst. Sie können es jederzeit ändern.",
+    "label": "Begrüßung",
+    "language": "Sprache",
+    "english": "Englisch",
+    "french": "Französisch",
+    "placeholder": "Danke für Ihren Anruf. Wie kann ich helfen?",
+    "continue": "Weiter",
+    "submitting": "Wird gespeichert…",
+    "submitFailed": "Wir konnten diese Begrüßung momentan nicht speichern. Bitte versuchen Sie es erneut."
+  },
+  "number": {
+    "title": "Wählen Sie die Telefonnummer Ihrer KI",
+    "description": "Wählen Sie eine lokale Nummer, unter der Anrufer Sie erreichen können.",
+    "countryLabel": "Land",
+    "kindLocal": "Lokal",
+    "kindTollFree": "Gebührenfrei",
+    "areaCodeLabel": "Vorwahl",
+    "areaCodePlaceholder": "Vorwahl",
+    "cityLabel": "Stadt",
+    "cityPlaceholder": "Stadt",
+    "location": "Standort",
+    "capabilities": "Fähigkeiten",
+    "voiceSms": "Stimme · SMS",
+    "search": "Suchen",
+    "tableHeaders": {
+      "phoneNumber": "Telefonnummer"
+    },
+    "select": "Wählen",
+    "loadMore": "Mehr laden",
+    "empty": "Für diese Suche stimmten keine Nummern überein.",
+    "skipLater": "Ich werde später eine Nummer hinzufügen",
+    "skipping": "Überspringen...",
+    "loadFailed": "Wir konnten momentan keine Nummern laden.",
+    "searchFailed": "Wir konnten momentan keine Nummern suchen.",
+    "claimFailed": "Wir konnten diese Nummer nicht bereitstellen. Bitte versuchen Sie es erneut.",
+    "claimRateLimited": "Sie haben mehrere Nummern ausprobiert. Bitte warten Sie etwas, bevor Sie es erneut versuchen.",
+    "trialAccountPurchaseLimit": "Dieses Twilio-Konto kann diese Nummer noch nicht kaufen. Mit Testkonten können nur berechtigte Testnummern gekauft werden. Geben Sie eine vorhandene Nummer frei oder aktualisieren Sie das Konto und versuchen Sie es dann erneut.",
+    "skipFailed": "Wir konnten diesen Schritt im Moment nicht überspringen. Bitte versuchen Sie es erneut.",
+    "tooManySearches": "Zu viele Suchanfragen. Bitte warten Sie etwas und versuchen Sie es erneut.",
+    "unavailable": "Diese Nummer wurde gerade vergeben. Wählen Sie ein anderes aus der aktualisierten Liste aus.",
+    "selectedTitle": "Die Telefonnummer Ihrer KI",
+    "selectedNumberLabel": "Ausgewählte Nummer",
+    "continue": "Weiter"
+  },
+  "attribution": {
+    "title": "Wie haben Sie von LobbyStack erfahren?",
+    "description": "Es hilft uns, uns auf das zu konzentrieren, was funktioniert.",
+    "options": {
+      "ai_assistant": "ChatGPT, Claude usw.",
+      "newsletter": "Newsletter oder Blog",
+      "podcast": "Podcast",
+      "news": "In den Nachrichten",
+      "work": "Von der Arbeit",
+      "school": "Freunde oder Schule",
+      "x": "X",
+      "reddit": "Reddit",
+      "facebook": "Facebook",
+      "youtube": "YouTube",
+      "instagram": "Instagram",
+      "linkedin": "LinkedIn",
+      "google": "Google",
+      "tiktok": "TikTok",
+      "other": "Andere"
+    },
+    "skip": "Überspringen",
+    "label": "Quelle",
+    "preferNot": "Keine Angabe",
+    "search": "Suchmaschine",
+    "referral": "Freund oder Kollege",
+    "social": "Soziale Medien",
+    "event": "Event oder Community",
+    "other": "Andere",
+    "finish": "Beenden",
+    "finishing": "Wird abgeschlossen…",
+    "failed": "Einrichtung konnte nicht abgeschlossen werden.",
+    "submitFailed": "Wir konnten diese Angabe momentan nicht speichern. Bitte versuchen Sie es erneut."
+  },
+  "plan": {
+    "title": "Wählen Sie Ihren Tarif",
+    "checkoutSuccess": "Der Checkout wurde erfolgreich abgeschlossen.",
+    "popular": "Beliebt",
+    "enterpriseSubject": "Unternehmensplan",
+    "compareTitle": "Tarife im Detail vergleichen",
+    "compareDescription": "Testen Sie 30 Browser-Sprachminuten kostenlos, ohne Telefonnummer. Starter und Pro beinhalten eine dedizierte Nummer und monatliche Nutzungskontingente.",
+    "featureHeader": "Funktion",
+    "billingInterval": {
+      "label": "Abrechnungsintervall",
+      "monthly": "Monatlich",
+      "annual": "Jährlich",
+      "save": "Sparen Sie 20 %"
+    },
+    "tiers": {
+      "free_cloud": {
+        "name": "Kostenlos",
+        "price": "0 $",
+        "period": "",
+        "description": "Testen Sie LobbyStack mit genügend Freikontingent, um sich von der Funktion zu überzeugen.",
+        "cta": "Kostenlos starten",
+        "highlights": {
+          "voiceMinutes": "30 Browser-Voice-Minuten inklusive",
+          "bookingContacts": "Keine Telefonnummer",
+          "support": "Community-Unterstützung"
+        }
+      },
+      "starter": {
+        "name": "Starter",
+        "price": {
+          "monthly": "30 $",
+          "annual": "24 $"
+        },
+        "period": "/Mo",
+        "description": {
+          "monthly": "Wird monatlich abgerechnet. Beinhaltet 150 Sprachminuten, die monatlich zurückgesetzt werden.",
+          "annual": "Jährliche Abrechnung. Beinhaltet 150 Sprachminuten, die monatlich zurückgesetzt werden."
+        },
+        "cta": {
+          "monthly": "Monatlichen Tarif wählen",
+          "annual": "Beginnen Sie jährlich"
+        },
+        "highlights": {
+          "voiceMinutes": "150 Sprachminuten inklusive\nDann 0,20 $/Min",
+          "dedicatedNumber": "1 dedizierte Geschäftsnummer",
+          "alertSms": "50 Benachrichtigungs-SMS-Segmente",
+          "support": "E-Mail-Support"
+        }
+      },
+      "pro": {
+        "name": "Pro",
+        "price": {
+          "monthly": "100 $",
+          "annual": "80 $"
+        },
+        "period": "/Mo",
+        "description": {
+          "monthly": "Wird monatlich abgerechnet. Mehr Inklusivnutzung für wachsendes Anrufvolumen.",
+          "annual": "Jährliche Abrechnung. Mehr Inklusivnutzung für wachsendes Anrufvolumen."
+        },
+        "cta": {
+          "monthly": "Pro monatlich wählen",
+          "annual": "Go Pro jährlich"
+        },
+        "highlights": {
+          "voiceMinutes": "500 Sprachminuten inklusive\nDann 0,18 $/Min",
+          "dedicatedNumber": "1 dedizierte Geschäftsnummer",
+          "alertSms": "200 Benachrichtigungs-SMS-Segmente",
+          "support": "Vorrangiger E-Mail-Support"
+        }
+      },
+      "enterprise": {
+        "name": "Enterprise",
+        "price": "Individuell",
+        "period": "",
+        "description": "Für größere Volumina, mehrere Nummern oder individuelle Bereitstellungsanforderungen.",
+        "cta": "Kontaktieren Sie uns",
+        "highlights": {
+          "phoneNumbers": "Mehrere dedizierte Nummern",
+          "selfHosted": "Selbstgehostete Bereitstellungsoption",
+          "support": "Dedizierte Implementierungsunterstützung"
+        }
+      }
+    },
+    "comparison": {
+      "groups": {
+        "usage": "Nutzung und Einschränkungen",
+        "core": "KI-Rezeption",
+        "booking": "Buchung",
+        "routing": "Anrufsteuerung und Weiterleitungen",
+        "notifications": "Benachrichtigungen",
+        "data": "Daten & Dashboard",
+        "deployment": "Bereitstellung und Support"
+      },
+      "features": {
+        "voiceMinutes": "Sprachminuten",
+        "outboundCalls": "Übertragungsversuche",
+        "alertSms": "Benachrichtigungs-SMS-Segmente",
+        "knowledgeStorage": "Wissensdatenbank",
+        "phoneNumbers": "Telefonnummern",
+        "callAnswering": "Anrufannahme rund um die Uhr",
+        "callerDetails": "Anruferdetails und Nachrichtenerfassung",
+        "knowledgeAnswers": "Antworten der Wissensdatenbank",
+        "workflows": "Klartext-Workflows",
+        "spamFiltering": "Spam-Filterung",
+        "shortCalls": "Anrufe unter 10 Sekunden sind von der Abrechnung ausgeschlossen",
+        "concurrentCalls": "Gleichzeitige Anrufbearbeitung",
+        "multilingual": "Antworten in der Sprache des Anrufers",
+        "appointmentBooking": "Terminbuchung",
+        "confirmationTexts": "Terminbestätigungstexte",
+        "googleCalendar": "Google Kalender-Integration",
+        "urgentHandoff": "Dringende Anrufübergabe",
+        "callTransfers": "Anrufweiterleitungen",
+        "afterHours": "Antwort außerhalb der Geschäftszeiten",
+        "emailNotifications": "E-Mail-Benachrichtigungen",
+        "smsNotifications": "SMS-Benachrichtigungen",
+        "summaries": "Anrufzusammenfassungen",
+        "history": "Anrufverlauf",
+        "contentRetention": "Aufbewahrung von Transkripten und Aufzeichnungen",
+        "callerProfiles": "Anruferprofile und Notizen",
+        "contacts": "Kontakte",
+        "websiteImport": "Import von Website-Wissen",
+        "hosting": "Hosting",
+        "usageBilling": "Nutzungsabhängige Überschreitungen",
+        "support": "Support"
+      },
+      "values": {
+        "common": {
+          "custom": "Individuell",
+          "included": "Enthalten",
+          "notIncluded": "Nicht enthalten",
+          "multiple": "Mehrere",
+          "unlimited": "Unbegrenzt",
+          "browserTesting": "Browsertests"
+        },
+        "usage": {
+          "voiceMinutes": {
+            "freeIncluded": "{{minutes}} Browser-Minuten",
+            "starterIncluded": "150 inklusive",
+            "starterThen": "dann 0,20 $/Min",
+            "proIncluded": "500 inklusive",
+            "proThen": "dann 0,18 $/Min"
+          },
+          "outboundCalls": {
+            "starterIncluded": "20 inklusive",
+            "starterThen": "dann 0,02 $/Versuch",
+            "proIncluded": "100 inklusive",
+            "proThen": "dann 0,02 $/Versuch"
+          },
+          "alertSms": {
+            "starterIncluded": "50 inklusive",
+            "starterThen": "dann 0,02 $/Segment",
+            "proIncluded": "200 inklusive",
+            "proThen": "dann 0,02 $/Segment"
+          },
+          "knowledgeStorage": {
+            "free": "1 MB",
+            "starter": "5 MB",
+            "pro": "20 MB"
+          },
+          "phoneNumbers": {
+            "starter": "1 dedizierte Nummer",
+            "pro": "1 dedizierte Nummer"
+          }
+        },
+        "data": {
+          "contentRetention": {
+            "free": "{{days}} Tage",
+            "paid": "{{days}} Tage"
+          }
+        },
+        "deployment": {
+          "hosting": {
+            "managed": "Verwaltete Cloud",
+            "enterprise": "Cloud oder selbst gehostet"
+          },
+          "support": {
+            "community": "Community",
+            "email": "E-Mail",
+            "priority": "Priorisierter E-Mail-Support",
+            "dedicated": "Dedizierte Implementierung"
+          }
+        }
+      }
+    },
+    "continue": "Weiter",
+    "continuing": "Wird fortgesetzt…",
+    "continueFailed": "Wir konnten im Moment nicht weitermachen. Bitte versuchen Sie es erneut."
+  }
+}

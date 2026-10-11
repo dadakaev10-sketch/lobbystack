@@ -92,5 +92,6 @@
       "publish": "No se pudo publicar la demo. Inténtelo de nuevo.",
       "revoke": "No se pudo revocar la demo. Inténtelo de nuevo."
     }
-  }
+  },
+  "openingSecureLink": "Abriendo el enlace seguro de demostración…"
 }

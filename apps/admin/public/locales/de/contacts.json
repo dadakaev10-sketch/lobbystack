@@ -1,0 +1,157 @@
+{
+  "page": {
+    "title": "Kontakte",
+    "description": "Verwalten Sie die Personen hinter Ihren Anrufen, Nachrichten und Buchungen.",
+    "searchPlaceholder": "Kontakte suchen..."
+  },
+  "table": {
+    "contact": "Kontakt",
+    "channels": "Kanäle",
+    "activity": "Aktivität",
+    "appointments": "Termine",
+    "lastInteraction": "Letzte Interaktion",
+    "messages": "{{count}}-Nachrichten",
+    "calls": "{{count}}-Aufrufe",
+    "empty": "Keine Kontakte stimmen mit der aktuellen Suche überein.",
+    "status": {
+      "blocked": "Blockiert"
+    },
+    "actions": {
+      "moreOptions": "Weitere Optionen",
+      "blockContact": "Kontakt blockieren",
+      "unblockContact": "Kontakt entsperren",
+      "blockTitle": "Kontakt blockieren?",
+      "blockDescription": "Dadurch werden neue SMS-Antworten gestoppt und neue eingehende Anrufe von diesem Kontakt sofort beendet.",
+      "blockConfirm": "Kontakt blockieren",
+      "blockCancel": "Abbrechen",
+      "blockSuccess": "Kontakt blockiert.",
+      "unblockTitle": "Kontakt entsperren?",
+      "unblockDescription": "Dadurch sind wieder neue SMS-Antworten und eingehende Anrufe für diesen Kontakt möglich.",
+      "unblockConfirm": "Kontakt entsperren",
+      "unblockSuccess": "Kontakt entsperrt.",
+      "updateFailed": "Der Blockstatus konnte nicht aktualisiert werden.",
+      "deleteContact": "Kontakt löschen",
+      "deleteTitle": "Kontakt löschen?",
+      "deleteDescription": "Dadurch wird der Kontakt dauerhaft aus Ihrem Dashboard entfernt.",
+      "deleteConfirm": "Kontakt löschen",
+      "deleteCancel": "Abbrechen",
+      "deleteFailed": "Der Kontakt konnte nicht gelöscht werden."
+    }
+  },
+  "detail": {
+    "backToList": "Kontakte",
+    "notFound": "Kontakt nicht gefunden",
+    "notFoundDescription": "Möglicherweise wurde dieser Kontakt entfernt oder Sie haben keinen Zugriff.",
+    "metadata": {
+      "phone": "Telefon",
+      "email": "E-Mail",
+      "firstSeen": "Zum ersten Mal gesehen"
+    },
+    "blocking": {
+      "badge": "Blockiert",
+      "active": "Aktiv",
+      "blockAction": "Kontakt blockieren",
+      "unblockAction": "Kontakt entsperren",
+      "blockTitle": "Kontakt blockieren?",
+      "blockDescription": "Dadurch werden neue SMS-Antworten gestoppt und neue eingehende Anrufe von diesem Kontakt sofort beendet.",
+      "blockConfirm": "Kontakt blockieren",
+      "blockSuccess": "Kontakt blockiert.",
+      "unblockTitle": "Kontakt entsperren?",
+      "unblockDescription": "Dadurch sind wieder neue SMS-Antworten und eingehende Anrufe für diesen Kontakt möglich.",
+      "unblockConfirm": "Kontakt entsperren",
+      "unblockSuccess": "Kontakt entsperrt.",
+      "blockedAtInline": "Blockiert auf {{time}}",
+      "cancel": "Abbrechen",
+      "updateFailed": "Der Blockstatus konnte nicht aktualisiert werden."
+    },
+    "stats": {
+      "calls": "Anrufe",
+      "messages": "Nachrichten",
+      "appointments": "Termine",
+      "conversations": "Gespräche"
+    },
+    "tabs": {
+      "activity": "Aktivität",
+      "appointments": "Termine",
+      "details": "Details"
+    },
+    "activity": {
+      "empty": "Es wurden noch keine Interaktionen aufgezeichnet.",
+      "callInbound": "Eingehender Anruf",
+      "callBlocked": "blockiert",
+      "callCompleted": "vollendet",
+      "callFailed": "fehlgeschlagen",
+      "callInProgress": "im Gange",
+      "smsInbound": "Eingehende SMS",
+      "smsOutbound": "Ausgehende SMS",
+      "messageSent": "Gesendet",
+      "messageReceived": "Erhalten",
+      "smsConversation": "SMS",
+      "appointmentScheduled": "Termin",
+      "withStaff": "mit {{staff}}"
+    },
+    "appointments": {
+      "empty": "Keine Termine für diesen Kontakt.",
+      "service": "Dienstleistung",
+      "staff": "Mitarbeitende",
+      "dateTime": "Datum und Uhrzeit",
+      "status": "Status",
+      "channel": "Kanal",
+      "syncState": "Kalender",
+      "booked": "Gebucht",
+      "confirmed": "Bestätigt",
+      "completed": "Abgeschlossen",
+      "cancelled": "Abgesagt",
+      "pending": "Ausstehend",
+      "syncStateValues": {
+        "notRequired": "Nicht erforderlich",
+        "pending": "Ausstehend",
+        "syncing": "Synchronisierung",
+        "synced": "Synchronisiert",
+        "failed": "Fehlgeschlagen",
+        "drifted": "Muss überprüft werden"
+      }
+    },
+    "details": {
+      "contactInfoTitle": "Kontaktinformationen",
+      "name": "Name",
+      "phone": "Telefon",
+      "email": "E-Mail",
+      "timezone": "Zeitzone",
+      "preferredLocale": "Bevorzugte Sprache",
+      "blockingTitle": "Kontaktblock",
+      "blockingStatus": "Status",
+      "blockedAt": "Gesperrt bei",
+      "blockedBy": "Blockiert von",
+      "smsConsentTitle": "SMS-Zustimmung",
+      "smsConsentStatus": "Status",
+      "smsConsentUpdatedAt": "Zuletzt aktualisiert",
+      "smsConsentSource": "Quelle",
+      "smsConsentStatusValues": {
+        "subscribed": "Gezeichnet",
+        "declined": "Abgelehnt",
+        "optedOut": "Abgemeldet"
+      },
+      "smsConsentSourceValues": {
+        "twilioStop": "Twilio STOP",
+        "twilioStart": "Twilio START",
+        "keywordStop": "Stichwort STOP",
+        "keywordStart": "Stichwort START"
+      },
+      "copy": "Kopie",
+      "systemTitle": "System",
+      "contactId": "Kontakt-ID",
+      "createdAt": "Erstellt",
+      "notSet": "—"
+    }
+  },
+  "pagination": {
+    "rowsPerPage": "Zeilen pro Seite",
+    "pageOf": "Seite {{page}} von {{total}}",
+    "firstPage": "Gehen Sie zur ersten Seite",
+    "previousPage": "Gehen Sie zur vorherigen Seite",
+    "nextPage": "Gehen Sie zur nächsten Seite",
+    "lastPage": "Gehe zur letzten Seite",
+    "goToPage": "Gehen Sie zur Seite {{page}}"
+  }
+}

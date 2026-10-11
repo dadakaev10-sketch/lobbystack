@@ -12,7 +12,8 @@ import {
 describe("locale paths", () => {
   it("detects and removes supported locale prefixes", () => {
     expect(localeFromPathname("/fr/login")).toBe("fr");
-    expect(localeFromPathname("/de/login")).toBeNull();
+    expect(localeFromPathname("/de/login")).toBe("de");
+    expect(localeFromPathname("/it/login")).toBeNull();
     expect(stripLocalePrefix("/en/reset-password/token")).toBe("/reset-password/token");
     expect(stripLocalePrefix("/settings")).toBe("/settings");
   });

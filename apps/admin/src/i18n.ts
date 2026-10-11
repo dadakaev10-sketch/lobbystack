@@ -5,6 +5,7 @@ import { DEFAULT_LOCALE, SUPPORTED_LOCALES, resolveLocale, type SupportedLocale 
 import { TranslationNetworkError } from "@/lib/translation-network-error";
 import { versionedAssetUrl } from "@/lib/versioned-assets";
 
+import commonDe from "../public/locales/de/common.json";
 import commonEn from "../public/locales/en/common.json";
 import commonEs from "../public/locales/es/common.json";
 import commonFr from "../public/locales/fr/common.json";
@@ -12,6 +13,8 @@ import commonSr from "../public/locales/sr/common.json";
 
 export type I18nNamespaceResources = Record<string, Record<string, unknown>>;
 export type I18nResources = Record<string, I18nNamespaceResources>;
+
+const FALLBACK_LOCALE = "en";
 
 const NETWORK_RETRY_DELAY_MS = 500;
 
@@ -21,6 +24,7 @@ const resolvedFallbacks = new WeakMap<I18nextInstance, Set<string>>();
 
 /** Chrome strings every route needs, available without a network request. */
 const chromeResources: Record<SupportedLocale, I18nNamespaceResources> = {
+  de: { common: commonDe },
   en: { common: commonEn },
   fr: { common: commonFr },
   es: { common: commonEs },
@@ -52,7 +56,7 @@ export function createI18nInstance(input: {
   void instance.init({
     lng: input.locale,
     supportedLngs: SUPPORTED_LOCALES,
-    fallbackLng: DEFAULT_LOCALE,
+    fallbackLng: FALLBACK_LOCALE,
     load: "languageOnly",
     defaultNS: "common",
     ns: ["common"],
@@ -76,7 +80,7 @@ export function missingNamespaces(
   namespaces: readonly string[],
 ): string[] {
   return namespaces.filter((namespace) => !instance.hasResourceBundle(locale, namespace)
-    && !(resolvedFallbacks.get(instance)?.has(`${locale}:${namespace}`) && instance.hasResourceBundle(DEFAULT_LOCALE, namespace)));
+    && !(resolvedFallbacks.get(instance)?.has(`${locale}:${namespace}`) && instance.hasResourceBundle(FALLBACK_LOCALE, namespace)));
 }
 
 /**
@@ -132,17 +136,17 @@ export async function loadRouteNamespaces(
     try {
       return { namespace, language: locale, bundle: await fetchBundle(locale) };
     } catch (error) {
-      if (locale === DEFAULT_LOCALE) throw error;
+      if (locale === FALLBACK_LOCALE) throw error;
       // The manual route loader has no i18next HTTP backend to fetch fallback
       // languages for it. Load English explicitly without changing the locale.
-      const bundle = instance.hasResourceBundle(DEFAULT_LOCALE, namespace)
-        ? instance.getResourceBundle(DEFAULT_LOCALE, namespace) as Record<string, unknown>
-        : await fetchBundle(DEFAULT_LOCALE).catch((fallbackError: unknown) => {
+      const bundle = instance.hasResourceBundle(FALLBACK_LOCALE, namespace)
+        ? instance.getResourceBundle(FALLBACK_LOCALE, namespace) as Record<string, unknown>
+        : await fetchBundle(FALLBACK_LOCALE).catch((fallbackError: unknown) => {
           // Keep both failures: a locale HTTP error stays reportable even when
           // the English fallback only lost its connection.
           throw new AggregateError([error, fallbackError], [error, fallbackError].map((failure) => failure instanceof Error ? failure.message : String(failure)).join(" "));
         });
-      return { namespace, language: DEFAULT_LOCALE, bundle };
+      return { namespace, language: FALLBACK_LOCALE, bundle };
     }
   }));
 

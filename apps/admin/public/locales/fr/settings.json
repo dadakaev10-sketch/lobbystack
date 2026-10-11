@@ -566,7 +566,9 @@
         "mismatch": "Les nouveaux mots de passe ne correspondent pas.",
         "failed": "Impossible de mettre a jour le mot de passe."
       }
-    }
+    },
+    "loading": "Chargement du compte…",
+    "unavailable": "Les données du compte sont indisponibles."
   },
   "workspaceTeam": {
     "members": {

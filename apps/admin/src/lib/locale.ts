@@ -9,6 +9,7 @@ export type TimeFormatPreference = "24h" | "ampm";
 
 /** Translation key for each locale's name in the language pickers. */
 export const LOCALE_LABEL_KEYS: Record<SupportedLocale, string> = {
+  de: "common:language.german",
   en: "common:language.english",
   fr: "common:language.french",
   es: "common:language.spanish",
@@ -23,7 +24,7 @@ export function localeTag(locale: SupportedLocale): string {
   return interfaceLocaleTags[locale];
 }
 
-export const DEFAULT_LOCALE: SupportedLocale = "en";
+export const DEFAULT_LOCALE: SupportedLocale = "de";
 export const LOCALE_STORAGE_KEY = "lobbystack.locale";
 export const TIME_FORMAT_STORAGE_KEY = "lobbystack.time-format";
 /** Cookie name mirroring {@link LOCALE_STORAGE_KEY} for server-side rendering. */
@@ -128,10 +129,10 @@ export function resolveTimeFormatPreference(input: {
     return stored;
   }
 
-  // English defaults to a 12-hour clock; French, Spanish and Serbian readers
+  // English defaults to a 12-hour clock; German, French, Spanish and Serbian readers
   // expect 24-hour times, which is also what Intl uses for those languages.
   const locale = normalizeInterfaceLocale(input.locale);
-  if (locale === "fr" || locale === "es" || locale === "sr") {
+  if (locale === "de" || locale === "fr" || locale === "es" || locale === "sr") {
     return "24h";
   }
 

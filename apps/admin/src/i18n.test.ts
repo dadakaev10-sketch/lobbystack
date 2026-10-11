@@ -15,6 +15,7 @@ it("uses English when a lazy French bundle fails without changing locale", async
   expect(missingNamespaces(instance, "fr", ["fixture"])).toEqual([]);
   await loadRouteNamespaces(instance, "fr", ["fixture"]);
   expect(request).toHaveBeenCalledTimes(2);
+  expect(request).toHaveBeenLastCalledWith("/locales/en/fixture.json?v=development");
 });
 
 it("allows retry when both languages fail and keeps server bundles offline", async () => {

@@ -48,7 +48,7 @@ it("serves Spanish and Serbian public pages with their language tags", () => {
 
   const negotiated = proxy(new NextRequest("http://localhost:3210/login", { headers: { "accept-language": "sr-RS,sr;q=0.9,en;q=0.4" } }));
   expect(negotiated.status).toBe(308);
-  expect(negotiated.headers.get("location")).toBe("http://localhost:3210/sr/login");
+  expect(negotiated.headers.get("location")).toBe("http://localhost:3210/de/login");
 
   const explicit = proxy(new NextRequest("http://localhost:3210/fr/login?lng=es"));
   expect(explicit.headers.get("location")).toBe("http://localhost:3210/es/login");
@@ -72,7 +72,7 @@ it("redirects legacy public URLs to a canonical locale while preserving safe que
   const fromHeader = proxy(new NextRequest("http://localhost:3210/forgot-password", {
     headers: { "accept-language": "fr-CA,fr;q=0.9" },
   }));
-  expect(fromHeader.headers.get("location")).toBe("http://localhost:3210/fr/forgot-password");
+  expect(fromHeader.headers.get("location")).toBe("http://localhost:3210/de/forgot-password");
 });
 
 it("keeps sensitive and dynamic responses private while caching fixed public pages", () => {

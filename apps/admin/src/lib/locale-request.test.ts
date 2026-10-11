@@ -11,30 +11,30 @@ import {
 
 it("prefers an explicit ?lng= over the cookie and the browser hint", () => {
   expect(negotiateLocale({ query: "fr", cookie: "en", acceptLanguage: "en-US,en;q=0.9" })).toEqual({ locale: "fr", source: "query" });
-  expect(negotiateLocale({ query: "de", cookie: "fr", acceptLanguage: "en" })).toEqual({ locale: "fr", source: "cookie" });
+  expect(negotiateLocale({ query: "invalid", cookie: "fr", acceptLanguage: "en" })).toEqual({ locale: "fr", source: "cookie" });
 });
 
 it("falls back to the cookie before the browser hint", () => {
   expect(negotiateLocale({ cookie: "fr", acceptLanguage: "en-US,en;q=0.9" })).toEqual({ locale: "fr", source: "cookie" });
-  expect(negotiateLocale({ acceptLanguage: "fr-CA,fr;q=0.9" })).toEqual({ locale: "fr", source: "header" });
-  expect(negotiateLocale({})).toEqual({ locale: "en", source: "default" });
-  expect(negotiateLocale({ query: "de", cookie: "pt", acceptLanguage: "it" })).toEqual({ locale: "en", source: "default" });
+  expect(negotiateLocale({ acceptLanguage: "fr-CA,fr;q=0.9" })).toEqual({ locale: "de", source: "default" });
+  expect(negotiateLocale({})).toEqual({ locale: "de", source: "default" });
+  expect(negotiateLocale({ query: "invalid", cookie: "pt", acceptLanguage: "it" })).toEqual({ locale: "de", source: "default" });
 });
 
 it("negotiates Spanish and Serbian from every source", () => {
   expect(negotiateLocale({ query: "es", cookie: "fr", acceptLanguage: "en" })).toEqual({ locale: "es", source: "query" });
   expect(negotiateLocale({ cookie: "sr", acceptLanguage: "es" })).toEqual({ locale: "sr", source: "cookie" });
-  expect(negotiateLocale({ acceptLanguage: "es-419,es;q=0.9,en;q=0.5" })).toEqual({ locale: "es", source: "header" });
-  expect(negotiateLocale({ acceptLanguage: "sr-Latn-RS,sr;q=0.9" })).toEqual({ locale: "sr", source: "header" });
-  expect(localeFromAcceptLanguage("de,sr-Cyrl;q=0.8,en;q=0.5")).toBe("sr");
+  expect(negotiateLocale({ acceptLanguage: "es-419,es;q=0.9,en;q=0.5" })).toEqual({ locale: "de", source: "default" });
+  expect(negotiateLocale({ acceptLanguage: "sr-Latn-RS,sr;q=0.9" })).toEqual({ locale: "de", source: "default" });
+  expect(localeFromAcceptLanguage("it,sr-Cyrl;q=0.8,en;q=0.5")).toBe("sr");
   expect(localeFromCookieHeader("lobbystack.locale=es")).toBe("es");
 });
 
 it("picks the highest quality supported language from Accept-Language", () => {
   expect(localeFromAcceptLanguage("fr-FR,fr;q=0.9,en-US;q=0.4")).toBe("fr");
   expect(localeFromAcceptLanguage("en-US;q=0.3,fr;q=0.9")).toBe("fr");
-  expect(localeFromAcceptLanguage("de;q=1.0,fr;q=0.2")).toBe("fr");
-  expect(localeFromAcceptLanguage("de,ja;q=0.8")).toBeNull();
+  expect(localeFromAcceptLanguage("it;q=1.0,fr;q=0.2")).toBe("fr");
+  expect(localeFromAcceptLanguage("it,ja;q=0.8")).toBeNull();
   expect(localeFromAcceptLanguage("fr;q=0")).toBeNull();
   expect(localeFromAcceptLanguage(null)).toBeNull();
 });
@@ -42,8 +42,8 @@ it("picks the highest quality supported language from Accept-Language", () => {
 it("reads the negotiated locale and source from the forwarded request headers", () => {
   const headers = new Headers({ [LOCALE_HEADER]: "fr", [LOCALE_SOURCE_HEADER]: "query" });
   expect(localeFromRequestHeaders(headers)).toEqual({ locale: "fr", source: "query" });
-  expect(localeFromRequestHeaders(new Headers())).toEqual({ locale: "en", source: "default" });
-  expect(localeFromRequestHeaders(new Headers({ [LOCALE_HEADER]: "de", [LOCALE_SOURCE_HEADER]: "nonsense" }))).toEqual({ locale: "en", source: "default" });
+  expect(localeFromRequestHeaders(new Headers())).toEqual({ locale: "de", source: "default" });
+  expect(localeFromRequestHeaders(new Headers({ [LOCALE_HEADER]: "de", [LOCALE_SOURCE_HEADER]: "nonsense" }))).toEqual({ locale: "de", source: "default" });
 });
 
 it("parses the locale out of a Cookie header without matching similarly named cookies", () => {

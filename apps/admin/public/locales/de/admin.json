@@ -1,0 +1,17 @@
+{
+  "utilities": {
+    "testCall": "Testanruf",
+    "endTestCall": "Testanruf beenden",
+    "connecting": "Verbinden...",
+    "setupGuide": "Einrichtungsanleitung",
+    "affiliate": "Partner",
+    "appointments": "Termine",
+    "demos": "Demos",
+    "billingAttention": "Aufmerksamkeit in Rechnung stellen",
+    "feedback": "Feedback",
+    "feedbackPlaceholder": "Feedback teilen",
+    "feedbackSending": "Senden...",
+    "feedbackSent": "Feedback gesendet",
+    "feedbackFailed": "Feedback kann nicht gesendet werden"
+  }
+}

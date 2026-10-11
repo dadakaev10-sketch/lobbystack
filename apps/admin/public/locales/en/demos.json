@@ -91,5 +91,6 @@
       "publish": "Unable to publish the demo. Please try again.",
       "revoke": "Unable to revoke the demo. Please try again."
     }
-  }
+  },
+  "openingSecureLink": "Opening secure demo link..."
 }

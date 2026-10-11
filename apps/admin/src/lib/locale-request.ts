@@ -55,7 +55,8 @@ export function localeFromAcceptLanguage(value: string | null | undefined): Supp
 
 /**
  * Resolves the locale for a request the same way on the server and the client:
- * an explicit `?lng=` wins, then the persisted cookie, then the browser hint.
+ * an explicit `?lng=` wins, then the persisted cookie, then German.
+ * Browser language is not an explicit interface preference.
  */
 export function negotiateLocale(input: {
   query?: string | null;
@@ -70,11 +71,6 @@ export function negotiateLocale(input: {
   const fromCookie = normalizeInterfaceLocale(input.cookie);
   if (fromCookie) {
     return { locale: fromCookie, source: "cookie" };
-  }
-
-  const fromHeader = localeFromAcceptLanguage(input.acceptLanguage);
-  if (fromHeader) {
-    return { locale: fromHeader, source: "header" };
   }
 
   return { locale: DEFAULT_LOCALE, source: "default" };

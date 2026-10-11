@@ -1,7 +1,15 @@
 {
   "appName": "LobbyStack",
-  "accessibility": { "close": "Close", "toggleSidebar": "Toggle sidebar", "skipToContent": "Skip to main content" },
-  "errors": { "unexpected": "Something went wrong. Please try again." },
+  "accessibility": {
+    "close": "Close",
+    "toggleSidebar": "Toggle sidebar",
+    "skipToContent": "Skip to main content",
+    "sidebar": "Sidebar",
+    "mobileSidebarDescription": "Displays the mobile sidebar."
+  },
+  "errors": {
+    "unexpected": "Something went wrong. Please try again."
+  },
   "loading": {
     "title": "Loading...",
     "retry": "Retry loading",
@@ -14,7 +22,8 @@
     "english": "English",
     "french": "Français",
     "spanish": "Español",
-    "serbian": "Srpski"
+    "serbian": "Srpski",
+    "german": "German"
   },
   "badges": {
     "live": "Live",

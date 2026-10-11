@@ -20,6 +20,7 @@ export function newVerificationCode(): string {
 }
 
 const verificationCodeMessages: Record<InterfaceLocale, (code: string, minutes: number) => string> = {
+  de: (code, minutes) => `LobbyStack-Bestätigungscode: ${code}. Er läuft in ${minutes} Minuten ab.`,
   en: (code, minutes) => `LobbyStack verification code: ${code}. It expires in ${minutes} minutes.`,
   fr: (code, minutes) => `Code de vérification LobbyStack : ${code}. Il expire dans ${minutes} minutes.`,
   es: (code, minutes) => `Código de verificación de LobbyStack: ${code}. Caduca en ${minutes} minutos.`,

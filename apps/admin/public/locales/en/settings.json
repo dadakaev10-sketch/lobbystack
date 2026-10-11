@@ -566,7 +566,9 @@
         "mismatch": "New passwords do not match.",
         "failed": "Unable to update password."
       }
-    }
+    },
+    "loading": "Loading account...",
+    "unavailable": "Account data is unavailable."
   },
   "workspaceTeam": {
     "members": {

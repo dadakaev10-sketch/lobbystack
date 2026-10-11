@@ -1,0 +1,391 @@
+{
+  "page": {
+    "eyebrow": "Arbeitsbereich des Agenten",
+    "title": "Agent",
+    "description": "Konfigurieren Sie, wie sich Ihr KI-Rezeptionist verhält, was er weiß und wie er Anrufe und Nachrichten bearbeitet."
+  },
+  "sections": {
+    "basicSettings": {
+      "title": "KI-Einstellungen",
+      "description": "Begrüßungs- und Übertragungseinstellungen für Ihre Empfangsdame."
+    },
+    "knowledge": {
+      "title": "Wissen",
+      "description": "Informationen und Richtlinien, die Ihr Rezeptionist zur Beantwortung von Fragen verwendet.",
+      "listTitle": "Wissensdatenbank",
+      "addKnowledge": "Wissen hinzufügen",
+      "addKnowledgeOptions": {
+        "upload": "Hochladen",
+        "website": "Webseite",
+        "text": "Text"
+      },
+      "editKnowledge": "Wissen bearbeiten",
+      "uploadDocument": "Dokument hochladen",
+      "websiteImport": {
+        "badge": "Webseite",
+        "title": "Website importieren",
+        "description": "Crawlen Sie die öffentlichen Seiten Ihrer Website, damit Ihr Empfangsmitarbeiter sie als Wissen nutzen kann.",
+        "submit": "Website importieren",
+        "submitting": "Website wird importiert…",
+        "success": "Der Website-Import wurde gestartet. Die Seiten werden hier angezeigt, sobald die Verarbeitung abgeschlossen ist.",
+        "submitFailed": "Wir konnten den Website-Import nicht starten. Bitte versuchen Sie es erneut.",
+        "previewPending": "Wir crawlen diese Website. Importierte Seiten werden hier automatisch angezeigt.",
+        "previewFailed": "Der Import ist fehlgeschlagen. Bitte versuchen Sie es erneut.",
+        "status": {
+          "inProgress": "Im Gange",
+          "failed": "Fehlgeschlagen"
+        },
+        "validation": {
+          "urlRequired": "Geben Sie eine Website-URL zum Importieren ein."
+        }
+      },
+      "addKnowledgeDescription": "Fügen Sie Öffnungszeiten, Preise, Richtlinien oder andere Informationen hinzu, die Ihr Rezeptionist wissen sollte.",
+      "editKnowledgeDescription": "Aktualisieren Sie die Informationen, die Ihr Rezeptionist bei der Beantwortung von Kundenfragen verwenden sollte.",
+      "uploadDocumentDescription": "Laden Sie eine Datei hoch, damit Ihr Empfangsmitarbeiter sie verwenden kann.",
+      "documentBadge": "Dokumentieren",
+      "textBadge": "Text",
+      "emptyState": "Noch kein Wissen hinzugefügt.",
+      "previewPending": "Dieses Dokument wird bearbeitet.",
+      "previewError": "Dieses Dokument konnte nicht verarbeitet werden.",
+      "status": {
+        "analyzing": "Analysieren...",
+        "inProgress": "Im Gange",
+        "queued": "In der Warteschlange",
+        "indexing": "Indizierung",
+        "indexed": "Bereit",
+        "error": "Fehler",
+        "cancelled": "Abgesagt"
+      },
+      "uploadValidation": {
+        "fileRequired": "Wählen Sie eine Datei zum Hochladen aus.",
+        "unsupportedFile": "Unterstützte Dokumenttypen sind PDF, DOCX, TXT und Markdown.",
+        "maxSize": "Dokumente dürfen maximal 10 MB groß sein.",
+        "uploadFailed": "Wir konnten dieses Dokument nicht hochladen. Bitte versuchen Sie es erneut."
+      },
+      "fields": {
+        "file": {
+          "label": "Datei",
+          "hint": "Unterstützt PDF, DOCX, TXT und Markdown.",
+          "dropzonePrefix": "Ziehen Sie eine Datei hierher und legen Sie sie dort ab, oder",
+          "chooseFile": "Wählen Sie Datei"
+        },
+        "websiteUrl": {
+          "label": "Website-URL",
+          "placeholder": "https://example.com",
+          "hint": "Verwenden Sie die öffentliche Homepage oder den Abschnitt, den Sie importieren möchten."
+        },
+        "title": {
+          "label": "Titel",
+          "placeholder": "Öffnungszeiten",
+          "hint": "Ein kurzer, beschreibender Titel für dieses Wissen.",
+          "required": "Geben Sie einen Titel für dieses Wissen ein."
+        },
+        "content": {
+          "label": "Inhalt",
+          "placeholder": "Wir haben Montag bis Freitag von 9 bis 17 Uhr geöffnet.",
+          "hint": "Die tatsächlichen Informationen, die der Rezeptionist verwenden sollte.",
+          "required": "Geben Sie die Informationen ein, die der Rezeptionist verwenden soll."
+        },
+        "tags": {
+          "label": "Schlagworte (optional)",
+          "placeholder": "Öffnungszeiten, Ort",
+          "hint": "Durch Kommas getrennte Schlüsselwörter zur Kategorisierung dieses Wissens."
+        }
+      }
+    },
+    "services": {
+      "title": "Dienstleistungen",
+      "description": "Servicedetails, anhand derer Ihr Empfangsmitarbeiter Angebote erläutern und bei der Buchung des richtigen Termins helfen kann.",
+      "listTitle": "Dienstleistungen",
+      "addKnowledge": "Dienst hinzufügen",
+      "editKnowledge": "Dienst bearbeiten",
+      "uploadDocument": "Dokument hochladen",
+      "addKnowledgeDescription": "Fügen Sie Ihre Dienstleistungen hinzu, was sie beinhalten, für wen sie bestimmt sind und alles, was Ihre Rezeptionistin erwähnen sollte.",
+      "editKnowledgeDescription": "Aktualisieren Sie die Servicedetails, die Ihr Rezeptionist bei der Buchung angeben und verwenden sollte.",
+      "uploadDocumentDescription": "Laden Sie eine Datei hoch, damit Ihr Empfangsmitarbeiter sie verwenden kann.",
+      "documentBadge": "Dokumentieren",
+      "textBadge": "Text",
+      "emptyState": "Noch keine Dienste hinzugefügt.",
+      "unavailable": "Der Servicekatalog ist nicht verfügbar.",
+      "durationValue": "{{count}} min. Termin",
+      "previewPending": "Dieses Dokument wird bearbeitet.",
+      "previewError": "Dieses Dokument konnte nicht verarbeitet werden.",
+      "status": {
+        "analyzing": "Analysieren...",
+        "inProgress": "Im Gange",
+        "queued": "In der Warteschlange",
+        "indexing": "Indizierung",
+        "indexed": "Bereit",
+        "error": "Fehler"
+      },
+      "uploadValidation": {
+        "fileRequired": "Wählen Sie eine Datei zum Hochladen aus.",
+        "unsupportedFile": "Unterstützte Dokumenttypen sind PDF, DOCX, TXT und Markdown.",
+        "maxSize": "Dokumente dürfen maximal 10 MB groß sein.",
+        "uploadFailed": "Wir konnten dieses Dokument nicht hochladen. Bitte versuchen Sie es erneut."
+      },
+      "fields": {
+        "file": {
+          "label": "Datei",
+          "hint": "Unterstützt PDF, DOCX, TXT und Markdown.",
+          "dropzonePrefix": "Ziehen Sie eine Datei hierher und legen Sie sie dort ab, oder",
+          "chooseFile": "Wählen Sie Datei"
+        },
+        "title": {
+          "label": "Titel",
+          "placeholder": "Erstberatung",
+          "hint": "Ein kurzer, beschreibender Titel für diesen Dienst.",
+          "required": "Geben Sie einen Namen für diesen Dienst ein."
+        },
+        "content": {
+          "label": "Inhalt",
+          "placeholder": "Eine 30-minütige Beratung, um die Bedürfnisse des Anrufers zu verstehen und den richtigen nächsten Schritt zu empfehlen.",
+          "hint": "Beschreiben Sie den Service, damit der Rezeptionist ihn klar erklären kann."
+        },
+        "duration": {
+          "label": "Dauer",
+          "placeholder": "30",
+          "hint": "Termindauer in Minuten für Verfügbarkeitsprüfungen.",
+          "required": "Geben Sie eine ganze Zahl von Minuten ein, mindestens 1."
+        },
+        "active": {
+          "label": "Buchbar",
+          "hint": "Bei Gesprächen werden ausschließlich buchbare Leistungen angeboten."
+        },
+        "tags": {
+          "label": "Schlagworte (optional)",
+          "placeholder": "Beratung, Neukunden",
+          "hint": "Durch Kommas getrennte Schlüsselwörter zur Kategorisierung dieser Dienste."
+        }
+      },
+      "deleteTitle": "Dienst löschen?",
+      "deleteDescription": "Ihre Empfangsdame bietet es nicht mehr an. Vergangene Termine zeigen es immer noch."
+    },
+    "rules": {
+      "title": "Regeln",
+      "description": "Anweisungen, die Ihrem Empfangsmitarbeiter zeigen, wie er mit Anrufen und Nachrichten umgehen soll.",
+      "listTitle": "Regeln",
+      "addKnowledge": "Regel hinzufügen",
+      "editKnowledge": "Regel bearbeiten",
+      "uploadDocument": "Dokument hochladen",
+      "addKnowledgeDescription": "Was Ihre Rezeptionistin tun sollte, z. B. Anrufe weiterleiten, Fragen stellen und SMS senden.",
+      "editKnowledgeDescription": "Aktualisieren Sie die Anweisungen, die Ihr Empfangsmitarbeiter bei Anrufen und Folgeabläufen befolgen sollte.",
+      "uploadDocumentDescription": "Laden Sie eine Datei hoch, damit Ihr Empfangsmitarbeiter sie verwenden kann.",
+      "documentBadge": "Dokumentieren",
+      "textBadge": "Text",
+      "emptyState": "Es wurden noch keine Regeln hinzugefügt.",
+      "previewPending": "Dieses Dokument wird bearbeitet.",
+      "previewError": "Dieses Dokument konnte nicht verarbeitet werden.",
+      "status": {
+        "analyzing": "Analysieren...",
+        "inProgress": "Im Gange",
+        "queued": "In der Warteschlange",
+        "indexing": "Indizierung",
+        "indexed": "Bereit",
+        "error": "Fehler"
+      },
+      "uploadValidation": {
+        "fileRequired": "Wählen Sie eine Datei zum Hochladen aus.",
+        "unsupportedFile": "Unterstützte Dokumenttypen sind PDF, DOCX, TXT und Markdown.",
+        "maxSize": "Dokumente dürfen maximal 10 MB groß sein.",
+        "uploadFailed": "Wir konnten dieses Dokument nicht hochladen. Bitte versuchen Sie es erneut."
+      },
+      "fields": {
+        "file": {
+          "label": "Datei",
+          "hint": "Unterstützt PDF, DOCX, TXT und Markdown.",
+          "dropzonePrefix": "Ziehen Sie eine Datei hierher und legen Sie sie dort ab, oder",
+          "chooseFile": "Wählen Sie Datei"
+        },
+        "title": {
+          "label": "Titel",
+          "placeholder": "Leiten Sie Anfragen, mit jemandem zu sprechen, an Jannie weiter",
+          "hint": "Ein kurzer, beschreibender Titel für diese Regel.",
+          "required": "Geben Sie einen Titel für diese Regel ein."
+        },
+        "content": {
+          "label": "Inhalt",
+          "placeholder": "Wenn jemand darum bittet, mit einem Menschen zu sprechen, leiten Sie ihn an 555-123-4567 weiter.",
+          "hint": "Beschreiben Sie, was die Rezeptionistin tun soll.",
+          "required": "Beschreiben Sie, was die Rezeptionistin tun soll."
+        },
+        "tags": {
+          "label": "Schlagworte (optional)",
+          "placeholder": "Transfers, Eskalation",
+          "hint": "Durch Kommas getrennte Schlüsselwörter zur Kategorisierung dieser Regeln."
+        }
+      }
+    }
+  },
+  "table": {
+    "searchPlaceholder": "Sucheinträge",
+    "title": "Titel",
+    "preview": "Vorschau",
+    "status": "Status",
+    "disabled": "Deaktiviert",
+    "added": "Hinzugefügt",
+    "empty": "Keine passenden Einträge gefunden.",
+    "documentPreviewHint": "Klicken Sie hier, um eine Vorschau dieses Dokuments anzuzeigen.",
+    "documentPreviewUnavailable": "Die Dokumentvorschau ist auf der Knowledge-Seite verfügbar."
+  },
+  "pagination": {
+    "rowsPerPage": "Zeilen pro Seite",
+    "pageOf": "Seite {{page}} von {{total}}",
+    "firstPage": "Erste Seite",
+    "previousPage": "Vorherige Seite",
+    "nextPage": "Nächste Seite",
+    "lastPage": "Letzte Seite",
+    "goToPage": "Gehen Sie zur Seite {{page}}"
+  },
+  "fields": {
+    "defaults": {
+      "title": "Standardeinstellungen"
+    },
+    "instructions": {
+      "title": "Anweisungen"
+    },
+    "summary": {
+      "label": "Unternehmenszusammenfassung",
+      "hint": "Was Ihre Empfangsdame den Anrufern über das Unternehmen erzählt.",
+      "placeholder": "Zum Beispiel: Maple Family Clinic ist eine Familienpraxis in Toronto, die Vorsorgeuntersuchungen, Impfungen und Physiotherapie anbietet.",
+      "regenerate": "Mit KI neu schreiben",
+      "regenerating": "KI schreibt es anhand Ihres Wissens neu. Schauen Sie in einer Minute noch einmal vorbei."
+    },
+    "bookingPolicy": {
+      "label": "Buchungsbedingungen",
+      "hint": "Anleitung zum Anbieten und Bestätigen von Terminen."
+    },
+    "voiceInstructions": {
+      "label": "Sprachanweisungen"
+    },
+    "smsInstructions": {
+      "label": "SMS-Anweisungen"
+    },
+    "greeting": {
+      "label": "Begrüßung",
+      "placeholder": "Hallo, vielen Dank für Ihren Anruf...",
+      "hint": "Die Eröffnungszeile, die Ihr Rezeptionist verwendet, wenn er einen Anruf entgegennimmt oder ein Gespräch beginnt."
+    },
+    "defaultLocale": {
+      "label": "Standardsprache des Kunden",
+      "placeholder": "Wählen Sie eine Standardsprache aus",
+      "hint": "Wählen Sie die Ersatzsprache, die Ihr Empfangsmitarbeiter verwenden soll, wenn die Präferenz eines Anrufers unbekannt ist."
+    },
+    "timezone": {
+      "label": "Geschäftszeitzone",
+      "hint": "Ihre Rezeption verwendet diese Zeitzone für Ihre Öffnungszeiten und die Termine, die sie Ihren Kunden anbietet.",
+      "regions": {
+        "africa": "Afrika",
+        "america": "Amerika",
+        "antarctica": "Antarktis",
+        "arctic": "Arktis",
+        "asia": "Asien",
+        "atlantic": "atlantisch",
+        "australia": "Australien",
+        "europe": "Europa",
+        "indian": "Indischer Ozean",
+        "pacific": "Pazifik"
+      }
+    },
+    "transferNumber": {
+      "label": "Standardübertragungsnummer",
+      "placeholder": "+1 555-123-4567",
+      "hint": "Die Telefonnummer, die Ihr Empfangsmitarbeiter verwenden sollte, wenn er einen Anruf an einen Menschen weitergibt.",
+      "errors": {
+        "invalid": "Geben Sie vor dem Speichern eine vollständige gültige Überweisungsnummer ein."
+      }
+    }
+  },
+  "booking": {
+    "title": "Buchung",
+    "mode": {
+      "label": "Termine",
+      "options": {
+        "instant": "Buchen Sie Termine",
+        "request": "Nimmt Anfragen entgegen",
+        "off": "Buchet nicht"
+      },
+      "descriptions": {
+        "instant": "Der Agent prüft Ihre Öffnungszeiten und bucht den Termin.",
+        "request": "Der Agent notiert den Service und die gewünschte Zeit. Sie bestätigen im Posteingang.",
+        "off": "Der Agent nimmt eine Nachricht entgegen, anstatt zu buchen."
+      }
+    }
+  },
+  "appointmentChanges": {
+    "title": "Terminänderungen",
+    "allowCancel": {
+      "label": "KI-Stornierungen zulassen",
+      "hint": "Lassen Sie die Rezeptionistin einen bestätigten zukünftigen Termin stornieren."
+    },
+    "allowReschedule": {
+      "label": "Erlauben Sie die Neuplanung durch KI",
+      "hint": "Lassen Sie die Rezeptionistin einen bestätigten zukünftigen Termin verschieben, nachdem die Verfügbarkeit geprüft wurde."
+    },
+    "requireOtp": {
+      "label": "Erfordert einen einmaligen Code",
+      "hint": "Senden Sie vor einer Stornierung oder Umbuchung einen Code."
+    }
+  },
+  "actions": {
+    "save": "Speichern",
+    "saveChanges": "Änderungen speichern",
+    "saving": "Wird gespeichert…",
+    "saved": "Änderungen gespeichert",
+    "deleted": "Gelöscht",
+    "importCancelled": "Import abgebrochen",
+    "moreOptions": "Weitere Optionen",
+    "delete": "Löschen",
+    "confirmDelete": "Bestätigen?",
+    "deleteTitle": "Eintrag löschen?",
+    "deleteDescription": "Dadurch wird dieser Eintrag dauerhaft aus dem Agentenarbeitsbereich entfernt.",
+    "deleteCancel": "Abbrechen",
+    "cancelImport": "Import abbrechen",
+    "cancelImportTitle": "Website-Import abbrechen?",
+    "cancelImportDescription": "Dadurch wird der Website-Import gestoppt und der laufende Eintrag aus der Tabelle entfernt.",
+    "enable": "Aktivieren",
+    "disable": "Deaktivieren",
+    "retry": "Wiederholen",
+    "moveUp": "Bewegen Sie sich nach oben",
+    "moveDown": "Bewegen Sie sich nach unten",
+    "activateEntry": "Eintrag aktivieren",
+    "deactivateEntry": "Eintrag deaktivieren",
+    "upload": "Hochladen",
+    "uploading": "Hochladen…",
+    "saveFailed": "Wir konnten Ihre Einstellungen nicht speichern. Bitte versuchen Sie es erneut.",
+    "edit": "Bearbeiten",
+    "cancel": "Abbrechen",
+    "editField": "Bearbeiten Sie {{field}}"
+  },
+  "loading": {
+    "workspace": "Arbeitsbereich wird geladen…",
+    "rules": "Regeln werden geladen…",
+    "knowledge": "Wissen wird geladen…"
+  },
+  "readOnly": "Der Zuschauerzugriff ist schreibgeschützt.",
+  "empty": {
+    "description": "Erstellen Sie zunächst ein Unternehmen und kehren Sie dann hierher zurück, um Ihren KI-Rezeptionisten zu konfigurieren."
+  },
+  "hours": {
+    "title": "Öffnungszeiten",
+    "description": "Der Agent bietet Termine nur innerhalb dieser Zeiten an.",
+    "generated": "Wir haben diese von Ihrer Website und Ihren Dokumenten ausgefüllt. Überprüfen Sie sie.",
+    "empty": "Fügen Sie Ihre Stunden hinzu, damit der Agent Termine buchen kann.",
+    "closed": "Geschlossen",
+    "openOn": "Geöffnet am {{day}}",
+    "opensAt": "{{day}} Öffnungszeit",
+    "closesAt": "{{day}} Schließzeit",
+    "addWindow": "Stunden hinzufügen",
+    "removeWindow": "Entfernen Sie diese Stunden",
+    "save": "Öffnungszeiten speichern",
+    "invalid": "Überprüfen Sie {{day}}: Jede Schließzeit muss nach ihrer Öffnungszeit liegen, ohne Überschneidungen.",
+    "noHoursAlert": {
+      "title": "Fügen Sie Öffnungszeiten hinzu, um Termine zu buchen",
+      "description": "Der Agent bietet Termine nur innerhalb Ihrer Öffnungszeiten an. Bis Sie sie hinzufügen, wird stattdessen eine Nachricht benötigt.",
+      "action": "Öffnungszeiten hinzufügen"
+    },
+    "edit": "Bearbeiten",
+    "cancel": "Abbrechen",
+    "notSet": "Nicht festgelegt"
+  }
+}

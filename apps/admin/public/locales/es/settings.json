@@ -566,7 +566,9 @@
         "mismatch": "Las nuevas contraseñas no coinciden.",
         "failed": "No se pudo actualizar la contraseña."
       }
-    }
+    },
+    "loading": "Cargando la cuenta…",
+    "unavailable": "Los datos de la cuenta no están disponibles."
   },
   "workspaceTeam": {
     "members": {

@@ -1,0 +1,96 @@
+{
+  "loading": {
+    "label": "Laden..."
+  },
+  "active": {
+    "title": "Demo für {{businessName}}",
+    "startHint": "Tippen Sie auf die Schaltfläche, um einen Live-Sprachanruf zu starten.",
+    "promptsTitle": "Versuchen Sie zu fragen:",
+    "intakeNotice": "Dies ist eine begrenzte Demo. Live-Anrufe funktionieren, aber die Buchung und andere vollständige Rezeptionsfunktionen sind nicht aktiviert.",
+    "claimCta": "Fordern Sie diese Empfangsdame an"
+  },
+  "states": {
+    "invalid": {
+      "title": "Dieser Demo-Link ist ungültig",
+      "description": "Der Link ist möglicherweise falsch eingegeben oder die Demo wurde nie erstellt. Fordern Sie einen neuen Link an, um es erneut zu versuchen."
+    },
+    "preparing": {
+      "title": "Ihre Demo wird vorbereitet",
+      "titleWithBusiness": "Die Demo für {{businessName}} ist in Vorbereitung",
+      "description": "Wir lernen immer noch von der Website. Dies dauert in der Regel einige Minuten. Schauen Sie daher in Kürze noch einmal vorbei."
+    },
+    "expired": {
+      "title": "Diese Demo ist abgelaufen",
+      "titleWithBusiness": "Die Demo für {{businessName}} ist abgelaufen",
+      "description": "Demo-Links sind für eine begrenzte Zeit verfügbar. Kontaktieren Sie uns, um ein neues zu erhalten."
+    },
+    "revoked": {
+      "title": "Diese Demo ist nicht mehr verfügbar",
+      "titleWithBusiness": "Die Demo für {{businessName}} ist nicht mehr verfügbar",
+      "description": "Dieser Demo-Link wurde deaktiviert."
+    },
+    "claimed": {
+      "title": "Diese Demo wurde bereits beansprucht",
+      "titleWithBusiness": "Die Demo für {{businessName}} wurde bereits beansprucht",
+      "description": "Diese Empfangsdame gehört jetzt einem LobbyStack-Konto."
+    }
+  },
+  "claim": {
+    "loadingTitle": "Richten Sie Ihren Arbeitsbereich ein",
+    "loadingDescription": "Beanspruchen Sie Ihre Rezeptionistin und bereiten Sie Ihren Arbeitsplatz vor ...",
+    "errorTitle": "Wir konnten diese Demo nicht beanspruchen",
+    "errorDescription": "Bei der Inanspruchnahme dieser Demo ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.",
+    "unavailableTitle": "Dieser Demo-Link ist nicht verfügbar",
+    "unavailableDescription": "Der Demo-Link fehlt oder ist nicht mehr gültig.",
+    "retry": "Versuchen Sie es erneut"
+  },
+  "operator": {
+    "title": "Interessenten-Demos",
+    "description": "Bereiten Sie isolierte, auslaufende Rezeptionsarbeitsplätze vor, bevor Sie sie mit einem Interessenten teilen.",
+    "count_one": "{{count}}-Demo",
+    "count_other": "{{count}}-Demos",
+    "refresh": "Aktualisieren",
+    "loading": "Demos werden geladen...",
+    "empty": "Es wurden noch keine Demos für potenzielle Kunden vorbereitet.",
+    "rotate": "Link drehen",
+    "publish": "Veröffentlichen",
+    "revoke": "Widerrufen",
+    "openLink": "Sicheren Link öffnen",
+    "tokenHint": "Drehen Sie den Link in dieser Sitzung, bevor Sie ihn veröffentlichen oder teilen. Rohe Token werden niemals gespeichert.",
+    "prepare": "Bereiten Sie eine Demo vor",
+    "prepareDescription": "Der Arbeitsbereich startet privat, während seine öffentliche Website indiziert wird.",
+    "businessName": "Unternehmensname",
+    "websiteUrl": "Website-URL",
+    "greeting": "Begrüßung",
+    "suggestedPrompts": "Empfohlene Eingabeaufforderungen",
+    "create": "Erstellen Sie eine isolierte Demo",
+    "ingestion": "Einnahme:",
+    "snapshot": "Konfigurationsstand:",
+    "prompts": "Aufforderungen:",
+    "promptsPlaceholder": "Welche Dienstleistungen bieten Sie an?\nKann ich ein Angebot anfordern?",
+    "statuses": {
+      "pending": "ausstehend",
+      "ready": "bereit",
+      "missing": "fehlen",
+      "queued": "in der Warteschlange",
+      "crawling": "kriechen",
+      "indexing": "Indizierung",
+      "completed": "vollendet",
+      "failed": "fehlgeschlagen",
+      "cancelled": "abgesagt",
+      "preparing": "vorbereiten",
+      "active": "aktiv",
+      "claimed": "behauptet",
+      "revoked": "widerrufen",
+      "expired": "Abgelaufen"
+    },
+    "errors": {
+      "load": "Es können keine Demos für potenzielle Kunden geladen werden. Versuchen Sie es mit einer Erfrischung.",
+      "create": "Die Demo konnte nicht erstellt werden. Ihre Einträge wurden beibehalten; Bitte versuchen Sie es noch einmal.",
+      "rotate": "Der Demo-Link kann nicht gedreht werden. Bitte versuchen Sie es erneut.",
+      "publish": "Die Demo kann nicht veröffentlicht werden. Bitte versuchen Sie es erneut.",
+      "revoke": "Die Demo kann nicht widerrufen werden. Bitte versuchen Sie es erneut."
+    }
+  },
+  "openingSecureLink": "Sicherer Demo-Link wird geöffnet…"
+}

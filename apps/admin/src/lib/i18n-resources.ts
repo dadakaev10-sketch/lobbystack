@@ -1,3 +1,19 @@
+import deKnowledge from "../../public/locales/de/knowledge.json";
+import deSettings from "../../public/locales/de/settings.json";
+import deCalls from "../../public/locales/de/calls.json";
+import deAdmin from "../../public/locales/de/admin.json";
+import deOnboarding from "../../public/locales/de/onboarding.json";
+import deContacts from "../../public/locales/de/contacts.json";
+import deCommon from "../../public/locales/de/common.json";
+import deDashboard from "../../public/locales/de/dashboard.json";
+import deInbox from "../../public/locales/de/inbox.json";
+import deMessages from "../../public/locales/de/messages.json";
+import deAgent from "../../public/locales/de/agent.json";
+import deAuth from "../../public/locales/de/auth.json";
+import deDemos from "../../public/locales/de/demos.json";
+import deNav from "../../public/locales/de/nav.json";
+import deAffiliate from "../../public/locales/de/affiliate.json";
+import deWidget from "../../public/locales/de/widget.json";
 import type { SupportedLocale } from "./locale";
 
 import enAdmin from "../../public/locales/en/admin.json";
@@ -70,6 +86,24 @@ import srWidget from "../../public/locales/sr/widget.json";
  * surface plus shared chrome, and each route only carries the namespaces it needs.
  */
 export const localeResources: Record<SupportedLocale, Record<string, Record<string, unknown>>> = {
+  de: {
+    knowledge: deKnowledge,
+    settings: deSettings,
+    calls: deCalls,
+    admin: deAdmin,
+    onboarding: deOnboarding,
+    contacts: deContacts,
+    common: deCommon,
+    dashboard: deDashboard,
+    inbox: deInbox,
+    messages: deMessages,
+    agent: deAgent,
+    auth: deAuth,
+    demos: deDemos,
+    nav: deNav,
+    affiliate: deAffiliate,
+    widget: deWidget,
+  },
   en: {
     admin: enAdmin,
     affiliate: enAffiliate,

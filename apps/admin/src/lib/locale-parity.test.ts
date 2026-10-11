@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 
 import { createI18nInstance } from "@/i18n";
 import { localeResources } from "./i18n-resources";
-import { DEFAULT_LOCALE, SUPPORTED_LOCALES, formatDateTime, formatRelativeTime, localeTag } from "./locale";
+import { SUPPORTED_LOCALES, formatDateTime, formatRelativeTime, localeTag } from "./locale";
 
 const PLURAL_SUFFIX = /_(zero|one|two|few|many|other)$/;
 const CYRILLIC = /[Ѐ-ӿ]/;
@@ -22,9 +22,9 @@ function placeholders(value: string): string[] {
   return [...value.matchAll(/\{\{\s*[^}]+?\s*\}\}|<\/?\d+\/?>|<\/?[a-z][a-z0-9]*\/?>/gi)].map((match) => match[0]).sort();
 }
 
-const english = localeResources[DEFAULT_LOCALE];
+const english = localeResources.en;
 
-describe.each(SUPPORTED_LOCALES.filter((locale) => locale !== DEFAULT_LOCALE))("%s dashboard translations", (locale) => {
+describe.each(SUPPORTED_LOCALES.filter((locale) => locale !== "en"))("%s dashboard translations", (locale) => {
   it.each(Object.keys(english))("has every English key in the %s namespace", (namespace) => {
     const translated = localeResources[locale][namespace];
     expect(translated, `${locale}/${namespace}.json`).toBeDefined();

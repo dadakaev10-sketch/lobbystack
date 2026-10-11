@@ -1,0 +1,46 @@
+{
+  "chat": {
+    "titlePlaceholder": "Chatten Sie mit uns",
+    "subtitlePlaceholder": "Normalerweise antworten wir innerhalb weniger Minuten",
+    "welcome": "Hallo! Wie können wir heute helfen?",
+    "composerPlaceholder": "Geben Sie Ihre Nachricht ein...",
+    "send": "Senden",
+    "sendingFailed": "Ihre Nachricht konnte nicht gesendet werden. Bitte versuchen Sie es erneut.",
+    "loadingTranscript": "Konversation wird geladen...",
+    "chatUnavailable": "Der Chat ist derzeit nicht verfügbar.",
+    "emptyBody": "Bitte geben Sie eine Nachricht ein.",
+    "limitReached": "Das Chat-Sitzungslimit für diesen Monat wurde erreicht. Unser Team wird Ihnen in Kürze antworten.",
+    "aiAgentLabel": "Assistent",
+    "youLabel": "Du",
+    "pendingLabel": "Der Assistent tippt…",
+    "handoffBanner": "Ein Teammitglied wird in Kürze antworten.",
+    "handoffActive": "Chat pausiert",
+    "voiceButton": "Sprechen Sie live mit uns",
+    "voiceConnected": "Sie sprechen mit der Empfangsdame.",
+    "voiceEnded": "Die Sprachverbindung wurde beendet. Sie können unten weiter chatten.",
+    "voiceUnavailable": "Live-Voice ist nicht verfügbar. Versuchen Sie es später noch einmal.",
+    "voiceConnecting": "Verbinden…",
+    "voiceRequestingMic": "Erlauben Sie den Mikrofonzugriff, um fortzufahren.",
+    "voiceEnd": "Anruf beenden",
+    "leaveDetails": "Hinterlassen Sie Ihre Daten",
+    "leadFormSubmitted": "Danke! Wir werden uns bald bei Ihnen melden."
+  },
+  "lead": {
+    "heading": "Hinterlassen Sie Ihre Daten",
+    "description": "Fügen Sie Ihre Kontaktinformationen hinzu, damit wir Ihnen weiterhelfen können.",
+    "name": "Name",
+    "email": "E-Mail",
+    "phone": "Telefon",
+    "submit": "Weiter",
+    "invalidEmail": "Bitte geben Sie eine gültige E-Mail-Adresse ein.",
+    "invalidPhone": "Bitte geben Sie eine gültige Telefonnummer ein.",
+    "required": "Dieses Feld ist erforderlich.",
+    "beforeChatHeading": "Bevor wir beginnen",
+    "skip": "Überspringen"
+  },
+  "errors": {
+    "configLoad": "Das Widget konnte nicht geladen werden.",
+    "invalidKey": "Dieses Widget ist nicht verfügbar.",
+    "originDenied": "Diese Website ist nicht berechtigt, dieses Widget zu laden."
+  }
+}

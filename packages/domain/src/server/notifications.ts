@@ -117,6 +117,7 @@ export const CANCELLATION_CONFIRMATION = "cancellation_confirmation";
  * as "č" or "á" would cut a segment from 160 characters to 70.
  */
 export const SMS_OPT_OUT_FOOTER: Record<InterfaceLocale, string> = {
+  de: "Es können Nachrichten- und Datengebühren anfallen. Antworten Sie mit STOP zum Abmelden oder HELP für Hilfe.",
   en: "Msg & data rates may apply. Reply STOP to opt out or HELP for help.",
   fr: "Des frais de messagerie et de données peuvent s'appliquer. Répondez STOP pour vous désabonner ou HELP pour obtenir de l'aide.",
   es: "Pueden aplicarse tarifas de mensajes y datos. Responda STOP para darse de baja o HELP para obtener ayuda.",

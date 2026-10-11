@@ -1,0 +1,232 @@
+{
+  "headers": {
+    "dashboardTitle": "Dashboard",
+    "dashboardDescription": "Verfolgen Sie die Betriebsbereitschaft für Anrufe, Nachrichten und Buchungen."
+  },
+  "analyticsPage": {
+    "title": "Analysen",
+    "description": "Überprüfen Sie Engagement-Trends bei Anrufen, Nachrichten und Buchungsaktivitäten."
+  },
+  "delta": {
+    "flat": "Keine Veränderung gegenüber dem letzten Monat",
+    "up": "+{{value}}% gegenüber dem letzten Monat",
+    "down": "-{{value}}% vom letzten Monat",
+    "durationUp": "+{{value}} vom letzten Monat",
+    "durationDown": "-{{value}} vom letzten Monat"
+  },
+  "home": {
+    "title": "Übersicht",
+    "download": "Herunterladen",
+    "liveCalls": "Live",
+    "tabs": {
+      "overview": "Übersicht",
+      "analytics": "Analysen",
+      "reports": "Berichte",
+      "notifications": "Benachrichtigungen"
+    },
+    "analytics": {
+      "chart": {
+        "title": "Engagement-Übersicht",
+        "description": "Wöchentliche Anrufe und Nachrichten in Ihrem Rezeptionsarbeitsbereich."
+      },
+      "cards": {
+        "calls": "Anzahl der Anrufe",
+        "messages": "Anzahl der Nachrichten",
+        "appointments": "Termine gebucht",
+        "agentResponseTime": "Reaktionszeit des Agenten"
+      },
+      "controls": {
+        "dateRange": "Datumsbereich",
+        "granularity": "Aggregationsintervall",
+        "more": "Weitere Optionen",
+        "presetRange": "Voreingestellter Zeitrahmen",
+        "granularities": {
+          "hourly": "Stündlich",
+          "daily": "Täglich",
+          "weekly": "Wöchentlich",
+          "monthly": "Monatlich",
+          "yearly": "Jährlich"
+        },
+        "presets": {
+          "today": "Heute",
+          "yesterday": "Gestern",
+          "thisWeek": "Diese Woche",
+          "thisMonth": "Diesen Monat",
+          "lastMonth": "Letzten Monat",
+          "last30": "Letzte 30 Tage",
+          "last3Months": "Letzte 3 Monate",
+          "thisYear": "Dieses Jahr",
+          "lastYear": "Letztes Jahr",
+          "allTime": "Alle Zeit",
+          "custom": "Benutzerdefinierter Bereich"
+        }
+      },
+      "metrics": {
+        "flat": "Keine Änderung gegenüber der Vorperiode",
+        "percentUp": "+{{value}}% gegenüber der vorherigen Periode",
+        "percentDown": "-{{value}} % gegenüber der vorherigen Periode",
+        "durationUp": "+{{value}} gegenüber der vorherigen Periode",
+        "durationDown": "-{{value}} gegenüber der vorherigen Periode"
+      },
+      "outcomes": {
+        "title": "Anrufergebnisse",
+        "description": "Wie sich das Anrufvolumen dieser Woche entwickelte.",
+        "labels": {
+          "completed": "Abgeschlossen",
+          "transferred": "Weitergeleitet",
+          "live": "Live",
+          "missed": "Verpasst"
+        }
+      },
+      "channels": {
+        "title": "Kanäle",
+        "description": "Anrufe und Nachrichten nach Kanal für die ausgewählten Daten.",
+        "labels": {
+          "other": "Andere"
+        }
+      },
+      "unavailable": "Die Analysen sind nicht verfügbar."
+    },
+    "metrics": {
+      "loading": "Monatsvergleich wird geladen...",
+      "calls": {
+        "title": "Anrufe"
+      },
+      "messages": {
+        "title": "Nachrichten"
+      },
+      "appointments": {
+        "title": "Termine"
+      },
+      "averageDuration": {
+        "title": "Durchschnittliche Dauer"
+      },
+      "contacts": {
+        "title": "Kontakte"
+      }
+    },
+    "chart": {
+      "title": "Anrufe pro Monat"
+    },
+    "recentCalls": {
+      "title": "Letzte Anrufe",
+      "description": "{{count}} aktuelle Anrufe im neuesten Aktivitäts-Feed.",
+      "durationValue": "{{value}} Sek"
+    },
+    "actionRequired": {
+      "title": "Aktion erforderlich",
+      "description": "Offene Kundenanliegen, die noch einen Menschen benötigen.",
+      "titleWithContact": "{{message}} für {{name}}",
+      "urgent": "Dringend",
+      "emptyTitle": "Keine Aktion erforderlich",
+      "emptyDescription": "Hier werden Dinge angezeigt, die manuelles Handeln erfordern.",
+      "fields": {
+        "callback": "Rückruf",
+        "callbackWindow": "Bevorzugter Rückruf"
+      },
+      "kinds": {
+        "voice_message": "Rückruf",
+        "human_handoff": "Weiterleiten",
+        "other": "Offen",
+        "cancellation": "Stornierung"
+      },
+      "appointment": "Termin: {{appointment}}",
+      "noAppointment": "Zu dieser Anfrage passt kein bevorstehender Termin. Schauen Sie auf der Seite „Termine“ nach.",
+      "alreadyCancelled": "Dieser Termin ist bereits abgesagt."
+    },
+    "upcoming": {
+      "title": "Demnächst",
+      "description": "Die nächsten Termine im Kalender.",
+      "unknownService": "Unbekannter Dienst",
+      "emptyTitle": "Keine bevorstehenden Termine",
+      "emptyDescription": "Zukünftige Buchungen werden hier angezeigt, sobald sie erstellt wurden.",
+      "status": {
+        "booked": "Gebucht",
+        "confirmed": "Bestätigt"
+      },
+      "withStaff": "mit {{staff}}"
+    }
+  },
+  "setup": {
+    "title": "Erstellen Sie Ihr erstes Unternehmen",
+    "description": "Erstellt den Mandanten, das Rezeptionsprofil und den ersten Konfigurationsstand für Sprachanrufe.",
+    "businessName": "Unternehmensname",
+    "slug": "URL-Kennung",
+    "timezone": "Zeitzone",
+    "businessType": "Geschäftstyp",
+    "placeholders": {
+      "businessName": "Maple Family Clinic",
+      "slug": "maple-family-clinic"
+    },
+    "businessTypes": {
+      "clinic": "Klinik",
+      "repair_shop": "Reparaturwerkstatt",
+      "salon": "Salon",
+      "service_company": "Dienstleistungsunternehmen",
+      "other": "Andere"
+    },
+    "selectBusinessType": "Wählen Sie den Unternehmenstyp aus",
+    "create": "Unternehmen erstellen",
+    "creating": "Erstellen...",
+    "created": "Unternehmen erstellt. Der Konfigurationsstand der KI-Rezeption wird aktualisiert.",
+    "failed": "Das Unternehmen konnte nicht erstellt werden."
+  },
+  "cards": {
+    "calls": {
+      "title": "Anrufe werden bearbeitet",
+      "footer": "Letzte eingehende Aktivität im Posteingang verfügbar."
+    },
+    "services": {
+      "title": "Dienste konfiguriert",
+      "footer": "Diese versorgen sowohl den Rezeptionisten als auch die Buchungsmaschine."
+    },
+    "hours": {
+      "title": "Öffnungstage festgelegt",
+      "footer": "Strukturierte Öffnungszeiten haben Vorrang vor Angaben in Dokumenten."
+    },
+    "knowledge": {
+      "title": "Wissenselemente",
+      "footer": "Wissen und Dokumente stärken Vorschau- und SMS-Antworten."
+    },
+    "snapshot": "Konfigurationsstand {{version}}"
+  },
+  "quickActions": {
+    "title": "Schnelle Aktionen",
+    "description": "Halten Sie {{businessName}} für Anrufe, SMS und Buchungsabläufe bereit.",
+    "configureProfile": "Konfigurieren Sie das Rezeptionistenprofil",
+    "addKnowledge": "Fügen Sie Wissen und Dokumente hinzu",
+    "reviewInbox": "Überprüfen Sie den Anrufeingang",
+    "readiness": "Setup-Bereitschaft",
+    "servicesConfigured": "{{count}}-Dienste konfiguriert",
+    "daysConfigured": "{{count}} Tage mit Betriebsstunden",
+    "knowledgeItems": "{{count}} Wissenselemente indiziert",
+    "phoneNumbers": "{{count}} Telefonnummern zugeordnet",
+    "currentGreeting": "Aktuelle Begrüßung"
+  },
+  "nextSteps": {
+    "title": "Was als nächstes zu tun ist",
+    "description": "Verschärfen Sie das Verhalten des Live-Rezeptionspersonals, bevor Sie den tatsächlichen Verkehr weiterleiten.",
+    "hours": "Legen Sie Öffnungszeiten und Dienstleistungen fest, damit bei der Buchung echte Zeiten vorgeschlagen werden können.",
+    "transfer": "Fügen Sie Weiterleitungsregeln und eine Ersatznummer hinzu, bevor Sie dringende Anrufe übergeben.",
+    "snapshot": "Aktualisieren Sie Ihren Konfigurationsstand nach größeren Richtlinienänderungen, damit die Sprachausgabe diese schnell erkennt."
+  },
+  "activation": {
+    "hearIt": {
+      "title": "Hören Sie die Antwort Ihres Agenten",
+      "description": "Rufen Sie es in Ihrem Browser auf und hören Sie zu, wie es einen Kunden begrüßt.",
+      "descriptionWithPages_one": "Es hat die Seite {{count}} von {{host}} gelesen. Rufen Sie an und fragen Sie etwas, was nur Ihr Unternehmen wissen würde.",
+      "descriptionWithPages_other": "Es wurden {{count}}-Seiten von {{host}} gelesen. Rufen Sie an und fragen Sie etwas, was nur Ihr Unternehmen wissen würde.",
+      "cta": "Starten Sie einen Anruf"
+    },
+    "claimNumber": {
+      "title": "Fordern Sie Ihre Telefonnummer an",
+      "description": "Ihr Plan beinhaltet eine dedizierte Nummer und Sie haben noch keine ausgewählt. Wählen Sie es aus und der Agent beginnt zu antworten.",
+      "cta": "Nummer auswählen"
+    },
+    "upgrade": {
+      "title": "Geben Sie Ihrem Agenten eine Telefonnummer",
+      "description": "Sie haben gehört, dass es funktioniert. Über eine eigene Nummer können Sie Ihren echten Kunden rund um die Uhr antworten.",
+      "cta": "Wählen Sie einen Plan"
+    }
+  }
+}

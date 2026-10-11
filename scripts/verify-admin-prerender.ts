@@ -1,7 +1,7 @@
 import { readFile } from "node:fs/promises";
 import path from "node:path";
 
-const locales = ["en", "fr", "es", "sr"] as const;
+const locales = ["en", "fr", "es", "sr", "de"] as const;
 const publicRoutes = [
   "accept-invite",
   "claim-demo",

@@ -6,7 +6,7 @@
  * This is separate from {@link RuntimeLocale}, which is the language the AI
  * receptionist speaks and only covers English and French.
  */
-export const interfaceLocales = ["en", "fr", "es", "sr"] as const;
+export const interfaceLocales = ["en", "fr", "es", "sr", "de"] as const;
 
 export type InterfaceLocale = (typeof interfaceLocales)[number];
 
@@ -16,6 +16,7 @@ export type InterfaceLocale = (typeof interfaceLocales)[number];
  * makes `Intl` format dates and numbers in Cyrillic, so it maps to `sr-Latn`.
  */
 export const interfaceLocaleTags: Record<InterfaceLocale, string> = {
+  de: "de",
   en: "en",
   fr: "fr",
   es: "es",

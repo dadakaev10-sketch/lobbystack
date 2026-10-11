@@ -1,0 +1,55 @@
+{
+  "header": {
+    "title": "Wissen",
+    "description": "Verwalten Sie Wissen, Dokumente und sehen Sie sich Gespräche in der Vorschau an."
+  },
+  "manager": {
+    "title": "Wissensdatenbank",
+    "description": "Fügen Sie Wissen und Dokumente hinzu, die der Rezeptionist für die Vorschau, SMS und die Aktualisierung des Sprachschnappschusses verwenden kann.",
+    "items": "{{count}} Artikel",
+    "manualDocument": "Manuelles Dokument",
+    "placeholders": {
+      "documentTitle": "Klinikrichtlinien",
+      "documentBody": "Patienten sollten 10 Minuten früher eintreffen. Bringen Sie ggf. einen Lichtbildausweis und Versicherungsinformationen mit."
+    },
+    "documentTagsPlaceholder": "Politik, Aufnahme",
+    "saveDocument": "Dokument hinzufügen",
+    "savingDocument": "Dokument in die Warteschlange stellen...",
+    "currentDocuments": "Aktuelle Dokumente",
+    "queuedDocument": "Dokument zur Indizierung in die Warteschlange gestellt.",
+    "noDocuments": "Noch keine Dokumente."
+  },
+  "preview": {
+    "title": "Vorschau Rezeptionist",
+    "description": "Testen Sie dieselbe Geschäftskontextschicht, die für SMS und asynchrone KI-Flows verwendet wird, bevor Sie sie Anrufern präsentieren.",
+    "promptPlaceholder": "Um wie viel Uhr haben Sie morgen geöffnet?",
+    "generate": "Vorschau ausführen",
+    "generating": "Generieren...",
+    "emptyResponse": "Hier werden Vorschauantworten angezeigt, nachdem Sie die Rezeption ausgeführt haben.",
+    "disabled": "Melden Sie sich an und erstellen Sie ein Unternehmen, um den echten Vorschau-Flow auszuführen."
+  },
+  "agentAssist": {
+    "menu": "Mit eigenem KI-Agenten vorbereiten",
+    "invalidText": "Verwenden Sie nicht leeren UTF-8-Text bis 256 KiB ohne binäre Steuerzeichen.",
+    "copied": "Prompt kopiert. Fügen Sie ihn in Ihren eigenen Agenten ein.",
+    "copyFallback": "Die Zwischenablage ist nicht verfügbar. Markieren und kopieren Sie den folgenden Prompt manuell.",
+    "invalidFile": "Wählen Sie eine UTF-8-Datei im Format .md oder .txt bis 256 KiB.",
+    "importFailed": "Import fehlgeschlagen. Ihr Text ist noch vorhanden. Bitte versuchen Sie es erneut.",
+    "title": "Wissen mit Ihrem eigenen KI-Agenten vorbereiten",
+    "description": "Nutzen Sie Ihr eigenes ChatGPT-, Claude- oder Hermes-Konto. LobbyStack erhält keine Zugangsdaten. Prüfen Sie das Ergebnis vor dem Import.",
+    "website": "Website",
+    "company": "Unternehmensname",
+    "invalidUrl": "Geben Sie eine vollständige HTTP(S)-Website-Adresse ohne Zugangsdaten ein.",
+    "generate": "Prompt erstellen",
+    "prompt": "Prompt",
+    "copy": "Prompt kopieren",
+    "next": "Führen Sie den Prompt in Ihrem Agenten aus. Laden Sie anschließend dessen Datei hoch oder fügen Sie unten Markdown ein. Es wird nichts automatisch importiert.",
+    "file": "Markdown- oder Textdatei des Agenten",
+    "paste": "Markdown des Agenten einfügen",
+    "preview": "Wissensvorschau",
+    "confirm": "Ich habe Fakten und Quellen geprüft, private Informationen entfernt und gebe diesen Inhalt als Unternehmenswissen frei – nicht als Systemanweisungen.",
+    "indexing": "Hierfür wird der vorhandene Dokumentenimport verwendet. Die Suchindexierung benötigt weiterhin einen konfigurierten Embedding-Anbieter. Ihr Agent wird nicht verbunden und kostenpflichtige KI wird nicht aktiviert.",
+    "importing": "Wird importiert…",
+    "import": "Geprüftes Wissen importieren"
+  }
+}

@@ -129,6 +129,18 @@ it("reads the account locale preference for a signed-in operator", async () => {
   await waitFor(() => expect(mocks.changeLanguage).toHaveBeenCalledWith("fr"));
 });
 
+it("does not overwrite an explicit English cookie with an account language", async () => {
+  window.localStorage.setItem("lobbystack.locale", "de");
+  document.cookie = "lobbystack.locale=en; path=/";
+  const fetchMock = vi.fn(() => Promise.resolve(Response.json({ locale: "fr" })));
+  vi.stubGlobal("fetch", fetchMock);
+  render(<QueryClientProvider client={new QueryClient()}><LocaleProvider initialLocale="en" initialLocaleSource="cookie"><Controls /></LocaleProvider></QueryClientProvider>);
+  await waitFor(() => expect(fetchMock).toHaveBeenCalled());
+  expect(mocks.changeLanguage).not.toHaveBeenCalled();
+  expect(window.localStorage.getItem("lobbystack.locale")).toBe("en");
+  expect(document.cookie).toContain("lobbystack.locale=en");
+});
+
 it("does not let an older preference read overwrite a newly selected language", async () => {
   let resolveRead!: (value: Response) => void;
   vi.stubGlobal("fetch", vi.fn((_url: string, options?: RequestInit) => options?.method === "PATCH"

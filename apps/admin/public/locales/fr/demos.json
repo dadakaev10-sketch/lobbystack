@@ -92,5 +92,6 @@
       "publish": "Impossible de publier la démo. Veuillez réessayer.",
       "revoke": "Impossible de révoquer la démo. Veuillez réessayer."
     }
-  }
+  },
+  "openingSecureLink": "Ouverture du lien de démonstration sécurisé…"
 }

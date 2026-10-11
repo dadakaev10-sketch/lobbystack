@@ -7,6 +7,7 @@ import {
 } from "libphonenumber-js/min";
 import type { Labels } from "react-phone-number-input";
 import enLabels from "react-phone-number-input/locale/en";
+import deLabels from "react-phone-number-input/locale/de";
 import esLabels from "react-phone-number-input/locale/es";
 import frLabels from "react-phone-number-input/locale/fr";
 
@@ -42,6 +43,7 @@ function serbianLabels(): Labels {
 let cachedSerbianLabels: Labels | undefined;
 
 const PHONE_LABELS_BY_LOCALE: Record<Exclude<SupportedLocale, "sr">, Labels> = {
+  de: deLabels,
   en: enLabels,
   fr: frLabels,
   es: esLabels,

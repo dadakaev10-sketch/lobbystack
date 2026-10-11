@@ -1,0 +1,56 @@
+{
+  "items": {
+    "home": "Übersicht",
+    "calls": "Anrufe",
+    "messages": "Nachrichten",
+    "agent": "Agent",
+    "contacts": "Kontakte",
+    "analytics": "Analysen",
+    "affiliate": "Partnerprogramm",
+    "settings": "Einstellungen"
+  },
+  "search": {
+    "placeholder": "Arbeitsbereich durchsuchen..."
+  },
+  "sidebar": {
+    "businessSlugFallback": "Arbeitsbereich-Konsole",
+    "general": "Allgemein",
+    "agent": "Agent",
+    "other": "Verwalten",
+    "workspace": "Arbeitsbereich",
+    "openSettings": "Einstellungen öffnen",
+    "signedIn": "Angemeldet",
+    "workspaceReady": "Arbeitsbereich bereit",
+    "upgradeToPro": "Upgrade auf Pro",
+    "account": "Konto",
+    "toggleTheme": "Design umschalten",
+    "signOut": "Abmelden",
+    "createBusiness": "Unternehmen gründen",
+    "setupGuide": {
+      "title": "Erste Schritte",
+      "open": "Öffnen Sie die Einrichtungsanleitung",
+      "skip": "Tutorial überspringen",
+      "skipStep": "Überspringen",
+      "progress": "{{completed}} / {{total}} abgeschlossen",
+      "description": "{{completed}} von {{total}} Einrichtungsschritten abgeschlossen.",
+      "steps": {
+        "fullScan": "Lesen Sie den Rest Ihrer Website",
+        "sources": "Fügen Sie weitere Quellen hinzu",
+        "testCall": "Hören Sie Ihren Agenten",
+        "phoneNumber": "Verbinden Sie eine Telefonnummer"
+      },
+      "stepDescriptions": {
+        "fullScan": "Bei der Einrichtung wird zunächst ein Teil Ihrer Website eingelesen, damit Ihre KI-Rezeption erste Fragen beantworten kann. Lesen Sie den Rest ein, um ihr das vollständige Wissen bereitzustellen.",
+        "sources": "Laden Sie ein Dokument mit Richtlinien, FAQs, Preisen oder anderen Details hoch, die Ihr Rezeptionist kennen sollte.",
+        "testCall": "Rufen Sie Ihre KI-Rezeption über diesen Browser an und stellen Sie eine Frage, die nur Ihr Unternehmen beantworten kann.",
+        "phoneNumber": "Geben Sie Ihrer Rezeptionistin eine eigene Nummer, damit sie Tag und Nacht echte Anrufer beantworten kann."
+      },
+      "stepActions": {
+        "fullScan": "Lesen Sie den Rest",
+        "sources": "Dokument hochladen",
+        "testCall": "Starten Sie einen Anruf",
+        "phoneNumber": "Nummer auswählen"
+      }
+    }
+  }
+}

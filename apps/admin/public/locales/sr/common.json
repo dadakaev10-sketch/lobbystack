@@ -3,7 +3,9 @@
   "accessibility": {
     "close": "Zatvori",
     "toggleSidebar": "Prikaži/sakrij bočnu traku",
-    "skipToContent": "Pređi na glavni sadržaj"
+    "skipToContent": "Pređi na glavni sadržaj",
+    "sidebar": "Bočna traka",
+    "mobileSidebarDescription": "Prikazuje bočnu traku na mobilnom uređaju."
   },
   "errors": {
     "unexpected": "Nešto nije u redu. Pokušajte ponovo."
@@ -20,7 +22,8 @@
     "english": "English",
     "french": "Français",
     "spanish": "Español",
-    "serbian": "Srpski"
+    "serbian": "Srpski",
+    "german": "Nemački"
   },
   "badges": {
     "live": "Uživo",

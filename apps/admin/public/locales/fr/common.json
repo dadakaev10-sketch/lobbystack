@@ -3,7 +3,9 @@
   "accessibility": {
     "close": "Fermer",
     "toggleSidebar": "Afficher ou masquer la barre latérale",
-    "skipToContent": "Aller au contenu principal"
+    "skipToContent": "Aller au contenu principal",
+    "sidebar": "Barre latérale",
+    "mobileSidebarDescription": "Affiche la barre latérale mobile."
   },
   "errors": {
     "unexpected": "Une erreur est survenue. Veuillez réessayer."
@@ -20,7 +22,8 @@
     "english": "English",
     "french": "Français",
     "spanish": "Español",
-    "serbian": "Srpski"
+    "serbian": "Srpski",
+    "german": "Allemand"
   },
   "badges": {
     "live": "Actif",

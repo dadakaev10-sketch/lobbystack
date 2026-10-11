@@ -42,7 +42,8 @@ describe("normalizeInterfaceLocale", () => {
     expect(normalizeInterfaceLocale("es-MX")).toBe("es");
     expect(normalizeInterfaceLocale("sr-Latn-RS")).toBe("sr");
     expect(normalizeInterfaceLocale("FR")).toBe("fr");
-    expect(normalizeInterfaceLocale("de")).toBeNull();
+    expect(normalizeInterfaceLocale("de-DE")).toBe("de");
+    expect(normalizeInterfaceLocale("it")).toBeNull();
     expect(normalizeInterfaceLocale("")).toBeNull();
   });
 });
