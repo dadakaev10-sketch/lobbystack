@@ -1,0 +1,25 @@
+services:
+  migrator:
+    build:
+      context: .
+      dockerfile: Dockerfile.migrator
+      args:
+        SERVICE_VERSION: ddda7f01376d6cd48bd16fc4313a4aaa961dd1ee
+    image: lobbystack-dadakaev-migrator:ddda7f01376d6cd48bd16fc4313a4aaa961dd1ee
+  admin:
+    build:
+      context: .
+      dockerfile: Dockerfile.admin
+      args:
+        SERVICE_VERSION: ddda7f01376d6cd48bd16fc4313a4aaa961dd1ee
+        NEXT_PUBLIC_TURNSTILE_SITE_KEY: ''
+        NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN: ''
+        NEXT_PUBLIC_POSTHOG_HOST: ''
+    image: lobbystack-dadakaev-admin:ddda7f01376d6cd48bd16fc4313a4aaa961dd1ee
+  worker:
+    build:
+      context: .
+      dockerfile: Dockerfile.worker
+      args:
+        SERVICE_VERSION: ddda7f01376d6cd48bd16fc4313a4aaa961dd1ee
+    image: lobbystack-dadakaev-worker:ddda7f01376d6cd48bd16fc4313a4aaa961dd1ee
