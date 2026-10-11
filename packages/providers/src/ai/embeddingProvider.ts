@@ -22,6 +22,7 @@ export type EmbeddingAiConfig = {
   pricingEffectiveDate?: string;
   timeoutMs?: number;
   maxParallelCalls?: number;
+  maxBatchSize?: number;
 };
 
 export type EmbeddingOptions = {
@@ -39,6 +40,7 @@ export class OpenAiCompatibleEmbeddingProvider {
   private readonly embeddingFingerprint: string;
   private readonly timeoutMs: number;
   private readonly maxParallelCalls: number;
+  private readonly maxBatchSize: number;
 
   constructor(config: EmbeddingAiConfig) {
     this.model = config.model ?? DEFAULT_EMBEDDING_AI_MODEL;
@@ -60,6 +62,10 @@ export class OpenAiCompatibleEmbeddingProvider {
     if (!Number.isInteger(this.maxParallelCalls) || this.maxParallelCalls < 1) {
       throw new Error("Embedding max parallel calls must be a positive integer.");
     }
+    this.maxBatchSize = config.maxBatchSize ?? Number.MAX_SAFE_INTEGER;
+    if (!Number.isSafeInteger(this.maxBatchSize) || this.maxBatchSize < 1) {
+      throw new Error("Embedding max batch size must be a positive safe integer.");
+    }
     this.embeddingFingerprint = createEmbeddingFingerprint({
       baseURL,
       model: this.model,
@@ -73,6 +79,13 @@ export class OpenAiCompatibleEmbeddingProvider {
   }
 
   async embed(values: string[], onUsage?: (usage: AiUsage) => Promise<void> | void, options?: EmbeddingOptions): Promise<number[][]> {
+    if (values.length > this.maxBatchSize) {
+      const vectors: number[][] = [];
+      for (let offset = 0; offset < values.length; offset += this.maxBatchSize) {
+        vectors.push(...await this.embed(values.slice(offset, offset + this.maxBatchSize), onUsage, options));
+      }
+      return vectors;
+    }
     const startedAt = performance.now();
     const timeoutSignal = AbortSignal.timeout(this.timeoutMs);
     const abortSignal = options?.abortSignal ? AbortSignal.any([options.abortSignal, timeoutSignal]) : timeoutSignal;
@@ -152,6 +165,7 @@ export function createEmbeddingProvider(environment: EmbeddingAiEnvironment = pr
     ...(environment.AI_EMBEDDING_PRICING_EFFECTIVE_DATE?.trim() ? { pricingEffectiveDate: environment.AI_EMBEDDING_PRICING_EFFECTIVE_DATE.trim() } : {}),
     ...(inputCostPerMillionTokens !== undefined ? { inputCostPerMillionTokens } : {}),
     ...(timeoutMs !== undefined ? { timeoutMs } : {}),
+    ...(environment.AI_EMBEDDING_MAX_BATCH_SIZE ? { maxBatchSize: Number(environment.AI_EMBEDDING_MAX_BATCH_SIZE) } : {}),
     ...(maxParallelCalls !== undefined ? { maxParallelCalls } : {}),
   });
 }

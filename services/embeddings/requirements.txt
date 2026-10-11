@@ -1,0 +1,7 @@
+transformers==4.44.2
+accelerate==0.34.2
+huggingface-hub==0.25.2
+safetensors==0.4.5
+fastapi==0.115.0
+uvicorn==0.30.6
+numpy==1.26.4

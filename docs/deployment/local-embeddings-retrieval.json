@@ -1,0 +1,60 @@
+{
+  "fixtureSha256": "be17fba4d40aaea9d951d1fa2e46113beba32a8d09e55ceaff6f2aa2b8b5ea2a",
+  "query": "Wie lassen sich meine bestehenden Programme verbinden, damit niemand mehr Daten von Hand übertragen muss?",
+  "queryLatencyMs": 448.65,
+  "queryTokens": 24,
+  "dimensions": 1536,
+  "measurements": [
+    {
+      "id": "automation",
+      "latencyMs": 467.06,
+      "tokens": 27,
+      "textSha256": "f55020b6e509b4fc4b817b99d0fd75d0519a481871ebc179652e5abdb7896ad0"
+    },
+    {
+      "id": "phone",
+      "latencyMs": 316.36,
+      "tokens": 20,
+      "textSha256": "d165fc588e954db2aeb889530b25719c2df7474866e2dd94bf1cba12f3a14b99"
+    },
+    {
+      "id": "pricing",
+      "latencyMs": 540.4,
+      "tokens": 43,
+      "textSha256": "13998054dfea414ae812a74b2ec0457ca2e561a7cb5ee9bf1e9adf8843c547ff"
+    },
+    {
+      "id": "launch",
+      "latencyMs": 295.79,
+      "tokens": 18,
+      "textSha256": "1840c0972d5ad583dae04536c429b17ee3256450930672bb187a93f90c766eea"
+    }
+  ],
+  "ranking": [
+    {
+      "id": "automation",
+      "cosine": 0.34585404645704854,
+      "source": "https://dadakaev.com",
+      "text": "Process automation\nWe connect your tools with n8n, Make or Power Automate to create seamless workflows and eliminate manual data entry."
+    },
+    {
+      "id": "phone",
+      "cosine": 0.2866354987133185,
+      "source": "https://dadakaev.com",
+      "text": "AI phone assistants\nIntelligent voice AI for phone calls. Qualify leads and book appointments automatically."
+    },
+    {
+      "id": "pricing",
+      "cosine": 0.2294564683104163,
+      "source": "https://dadakaev.com",
+      "text": "Starter from €1,499 · Business from €2,499 · Premium from €3,099\nOne-off starting prices, including tax. Services and final price agreed individually."
+    },
+    {
+      "id": "launch",
+      "cosine": 0.22649210127361386,
+      "source": "https://dadakaev.com",
+      "text": "Launch\nDeployment, handover and 30 days of active post-launch monitoring included."
+    }
+  ],
+  "vectorsSha256": "6f39ab28c08639bf800cd096a9c0b48290675ff626e6252a50a4fb1bef3ff508"
+}

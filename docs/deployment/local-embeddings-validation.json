@@ -1,0 +1,74 @@
+{
+  "workspaceTests": {
+    "passed": 2704,
+    "skipped": 181,
+    "perSuite": [
+      {
+        "passed": 7,
+        "skipped": 0
+      },
+      {
+        "passed": 10,
+        "skipped": 0
+      },
+      {
+        "passed": 65,
+        "skipped": 0
+      },
+      {
+        "passed": 32,
+        "skipped": 0
+      },
+      {
+        "passed": 2,
+        "skipped": 0
+      },
+      {
+        "passed": 145,
+        "skipped": 0
+      },
+      {
+        "passed": 21,
+        "skipped": 0
+      },
+      {
+        "passed": 10,
+        "skipped": 0
+      },
+      {
+        "passed": 76,
+        "skipped": 0
+      },
+      {
+        "passed": 569,
+        "skipped": 155
+      },
+      {
+        "passed": 269,
+        "skipped": 0
+      },
+      {
+        "passed": 1238,
+        "skipped": 26
+      },
+      {
+        "passed": 193,
+        "skipped": 0
+      },
+      {
+        "passed": 67,
+        "skipped": 0
+      }
+    ]
+  },
+  "workspaceAndScriptsExit": 0,
+  "buildExit": 0,
+  "serviceTests": 9,
+  "serviceTestsExit": 0,
+  "image": "sha256:bd18828414cc3df3d8d2e24fcfb4524e0a01f4097ff385d35508f4ccafa2b282",
+  "gate": "Parent review and explicit release authorization pending",
+  "logs": [
+    "/root/.hermes/cache/scratch/lobby-embedding-tests-final.log",
+    "/root/.hermes/cache/scratch/lobby-embedding-build.log"
+  ]
+}

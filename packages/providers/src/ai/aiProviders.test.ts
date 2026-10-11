@@ -79,6 +79,14 @@ describe("provider-agnostic AI providers", () => {
     expect(first.fingerprint).not.toBe(second.fingerprint);
   });
 
+  it("chunks local embedding batches to the configured request limit", async () => {
+    mocks.embedMany.mockImplementation(async ({ values }: { values: string[] }) => ({ embeddings: values.map(() => new Array(1536).fill(0.5)), usage: { tokens: values.length } }));
+    const provider = new OpenAiCompatibleEmbeddingProvider({ baseURL: "http://embeddings:8080/v1", model: "gte-local", maxBatchSize: 2, maxParallelCalls: 1 });
+    const vectors = await provider.embed(["one", "two", "three"]);
+    expect(vectors).toHaveLength(3);
+    expect(mocks.embedMany.mock.calls.map(call => call[0].values)).toEqual([["one", "two"], ["three"]]);
+  });
+
   it("limits embedding concurrency and composes caller cancellation with a timeout", async () => {
     mocks.embedMany.mockResolvedValue({ embeddings: [new Array(1536).fill(0.5)], usage: { tokens: 1 } });
     const controller = new AbortController();

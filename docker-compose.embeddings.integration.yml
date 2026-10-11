@@ -1,0 +1,11 @@
+services:
+  admin:
+    networks:
+      embedding_private: {}
+  worker:
+    networks:
+      embedding_private: {}
+networks:
+  embedding_private:
+    external: true
+    name: lobby-embedding-private

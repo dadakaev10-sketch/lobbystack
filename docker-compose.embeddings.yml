@@ -1,0 +1,36 @@
+services:
+  embeddings:
+    build:
+      context: ./services/embeddings
+    image: lobbystack-local-embeddings:gte-a9af15a
+    restart: "no"
+    environment:
+      EMBEDDING_BEARER_SECRET: ${EMBEDDING_BEARER_SECRET:?Runtime bearer secret required}
+    volumes:
+      - embedding_cache:/cache
+    mem_limit: 6g
+    memswap_limit: 6g
+    cpus: 2.0
+    pids_limit: 128
+    read_only: true
+    tmpfs:
+      - /tmp:size=64m,mode=1777
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    healthcheck:
+      test: [CMD, python, -c, "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8080/health/ready', timeout=3)"]
+      interval: 15s
+      timeout: 5s
+      start_period: 600s
+      retries: 3
+    logging:
+      options:
+        max-size: 5m
+        max-file: "2"
+    networks: [embedding_private]
+volumes:
+  embedding_cache: {}
+networks:
+  embedding_private:
+    name: lobby-embedding-private
+    driver: bridge

@@ -1,0 +1,65 @@
+{
+  "revision": "a9af15a6372d7d6b25e9fb07c2ccb9e1fe645644",
+  "files": {
+    "added_tokens.json": {
+      "bytes": 80,
+      "sha256": "6a475432c61f8d6154d10d28c37671a36e5717daf3d15002a988968fee54a500"
+    },
+    "config.json": {
+      "bytes": 901,
+      "sha256": "6be8440493f63c39e989842d4747127a71b1d680839af44dc105245e06a333d1"
+    },
+    "config_sentence_transformers.json": {
+      "bytes": 284,
+      "sha256": "89df38eb06c9f934ee613d846fd9ea88468cc99791e036b5bbc412411fbb1c95"
+    },
+    "generation_config.json": {
+      "bytes": 117,
+      "sha256": "71e135315a5c53cfbd7418a5fa02b03dad5e59df3e28c16f9970553c157805a9"
+    },
+    "merges.txt": {
+      "bytes": 1671853,
+      "sha256": "8831e4f1a044471340f7c0a83d7bd71306a5b867e95fd870f74d0c5308a904d5"
+    },
+    "model-00001-of-00002.safetensors": {
+      "bytes": 4994888704,
+      "sha256": "0842014813f9ecd814eac671e2577d84281cd02d74f70436583c044fac724072"
+    },
+    "model-00002-of-00002.safetensors": {
+      "bytes": 2109938216,
+      "sha256": "661830fd8d0426f38747a747ec37cbdc05466331790dcf7b83e12a0e000ce0cc"
+    },
+    "model.safetensors.index.json": {
+      "bytes": 27751,
+      "sha256": "6ed4fc9a5fed84fc2401db6223b1f673eb2e0c01597660d67eddf63b525fbc97"
+    },
+    "modules.json": {
+      "bytes": 349,
+      "sha256": "84e40c8e006c9b1d6c122e02cba9b02458120b5fb0c87b746c41e0207cf642cf"
+    },
+    "sentence_bert_config.json": {
+      "bytes": 55,
+      "sha256": "1140b92d307aec9383d897169c9f489f3a568787b80bf760f5d7cc9d25169a65"
+    },
+    "special_tokens_map.json": {
+      "bytes": 370,
+      "sha256": "daf48284de8f4779b1dbf20963a68180002fba2a34a5da72292380c5d9fb6af2"
+    },
+    "tokenizer.json": {
+      "bytes": 7028015,
+      "sha256": "f7c9b2dba4a296b1aa76c16a34b8225c0c118978400d4bb66bff0902d702f5b8"
+    },
+    "tokenizer_config.json": {
+      "bytes": 1312,
+      "sha256": "d1b4928d0e7e7c1881a23eb235f6081d6d9db3d67f6ce5272f571feaf12fd944"
+    },
+    "vocab.json": {
+      "bytes": 2776833,
+      "sha256": "ca10d7e9fb3ed18575dd1e277a2579c16d108e32f27439684afa0e10b1440910"
+    }
+  },
+  "vendoredCodeSha256": "99ba535c53fb52c61067ddbc7f70e0b877ec3a2aa53bd89a559432a3efc7f0a7",
+  "memoryPeakBytes": 6442450944,
+  "memoryEvents": "low 0\nhigh 0\nmax 8789\noom 0\noom_kill 0\noom_group_kill 0\n",
+  "swapBytes": 0
+}

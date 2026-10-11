@@ -1,0 +1,12 @@
+{
+  "source": "https://dadakaev.com",
+  "method": "Public page extracted with web_extract; verbatim passages, no customer records",
+  "passages": [
+    {"id":"automation","text":"Process automation\nWe connect your tools with n8n, Make or Power Automate to create seamless workflows and eliminate manual data entry."},
+    {"id":"phone","text":"AI phone assistants\nIntelligent voice AI for phone calls. Qualify leads and book appointments automatically."},
+    {"id":"pricing","text":"Starter from €1,499 · Business from €2,499 · Premium from €3,099\nOne-off starting prices, including tax. Services and final price agreed individually."},
+    {"id":"launch","text":"Launch\nDeployment, handover and 30 days of active post-launch monitoring included."}
+  ],
+  "query":"Wie lassen sich meine bestehenden Programme verbinden, damit niemand mehr Daten von Hand übertragen muss?",
+  "expected":"automation"
+}
