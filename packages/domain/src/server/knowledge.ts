@@ -428,11 +428,14 @@ export async function searchKnowledgeEvidence(
       ts_rank_cd(to_tsvector('simple', d.title || ' ' || c.content), to_tsquery('simple', ${lexicalQuery})) DESC, c.id LIMIT 12`) : Promise.resolve([]);
   const semantic = (async () => {
     if (!query || !context.embeddings) throw new Error("embedding_unavailable");
+    const configuredTimeout = Number(process.env.AI_EMBEDDING_SEARCH_TIMEOUT_MS ?? 1800);
+    const searchTimeout = Number.isInteger(configuredTimeout) && configuredTimeout >= 100 && configuredTimeout <= 10_000 ? configuredTimeout : 1800;
+    const abort = new AbortController();
     let timer: ReturnType<typeof setTimeout> | undefined;
     try {
       const [embedding] = await Promise.race([
-        context.embeddings.embed([query]),
-        new Promise<never>((_, reject) => { timer = setTimeout(() => reject(new Error("embedding_timeout")), 1800); }),
+        context.embeddings.embed([query], undefined, { abortSignal: abort.signal }),
+        new Promise<never>((_, reject) => { timer = setTimeout(() => { abort.abort(); reject(new Error("embedding_timeout")); }, searchTimeout); }),
       ]);
       if (!embedding?.length || embedding.some(value => !Number.isFinite(value))) throw new Error("invalid_embedding");
       return await execute(sql`WITH eligible AS MATERIALIZED (SELECT ${fields}, c.embedding ${from} WHERE ${filters} AND c.embedding IS NOT NULL

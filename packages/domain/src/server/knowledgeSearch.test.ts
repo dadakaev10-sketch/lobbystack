@@ -37,7 +37,7 @@ beforeEach(() => {
 function context(embed = vi.fn().mockResolvedValue([[0.1, 0.2]])): DomainContext {
   return { db: {} as never, embeddings: { embed } };
 }
-afterEach(() => vi.useRealTimers());
+afterEach(() => { vi.useRealTimers(); vi.unstubAllEnvs(); });
 
 describe("knowledge evidence", () => {
   it("reserves primary evidence before expanding neighboring chunks", async () => {
@@ -47,6 +47,23 @@ describe("knowledge evidence", () => {
     const result = await searchKnowledgeEvidence(context(), { businessId: "tenant-a", query: "management" });
     expect(result.matches).toHaveLength(6);
     expect(result.matches.some(row => row.content.includes("MNGT 10407"))).toBe(true);
+  });
+  it("cancels embedding work when the retrieval budget expires", async () => {
+    vi.useFakeTimers();
+    let signal: AbortSignal | undefined;
+    const ctx: DomainContext = { db: {} as never, embeddings: { embed: async (_values, _usage, options) => { signal = options?.abortSignal; return new Promise(() => {}); } } };
+    const result = searchKnowledgeEvidence(ctx, { businessId: "tenant-a", query: "management" });
+    await vi.advanceTimersByTimeAsync(1801);
+    expect(await result).toMatchObject({ mode: "keyword" });
+    expect(signal?.aborted).toBe(true);
+  });
+  it("supports a bounded explicit CPU retrieval timeout", async () => {
+    vi.useFakeTimers();
+    vi.stubEnv("AI_EMBEDDING_SEARCH_TIMEOUT_MS", "6000");
+    const result = searchKnowledgeEvidence(context(vi.fn().mockImplementation(() => new Promise(resolve => setTimeout(() => resolve([[0.1, 0.2]]), 4200)))), { businessId: "tenant-a", query: "management" });
+    await vi.advanceTimersByTimeAsync(4201);
+    expect(await result).toMatchObject({ mode: "hybrid" });
+    vi.unstubAllEnvs();
   });
   it("bounds a stalled embedding request and uses keyword results", async () => {
     vi.useFakeTimers();

@@ -11,6 +11,7 @@ import { PolarBillingProvider } from "@lobbystack/providers/polar/polarBilling";
 import { createStorageProvider } from "@lobbystack/providers/storage/provider";
 import { TwilioProvider } from "@lobbystack/providers/twilio/twilioProvider";
 import { getMeter, initializeTelemetry, redactOtelExceptionText, shutdownTelemetry, withSpan } from "@lobbystack/telemetry/node";
+import { startupEmbeddingBusinesses } from "./embeddingStartup";
 import { redactJobError } from "./redactJobError";
 import { DelayedError, Worker } from "bullmq";
 import { and, eq, isNull } from "drizzle-orm";
@@ -276,7 +277,7 @@ async function main(): Promise<void> {
     if (embeddings) {
       const embeddingQueue = queues.get("bulk");
       if (embeddingQueue) {
-        for (const businessId of businessIds) {
+        for (const businessId of startupEmbeddingBusinesses(businessIds, process.env)) {
           await enqueueJob(embeddingQueue, {
             type: "knowledge.reembedBusiness",
             businessId,

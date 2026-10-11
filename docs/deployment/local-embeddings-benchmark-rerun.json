@@ -1,0 +1,23 @@
+{
+  "results": [
+    {
+      "case": "1800-character-chunk",
+      "characters": 1800,
+      "tokens": 357,
+      "latencyMs": 3270.5,
+      "dimensions": 1536
+    },
+    {
+      "case": "512-token-input",
+      "characters": 2582,
+      "tokens": 512,
+      "latencyMs": 4209.63,
+      "dimensions": 1536
+    }
+  ],
+  "anonymousMemoryBytes": 3619467264,
+  "fileCacheBytes": 2796666880,
+  "memoryPeakBytes": 6442471424,
+  "memoryEvents": "low 0\nhigh 0\nmax 3963\noom 0\noom_kill 0\noom_group_kill 0\n",
+  "swapBytes": 0
+}
