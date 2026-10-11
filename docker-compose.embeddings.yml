@@ -2,7 +2,7 @@ services:
   embeddings:
     build:
       context: ./services/embeddings
-    image: lobbystack-local-embeddings:gte-a9af15a
+    image: lobbystack-local-embeddings:gte-a9af15a-chunked
     restart: "no"
     environment:
       EMBEDDING_BEARER_SECRET: ${EMBEDDING_BEARER_SECRET:?Runtime bearer secret required}

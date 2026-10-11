@@ -2,6 +2,10 @@
 
 Branch `feature/local-embeddings-verified`, Ausgangspunkt `0aa308b`. Die spätere Nutzerfreigabe erlaubt Push/Live-Aktivierung durch den Parent; dieser Arbeitslauf hat nichts gepusht, deployed oder an Kunden/Live-ENV/DB verändert.
 
+## Aktueller Gate-Abschluss
+
+Die unten dokumentierten damaligen Chunking-/Staging-Blocker sind inzwischen lokal geschlossen; siehe [local-embeddings-release-gates.md](./local-embeddings-release-gates.md) und [reale E2E-Belege](./local-embeddings-e2e.json). Der neue Dienst benötigt das Image `gte-a9af15a-chunked` mit authentifiziertem `/v1/chunks`. Exakte Modelltokens, bestehende Chunk-Neuaufbereitung, echter Worker-Handler/Domain/pgvector, RLS und Fehler-/Revisionsschutz wurden isoliert geprüft. Standard-Startupliste bleibt leer. Kontrollierter Canary-Release durch den Parent ist lokal freigeprüft; Backup/CVE/Live-Readback und breitere Qualität/Last bleiben getrennte externe Gates. Der restliche Text ist die historische Abnahme vor diesem Abschluss.
+
 ## Reale erneute Abnahme
 
 Isolierter Compose-Projektname `lobby-embedding-probe`, vorhandenes Image `lobbystack-local-embeddings:gte-a9af15a`, vorhandener persistenter Cache. Runtime-Bearer neu zufällig generiert, niemals gespeichert/ausgegeben. Probe zum Abschluss `exited`; PortBindings `{}`, RAM/MemorySwap jeweils 6442450944 Bytes.

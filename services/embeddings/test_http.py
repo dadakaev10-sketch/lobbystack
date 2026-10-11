@@ -7,10 +7,10 @@ import urllib.request
 import urllib.error
 
 class HttpTests(unittest.TestCase):
-    def call(self, payload, auth=True):
+    def call(self, payload, auth=True, path='/v1/embeddings'):
         headers = {'Content-Type':'application/json'}
         if auth: headers['Authorization'] = 'Bearer ' + os.environ['EMBEDDING_BEARER_SECRET']
-        req = urllib.request.Request('http://127.0.0.1:8080/v1/embeddings',data=json.dumps(payload).encode(),headers=headers)
+        req = urllib.request.Request('http://127.0.0.1:8080'+path,data=json.dumps(payload).encode(),headers=headers)
         try:
             with urllib.request.urlopen(req,timeout=120) as r: return r.status,json.load(r)
         except urllib.error.HTTPError as e: return e.code,json.load(e)
@@ -39,6 +39,24 @@ class HttpTests(unittest.TestCase):
             self.assertIn(b'408',response.split(b'\r\n')[0])
         finally:
             s.close()
+
+    def test_tokenizer_chunk_contract_matches_real_inference(self):
+        text = '中文测试🙂' * 180
+        payload = {'model':'gte-local','input':text}
+        self.assertEqual(self.call(payload, False, '/v1/chunks')[0], 401)
+        self.assertEqual(self.call(payload)[0], 413)
+        status, data = self.call(payload, True, '/v1/chunks')
+        self.assertEqual(status, 200)
+        self.assertEqual(data['revision'], 'a9af15a6372d7d6b25e9fb07c2ccb9e1fe645644')
+        pieces, counts = data['chunks'][0], data['token_counts'][0]
+        self.assertEqual(''.join(pieces), text)
+        self.assertGreater(len(pieces), 1)
+        self.assertTrue(all(0 < n <= 512 for n in counts))
+        for piece, count in zip(pieces, counts):
+            status, embedded = self.call({'model':'gte-local','input':piece})
+            self.assertEqual(status, 200)
+            self.assertEqual(embedded['usage']['total_tokens'], count)
+            self.assertEqual(len(embedded['data'][0]['embedding']), 1536)
 
     def test_wrong_model(self):
         self.assertEqual(self.call({'model':'wrong','input':'Hallo'})[0],400)

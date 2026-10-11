@@ -1,3 +1,4 @@
+import { reembedPreparedDocuments } from "./knowledgeReembedding";
 import { createHash, randomUUID } from "node:crypto";
 import Redis from "ioredis";
 import { and, eq, inArray, isNull, lte, ne, or } from "drizzle-orm";
@@ -59,7 +60,7 @@ export type WorkerDependencies = {
   twilio?: Pick<TwilioProvider, "sendSms"> & Partial<Pick<TwilioProvider, "getMessagePricing" | "getCallPricing" | "findTrunkCall" | "releasePhoneNumber" | "verifyPhone" | "findOwnedPhoneNumber" | "purchasePhoneNumber" | "addNumberToSipTrunk">>;
   twilioAlerts?: Pick<TwilioProvider, "sendSms"> & { from: string };
   polar?: { recordUsage(input: { eventName: string; externalCustomerId: string; quantity: number; timestamp: string; idempotencyKey: string; businessId: string; usageKind: string }): Promise<void>; createCheckout?(input: { productId: string; customerEmail: string; externalCustomerId: string; successUrl: string; returnUrl: string; idempotencyKey?: string }): Promise<{ checkoutUrl: string; checkoutId: string }> };
-  embeddings?: { fingerprint?: string; embed(values: string[], onUsage?: (usage: DurableAiUsage) => Promise<void> | void): Promise<number[][]> };
+  embeddings?: { fingerprint?: string; prepareChunks?(values: string[]): Promise<string[]>; embed(values: string[], onUsage?: (usage: DurableAiUsage) => Promise<void> | void): Promise<number[][]> };
   crawler?: { crawl(input: { url: string; limit?: number }): Promise<Array<{ url: string; title?: string; markdown?: string }>> };
   calendar?: CalendarOperations;
   productAnalytics?: { capture(events: Array<{ event: string; distinctId: string; properties: Record<string, unknown>; timestamp: string }>): Promise<void> };
@@ -406,6 +407,10 @@ async function dispatchJob(job: JobEnvelope, dependencies: WorkerDependencies, e
       const businessId = businessIdOrThrow(job);
       const fingerprint = dependencies.embeddings?.fingerprint;
       if (!dependencies.embeddings || !fingerprint) return { status: "skipped", entityId: businessId };
+      if (dependencies.embeddings.prepareChunks) {
+        const count = await reembedPreparedDocuments(dependencies.domain.db, businessId, dependencies.embeddings);
+        return { status: count > 0 ? "completed" : "skipped", entityId: `${businessId}:${count}` };
+      }
       const batchSize = 64;
       let reembedded = 0;
       while (true) {
@@ -1178,7 +1183,8 @@ async function indexKnowledgeText(
   dependencies: WorkerDependencies,
   input: { businessId: string; documentId: string; text: string; websitePage?: { sourceUrl: string; title: string; sourceRevision: number }; deferFailure?: boolean },
 ): Promise<{ chunkCount: number }> {
-  const chunks = chunkText(input.text);
+  const initialChunks = chunkText(input.text);
+  let chunks = initialChunks;
   chunkCount.record(chunks.length, { operation: "knowledge.index" });
   if (!dependencies.embeddings) {
     if (!input.deferFailure) await markKnowledgeDocumentFailed(dependencies.domain, {
@@ -1193,6 +1199,7 @@ async function indexKnowledgeText(
   let embeddings: number[][];
   let usage: DurableAiUsage | undefined;
   try {
+    chunks = await dependencies.embeddings.prepareChunks?.(initialChunks) ?? initialChunks;
     const embeddingStartedAt = performance.now();
     embeddings = await dependencies.embeddings.embed(chunks, (value) => {
       usage = value;
@@ -1220,7 +1227,7 @@ async function indexKnowledgeText(
   }
 
   const indexStartedAt = performance.now();
-  const prepared = { businessId: input.businessId, documentId: input.documentId, text: input.text, embeddings, ...(dependencies.embeddings?.fingerprint ? { embeddingFingerprint: dependencies.embeddings.fingerprint } : {}) };
+  const prepared = { businessId: input.businessId, documentId: input.documentId, text: input.text, preparedChunks: chunks, embeddings, ...(dependencies.embeddings?.fingerprint ? { embeddingFingerprint: dependencies.embeddings.fingerprint } : {}) };
   const indexed = input.websitePage ? await indexCrawledWebsitePage(dependencies.domain, { ...prepared, ...input.websitePage }) : await indexDocumentText(dependencies.domain, prepared);
   indexDuration.record(performance.now() - indexStartedAt, { operation: "knowledge.index" });
   if (usage) {

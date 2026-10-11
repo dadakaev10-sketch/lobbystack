@@ -2,4 +2,4 @@ services:
   embeddings:
     build:
       context: ./services/embeddings
-    image: lobbystack-local-embeddings:gte-a9af15a
+    image: lobbystack-local-embeddings:gte-a9af15a-chunked

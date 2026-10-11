@@ -113,6 +113,14 @@ describe("knowledge chunk boundaries", () => {
     expect(chunks.some(chunk => chunk.includes("Management\nMNGT 10407"))).toBe(true);
     expect(chunks[0]).toContain("# Programme BAA\n");
   });
+  it("never splits a Unicode surrogate pair at size or overlap boundaries", () => {
+    const text = "X" + "🙂".repeat(1200);
+    const chunks = chunkText(text, { maxCharacters: 1800, overlap: 179 });
+    const unpaired = /[\uD800-\uDBFF](?![\uDC00-\uDFFF])|(?<![\uD800-\uDBFF])[\uDC00-\uDFFF]/u;
+    expect(chunks.some(chunk => unpaired.test(chunk))).toBe(false);
+    expect(chunks.every(chunk => chunk.length <= 1800)).toBe(true);
+    expect(chunkText(text, { maxCharacters: 2, overlap: 0 }).join("")).toBe(text);
+  });
   it("handles blank text and rejects non-progressing sizes", () => {
     expect(chunkText("  \n ")).toEqual([]);
     expect(() => chunkText("hello", { maxCharacters: 0 })).toThrow();

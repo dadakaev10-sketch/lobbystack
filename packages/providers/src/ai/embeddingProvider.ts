@@ -30,6 +30,7 @@ export type EmbeddingOptions = {
 };
 
 export class OpenAiCompatibleEmbeddingProvider {
+  private readonly config: EmbeddingAiConfig;
   private readonly model: string;
   private readonly api: EmbeddingModel;
   private readonly providerName: string;
@@ -43,6 +44,7 @@ export class OpenAiCompatibleEmbeddingProvider {
   private readonly maxBatchSize: number;
 
   constructor(config: EmbeddingAiConfig) {
+    this.config = { ...config };
     this.model = config.model ?? DEFAULT_EMBEDDING_AI_MODEL;
     this.providerName = config.name ?? "openai";
     const baseURL = (config.baseURL ?? DEFAULT_EMBEDDING_AI_BASE_URL).replace(/\/$/, "");
@@ -76,6 +78,31 @@ export class OpenAiCompatibleEmbeddingProvider {
 
   get fingerprint(): string {
     return this.embeddingFingerprint;
+  }
+
+  /** Use the inference service's exact pinned tokenizer, never truncate source text. */
+  async prepareChunks(values: string[]): Promise<string[]> {
+    if (this.model !== "gte-local") return values;
+    const revision = "a9af15a6372d7d6b25e9fb07c2ccb9e1fe645644";
+    if (!this.config.revision?.startsWith(`${revision}-`)) throw new Error("Local tokenizer revision must be pinned.");
+    const chunks: string[] = [];
+    // One existing character chunk per bounded request, independent of inference batches.
+    for (const value of values) {
+      const response = await fetch(`${(this.config.baseURL ?? DEFAULT_EMBEDDING_AI_BASE_URL).replace(/\/$/, "")}/chunks`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", ...(this.config.apiKey ? { Authorization: `Bearer ${this.config.apiKey}` } : {}) },
+        body: JSON.stringify({ model: this.model, input: [value] }),
+        signal: AbortSignal.timeout(this.timeoutMs),
+      });
+      if (!response.ok) throw new Error(`Local tokenizer request failed (${response.status}).`);
+      const result = await response.json() as { chunks?: unknown; revision?: string; max_tokens?: number };
+      const groups = result.chunks;
+      if (result.revision !== revision || result.max_tokens !== 512 || !Array.isArray(groups) || groups.length !== 1 || !Array.isArray(groups[0]) || !groups[0].length || groups[0].some((chunk: unknown) => typeof chunk !== "string" || !chunk.length) || groups[0].join("") !== value) {
+        throw new Error("Local tokenizer returned an incompatible or lossy chunk result.");
+      }
+      chunks.push(...groups[0] as string[]);
+    }
+    return chunks;
   }
 
   async embed(values: string[], onUsage?: (usage: AiUsage) => Promise<void> | void, options?: EmbeddingOptions): Promise<number[][]> {

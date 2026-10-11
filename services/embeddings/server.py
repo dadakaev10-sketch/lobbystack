@@ -75,6 +75,28 @@ async def ready():
     return JSONResponse({'status':'ready' if model is not None else 'loading','model':MODEL_ID,
         'revision':REVISION,'dimensions':1536},status_code=200 if model is not None else 503)
 
+@app.post('/v1/chunks')
+async def chunks(request: Request):
+    # Tokenization only: no inference lock, no truncation, no input logging.
+    from chunking import split_for_tokenizer
+    if not authorized(request.headers.get('authorization'), secret):
+        return JSONResponse({'error':'Unauthorized'}, status_code=401)
+    body = bytearray()
+    try:
+        async with asyncio.timeout(5):
+            async for part in request.stream():
+                body.extend(part)
+                if len(body) > MAX_BODY:
+                    return JSONResponse({'error':'Body limit exceeded'}, status_code=413)
+        values = validate_payload(json.loads(body))
+        prepared = [split_for_tokenizer(value, lambda x: tokenizer.encode(x, truncation=False), MAX_TOKENS) for value in values]
+        return {'chunks': prepared, 'revision': REVISION, 'max_tokens': MAX_TOKENS,
+            'token_counts': [[len(tokenizer.encode(chunk, truncation=False)) for chunk in group] for group in prepared]}
+    except TimeoutError:
+        return JSONResponse({'error':'Body timeout'}, status_code=408)
+    except (ValueError, TypeError, UnicodeDecodeError):
+        return JSONResponse({'error':'Invalid request'}, status_code=400)
+
 @app.post('/v1/embeddings')
 async def embeddings(request: Request):
     global busy

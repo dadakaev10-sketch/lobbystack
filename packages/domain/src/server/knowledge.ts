@@ -46,6 +46,8 @@ export function chunkText(text: string, options: { maxCharacters?: number; overl
         if (boundary > start + maxCharacters / 2) end = boundary;
         else if (wordBoundary > start + maxCharacters / 2) end = wordBoundary;
       }
+      // JS offsets are UTF-16: never pass an isolated half of an emoji to the tokenizer.
+      if (end < sectionText.length && sectionText.charCodeAt(end - 1) >= 0xD800 && sectionText.charCodeAt(end - 1) <= 0xDBFF && sectionText.charCodeAt(end) >= 0xDC00 && sectionText.charCodeAt(end) <= 0xDFFF) end -= 1;
       const chunk = sectionText.slice(start, end).trim();
       if (chunk) {
         chunks.push(chunk);
@@ -54,6 +56,7 @@ export function chunkText(text: string, options: { maxCharacters?: number; overl
         break;
       }
       start = Math.max(start + 1, end - overlap);
+      if (sectionText.charCodeAt(start) >= 0xDC00 && sectionText.charCodeAt(start) <= 0xDFFF && sectionText.charCodeAt(start - 1) >= 0xD800 && sectionText.charCodeAt(start - 1) <= 0xDBFF) start += 1;
     }
   }
   return chunks;
@@ -255,7 +258,7 @@ export async function deleteKnowledgeSnippet(context: DomainContext, input: { us
   });
 }
 
-type IndexDocumentInput = { businessId: string; documentId: string; text: string; embeddings: number[][]; embeddingFingerprint?: string };
+type IndexDocumentInput = { businessId: string; documentId: string; text: string; embeddings: number[][]; embeddingFingerprint?: string; preparedChunks?: string[] };
 
 type IndexDocumentResult = { chunkCount: number; indexed: boolean; documentId: string };
 
@@ -282,7 +285,9 @@ async function indexDocumentTextInTransaction(tx: DatabaseTransaction, input: In
       throw new Error("Knowledge document not found.");
     }
     if (document.status === "cancelled") return { chunkCount: 0, indexed: false, documentId: input.documentId };
-    const chunks = chunkText(input.text);
+    const originalChunks = chunkText(input.text);
+    const chunks = input.preparedChunks ?? originalChunks;
+    if (chunks.some(chunk => !chunk.trim()) || chunks.join("") !== originalChunks.join("")) throw new Error("Prepared knowledge chunks must preserve all source content.");
     if (chunks.length === 0) {
       await markKnowledgeDocumentFailedInTransaction(tx, input, document.revision, "No readable text was extracted from the document.");
       throw new Error("No readable text was extracted from the document.");

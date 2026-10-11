@@ -1,0 +1,53 @@
+{
+  "model": {
+    "status": "ready",
+    "model": "Alibaba-NLP/gte-Qwen2-1.5B-instruct",
+    "revision": "a9af15a6372d7d6b25e9fb07c2ccb9e1fe645644",
+    "dimensions": 1536
+  },
+  "image_id": "sha256:15a58bc7c588f8f5b71d645d5fd81f688b665f33b942f2ee9eb74c2e3753c927",
+  "real_worker_domain_pgvector_tests": 3,
+  "real_service_tests": 13,
+  "evidence": [
+    {
+      "evidence": "ingest-semantic-rls",
+      "fingerprintExcluded": true,
+      "inactiveExcluded": true,
+      "tokenCounts": [
+        26,
+        269,
+        276
+      ],
+      "chunks": 3,
+      "dimensions": 1536,
+      "mode": "hybrid",
+      "source": "https://example.invalid/automation",
+      "searchMs": 380.479374999999,
+      "crossTenantRows": 0
+    },
+    {
+      "evidence": "failure-concurrency",
+      "oldEvidencePreserved": true,
+      "staleCommitRejected": true,
+      "cancelledSkipped": true
+    },
+    {
+      "evidence": "legacy-reindex",
+      "chunks": 2,
+      "lossless": true,
+      "dimensions": 1536,
+      "rerun": "skipped"
+    }
+  ],
+  "cgroup": {
+    "memory.peak": "6442450944\n",
+    "memory.events": "low 0\nhigh 0\nmax 1669\noom 0\noom_kill 0\noom_group_kill 0\n",
+    "memory.swap.current": "0\n"
+  },
+  "memory_limit_bytes": 6442450944,
+  "memory_swap_limit_bytes": 6442450944,
+  "host_ports": {},
+  "cleanup_verified": true,
+  "scope": "Disposable DB; real worker job handler and domain; synthetic source crawler fixture, no production DB, no BullMQ daemon or AI answers exercised",
+  "raw_log": "/root/.hermes/cache/scratch/lobby-chunk-e2e.log"
+}
