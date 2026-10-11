@@ -37,6 +37,16 @@ def load():
     model = Qwen2Model.from_pretrained(snapshot, config=config, torch_dtype=torch.bfloat16,
         low_cpu_mem_usage=True, use_safetensors=True, local_files_only=True,
         attn_implementation='sdpa').eval()
+    # Transformers 5 materializes nonpersistent meta buffers without their values.
+    # Recompute ONLY deterministic RoPE buffers, never learned parameters. Preserve
+    # upstream FP32 frequencies and BF16 cache rounding from the original runtime.
+    for layer in model.layers:
+        rotary = layer.self_attn.rotary_emb
+        rotary.inv_freq = 1.0 / (rotary.base ** (
+            torch.arange(0, rotary.dim, 2, dtype=torch.int64).float() / rotary.dim))
+        rotary._set_cos_sin_cache(MAX_TOKENS, device=torch.device('cpu'), dtype=torch.bfloat16)
+        if not torch.isfinite(rotary.cos_cached).all() or not torch.isfinite(rotary.sin_cached).all():
+            raise RuntimeError('Invalid rotary cache')
 
 
 def infer(values):

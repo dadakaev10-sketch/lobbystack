@@ -15,7 +15,7 @@ if (workerUrl) workerUrl.username = 'lobbystack_worker';
 const worker = workerUrl ? createDatabaseClient('lobbystack_worker', { DATABASE_URL: workerUrl.toString() }) : undefined;
 const ids: string[] = [];
 afterAll(async () => { if (owner) { for (const id of ids) await owner.db.delete(businesses).where(eq(businesses.id, id)); } await worker?.pool.end(); await owner?.pool.end(); });
-const provider = url ? new OpenAiCompatibleEmbeddingProvider({ baseURL: process.env.LOBBY_EMBEDDING_E2E_BASE_URL!, apiKey: process.env.LOBBY_EMBEDDING_E2E_KEY!, model: 'gte-local', name: 'local-gte', revision: 'a9af15a6372d7d6b25e9fb07c2ccb9e1fe645644-bf16-lasttoken-noncausal-512-v1', maxBatchSize: 1, maxParallelCalls: 1, timeoutMs: 30000 }) : undefined;
+const provider = url ? new OpenAiCompatibleEmbeddingProvider({ baseURL: process.env.LOBBY_EMBEDDING_E2E_BASE_URL!, apiKey: process.env.LOBBY_EMBEDDING_E2E_KEY!, model: 'gte-local', name: 'local-gte', revision: 'a9af15a6372d7d6b25e9fb07c2ccb9e1fe645644-bf16-lasttoken-noncausal-512-torch2.14.1-transformers5.19.0-v2', maxBatchSize: 1, maxParallelCalls: 1, timeoutMs: 30000 }) : undefined;
 async function business() { const id = randomUUID(); ids.push(id); await owner!.db.insert(businesses).values({ id, name: 'Embedding disposable fixture', slug: id, timezone: 'UTC', businessType: 'other' }); return id; }
 function job(type: JobEnvelope['type'], businessId: string, payload: Record<string, unknown>): JobEnvelope { return { jobId: randomUUID(), type, businessId, payload, trace: {}, queue: 'bulk', idempotencyKey: randomUUID(), scheduled: false }; }
 const domain = { db: worker?.db!, embeddings: provider! };

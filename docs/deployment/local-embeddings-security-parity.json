@@ -1,0 +1,45 @@
+{
+  "baseline_image": "lobbystack-local-embeddings:gte-a9af15a",
+  "runtime_image": "lobbystack-local-embeddings:gte-a9af15a-chunked",
+  "token_ids_equal": true,
+  "token_counts": [
+    9,
+    19,
+    16,
+    6,
+    10,
+    9,
+    402
+  ],
+  "noncausal_first_token_delta": {
+    "baseline": 26.125,
+    "upgraded": 26.125
+  },
+  "vector_comparison": [
+    {
+      "cosine": 1.0000002131770915,
+      "max_absolute_difference": 0.0
+    },
+    {
+      "cosine": 0.9998522215943612,
+      "max_absolute_difference": 0.002082258462905884
+    },
+    {
+      "cosine": 0.9996809628882868,
+      "max_absolute_difference": 0.003456026315689087
+    },
+    {
+      "cosine": 1.0000002688286218,
+      "max_absolute_difference": 0.0
+    },
+    {
+      "cosine": 1.0000000958007187,
+      "max_absolute_difference": 0.0
+    },
+    {
+      "cosine": 1.000000237050399,
+      "max_absolute_difference": 0.0
+    }
+  ],
+  "contract": "BF16 CPU default SDPA noncausal last-token + L2, same pinned snapshot; six genuine vectors and seven exact token-ID comparisons; no exact-bitwise claim"
+}

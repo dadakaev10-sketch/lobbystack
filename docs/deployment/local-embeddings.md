@@ -1,5 +1,7 @@
 # Lokaler Embedding-Prototyp — Plan vor Umsetzung
 
+> Historischer Prototypbericht; aktuelle Runtime-Versionen, Security-Dispositionen und Abnahme: [local-embeddings-security.md](local-embeddings-security.md). Historische Hashes/Messwerte unten sind keine Freigabe des alten Images.
+
 Scope: neue Branch feat/local-native-embeddings, keine Pushes, Aktivierung, Kundenrecords oder DB-Migrationen. Native 1536 Dimensionen bleiben unverändert.
 
 Modellkandidat: Alibaba-NLP/gte-Qwen2-1.5B-instruct, Hugging Face Revision a9af15a6372d7d6b25e9fb07c2ccb9e1fe645644, Apache-2.0 laut offizieller Model Card. config.json bestätigt hidden_size=1536 und bidirektionale Aufmerksamkeit (is_causal=false). Remote-Code muss gepinnt und gehasht geprüft werden; kein ungeprüfter main-Code.

@@ -46,6 +46,9 @@ def main():
                     if health['dimensions'] == 1536:
                         break
                 except Exception:
+                    if docker('inspect', MODEL, '--format', '{{.State.Running}}') != 'true':
+                        run(['docker', 'logs', MODEL], stdout=log, stderr=log)
+                        raise RuntimeError('Model exited before readiness; see isolated log')
                     if time.monotonic() >= deadline:
                         raise RuntimeError('Model readiness deadline exceeded')
                     time.sleep(2)
@@ -56,6 +59,9 @@ def main():
             env.update(LOBBY_EMBEDDING_E2E_DATABASE_URL=dburl, LOBBY_EMBEDDING_E2E_BASE_URL=base + '/v1', LOBBY_EMBEDDING_E2E_KEY=secret, AI_EMBEDDING_SEARCH_TIMEOUT_MS='6000')
             run(['pnpm', '--filter', '@lobbystack/worker', 'exec', 'vitest', 'run', 'src/localEmbeddings.integration.test.ts', '--silent=false', '--reporter=verbose'], env=env, stdout=log, stderr=log)
             run(['docker', 'exec', MODEL, 'python', '-m', 'unittest', 'test_contract', 'test_chunking', 'test_http'], stdout=log, stderr=log)
+            run(['docker', 'exec', MODEL, 'python', 'verify_retrieval.py'], stdout=log, stderr=log)
+            probe_env = {**env, 'EMBEDDING_PROBE_BASE_URL': base + '/v1', 'EMBEDDING_BEARER_SECRET': secret}
+            run(['pnpm', 'exec', 'tsx', '--tsconfig', 'scripts/tsconfig.json', 'scripts/local-embedding-probe.ts'], env=probe_env, stdout=log, stderr=log)
             log.write('IMAGE_ID ' + docker('inspect', MODEL, '--format', '{{.Image}}') + '\n')
             # Inspect only secret-free resource fields and cgroup counters.
             for field in ['Memory', 'MemorySwap', 'PortBindings']:

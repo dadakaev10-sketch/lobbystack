@@ -1,0 +1,150 @@
+{
+  "base_commit": "d8c01ef08c4e7e5e5a5077d5228f64a73a105434",
+  "image": "sha256:918216212f93ada498be473cf2e01e4304b4e0fe343bbb63e1f8352778c6cf46",
+  "image_tag": "lobbystack-local-embeddings:gte-a9af15a-chunked",
+  "workspace_passed": 2712,
+  "workspace_skipped": 184,
+  "workspace_summary_count": 14,
+  "build_config_tests_passed": 2,
+  "workspace_typecheck_exit": 0,
+  "workspace_build_exit": 0,
+  "admin_prerender_routes": 32,
+  "real_e2e_tests": 3,
+  "service_tests": 14,
+  "docx_reachability_tests": 5,
+  "actual_model_evidence": [
+    {
+      "evidence": "ingest-semantic-rls",
+      "fingerprintExcluded": true,
+      "inactiveExcluded": true,
+      "tokenCounts": [
+        26,
+        269,
+        276
+      ],
+      "chunks": 3,
+      "dimensions": 1536,
+      "mode": "hybrid",
+      "source": "https://example.invalid/automation",
+      "searchMs": 339.186106000001,
+      "crossTenantRows": 0
+    },
+    {
+      "evidence": "failure-concurrency",
+      "oldEvidencePreserved": true,
+      "staleCommitRejected": true,
+      "cancelledSkipped": true
+    },
+    {
+      "evidence": "legacy-reindex",
+      "chunks": 2,
+      "lossless": true,
+      "dimensions": 1536,
+      "rerun": "skipped"
+    },
+    {
+      "fixtureSha256": "be17fba4d40aaea9d951d1fa2e46113beba32a8d09e55ceaff6f2aa2b8b5ea2a",
+      "query": "Wie lassen sich meine bestehenden Programme verbinden, damit niemand mehr Daten von Hand übertragen muss?",
+      "queryLatencyMs": 423.84,
+      "queryTokens": 24,
+      "dimensions": 1536,
+      "measurements": [
+        {
+          "id": "automation",
+          "latencyMs": 514.33,
+          "tokens": 27,
+          "textSha256": "f55020b6e509b4fc4b817b99d0fd75d0519a481871ebc179652e5abdb7896ad0"
+        },
+        {
+          "id": "phone",
+          "latencyMs": 372.54,
+          "tokens": 20,
+          "textSha256": "d165fc588e954db2aeb889530b25719c2df7474866e2dd94bf1cba12f3a14b99"
+        },
+        {
+          "id": "pricing",
+          "latencyMs": 727.42,
+          "tokens": 43,
+          "textSha256": "13998054dfea414ae812a74b2ec0457ca2e561a7cb5ee9bf1e9adf8843c547ff"
+        },
+        {
+          "id": "launch",
+          "latencyMs": 347.26,
+          "tokens": 18,
+          "textSha256": "1840c0972d5ad583dae04536c429b17ee3256450930672bb187a93f90c766eea"
+        }
+      ],
+      "ranking": [
+        {
+          "id": "automation",
+          "cosine": 0.34550300219119756,
+          "source": "https://dadakaev.com",
+          "text": "Process automation\nWe connect your tools with n8n, Make or Power Automate to create seamless workflows and eliminate manual data entry."
+        },
+        {
+          "id": "phone",
+          "cosine": 0.2852907414901238,
+          "source": "https://dadakaev.com",
+          "text": "AI phone assistants\nIntelligent voice AI for phone calls. Qualify leads and book appointments automatically."
+        },
+        {
+          "id": "pricing",
+          "cosine": 0.2302830394263594,
+          "source": "https://dadakaev.com",
+          "text": "Starter from €1,499 · Business from €2,499 · Premium from €3,099\nOne-off starting prices, including tax. Services and final price agreed individually."
+        },
+        {
+          "id": "launch",
+          "cosine": 0.22540374406620475,
+          "source": "https://dadakaev.com",
+          "text": "Launch\nDeployment, handover and 30 days of active post-launch monitoring included."
+        }
+      ],
+      "vectorsSha256": "86d30dc10ed495f766f22918812222d4274b887ce1ed0ea72e68320e4e068cf3"
+    },
+    {
+      "dimensions": 1536,
+      "vectors": 2,
+      "fingerprint": "d16d884535d5d13f01f18fe838b5a9ada89b4cd5950f774e715af29ea0b21411",
+      "cosine": 0.4595579667103553
+    }
+  ],
+  "cgroup": {
+    "memory.peak": "6442450944\n",
+    "memory.events": "low 0\nhigh 0\nmax 2092\noom 0\noom_kill 0\noom_group_kill 0\n",
+    "memory.swap.current": "0\n"
+  },
+  "model_limits": {
+    "memory": 6442450944,
+    "memory_swap": 6442450944,
+    "cpus": 2,
+    "host_ports": {}
+  },
+  "cleanup_readback_verified": true,
+  "image_freeze_matches_lock": true,
+  "python_audit": {
+    "audited_lock_packages": 42,
+    "torch_cpu_skip_disclosed": true,
+    "upstream_torch_2_14_1_vulnerabilities": 0,
+    "lock_vulnerabilities": 0
+  },
+  "js_audit": {
+    "vulnerabilities": {
+      "info": 0,
+      "low": 0,
+      "moderate": 1,
+      "high": 0,
+      "critical": 0
+    },
+    "dependencies": 974,
+    "devDependencies": 0,
+    "optionalDependencies": 0,
+    "totalDependencies": 974
+  },
+  "logs": [
+    "/root/.hermes/cache/scratch/lobby-chunk-e2e.log",
+    "/root/.hermes/cache/scratch/lobby-secure-regressions.log",
+    "/root/.hermes/cache/scratch/lobby-secure-docx.log"
+  ],
+  "release_boundary": "No push, live deployment, customer writes or startup backfill; parent review/backup/restore/live canary independent."
+}

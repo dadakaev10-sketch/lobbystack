@@ -58,6 +58,22 @@ class HttpTests(unittest.TestCase):
             self.assertEqual(embedded['usage']['total_tokens'], count)
             self.assertEqual(len(embedded['data'][0]['embedding']), 1536)
 
+    def test_upgrade_preserves_real_vectors_and_tokenizer(self):
+        from pathlib import Path
+        from transformers import AutoTokenizer
+        fixture = json.loads(Path('/app/model-parity-fixture.json').read_text())
+        snapshot = '/cache/hub/models--Alibaba-NLP--gte-Qwen2-1.5B-instruct/snapshots/a9af15a6372d7d6b25e9fb07c2ccb9e1fe645644'
+        tokenizer = AutoTokenizer.from_pretrained(snapshot, trust_remote_code=False, local_files_only=True)
+        self.assertEqual([tokenizer.encode(x, truncation=False) for x in fixture['texts']], fixture['token_ids'])
+        for text, expected in zip(fixture['texts'], fixture['vectors']):
+            status, data = self.call({'model':'gte-local','input':text})
+            self.assertEqual(status, 200)
+            actual = data['data'][0]['embedding']
+            # BF16 CPU SDPA kernels changed across Torch releases. Allow bounded
+            # numerical drift, not tokenizer/attention/pooling/model changes.
+            self.assertGreater(sum(a*b for a,b in zip(actual, expected)), 0.9995)
+            self.assertLess(max(abs(a-b) for a,b in zip(actual, expected)), 0.004)
+
     def test_wrong_model(self):
         self.assertEqual(self.call({'model':'wrong','input':'Hallo'})[0],400)
 

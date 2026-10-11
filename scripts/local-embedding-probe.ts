@@ -9,7 +9,7 @@ const provider = createEmbeddingProvider({
   AI_EMBEDDING_BASE_URL: process.env.EMBEDDING_PROBE_BASE_URL,
   AI_EMBEDDING_MODEL: "gte-local",
   AI_EMBEDDING_PROVIDER_NAME: "local-gte",
-  AI_EMBEDDING_REVISION: "a9af15a6372d7d6b25e9fb07c2ccb9e1fe645644-bf16-lasttoken-noncausal-512-v1",
+  AI_EMBEDDING_REVISION: "a9af15a6372d7d6b25e9fb07c2ccb9e1fe645644-bf16-lasttoken-noncausal-512-torch2.14.1-transformers5.19.0-v2",
   AI_EMBEDDING_MAX_PARALLEL_CALLS: "1",
   AI_EMBEDDING_MAX_BATCH_SIZE: "1",
   AI_EMBEDDING_TIMEOUT_MS: "30000",

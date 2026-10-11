@@ -1,3 +1,4 @@
+import { createRequire } from "node:module";
 import { crc32, deflateRawSync } from "node:zlib";
 
 import { describe, expect, it } from "vitest";
@@ -31,6 +32,16 @@ function docxFile(body: string): Uint8Array {
 }
 
 describe("extraction thread", () => {
+  it("keeps DOCX content out of the unused argparse/sprintf CLI path (CVE-2026-97058)", async () => {
+    const require = createRequire(import.meta.url);
+    const mammoth = require("mammoth") as { extractRawText(input: { buffer: Buffer }): Promise<{ value: string }> };
+    const formatPayload = "%.999999999f %(attacker).999999999f";
+    const result = await mammoth.extractRawText({ buffer: Buffer.from(docxFile(`<w:p><w:r><w:t>${formatPayload}</w:t></w:r></w:p>`)) });
+    expect(result.value).toBe(`${formatPayload}\n\n`);
+    const loaded = Object.keys(require.cache);
+    expect(loaded.filter((file) => /[/\\\\](argparse|sprintf-js)[/\\\\]/.test(file))).toEqual([]);
+  });
+
   it("returns the text extracted in the thread", async () => {
     await expect(extractDocumentTextInThread({ body: docxFile("<w:p><w:r><w:t>Open daily</w:t></w:r></w:p>"), contentType: docx }, () => undefined)).resolves.toBe("Open daily\n\n");
   });

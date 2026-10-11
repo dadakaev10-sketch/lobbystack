@@ -1,5 +1,7 @@
 # Local embedding release gates — closed locally
 
+> Dependency/security follow-up supersedes the older runtime image and pending CVE gate below: [local-embeddings-security.md](local-embeddings-security.md). Backup/restore, parent review and live canary gates remain independent.
+
 Base: `59fff2d`, branch `feature/local-embeddings-verified`. No push, deployment, live environment change or production DB write was performed. External release remains the parent's responsibility.
 
 ## Verdict

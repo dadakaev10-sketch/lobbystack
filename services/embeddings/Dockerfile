@@ -1,7 +1,7 @@
 FROM python:3.11-slim-bookworm@sha256:0a310eeecf4e1f5a0743f9a6520c90c88d089c903ca5fd283f501e3a805f5f89
 WORKDIR /app
 COPY requirements.txt requirements.lock ./
-RUN pip install --no-cache-dir torch==2.4.1 --index-url https://download.pytorch.org/whl/cpu && pip install --no-cache-dir -r requirements.lock
+RUN pip install --no-cache-dir torch==2.14.1 --index-url https://download.pytorch.org/whl/cpu && pip install --no-cache-dir -r requirements.lock
 COPY *.py *.json LICENSE-2.0.txt ./
 RUN mkdir /cache && chown 1000:1000 /cache
 ENV HF_HOME=/cache OMP_NUM_THREADS=2 MKL_NUM_THREADS=2 TOKENIZERS_PARALLELISM=false HF_HUB_DISABLE_TELEMETRY=1 PYTHONDONTWRITEBYTECODE=1
