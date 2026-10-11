@@ -39,3 +39,7 @@ certification-results
 **/.env
 **/.env.*
 !**/.env.example
+# Deployment-only files must not invalidate source image layers.
+docker-compose.coolify.yml
+docker-compose.build.yml
+DEPLOYMENT.md
