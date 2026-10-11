@@ -340,8 +340,8 @@ services:
       OTEL_SERVICE_NAME: lobbystack-worker
       OTEL_EXPORTER_OTLP_ENDPOINT: ''
       OTEL_EXPORTER_OTLP_HEADERS: ''
-      FIRECRAWL_API_KEY: ''
-      FIRECRAWL_BASE_URL: ''
+      FIRECRAWL_API_KEY: ${FIRECRAWL_API_KEY:?FIRECRAWL_API_KEY is required}
+      FIRECRAWL_BASE_URL: ${FIRECRAWL_BASE_URL:?FIRECRAWL_BASE_URL is required}
       GOOGLE_CLIENT_ID: ''
       GOOGLE_CLIENT_SECRET: ''
       GOOGLE_REDIRECT_URI: https://lobby.apps.dadakaev.tech/api/calendar/google/callback
@@ -388,12 +388,16 @@ services:
       default:
         aliases:
         - lobby-worker-dadakaev
+      firecrawl_integration: {}
     image: lobbystack-dadakaev-worker:ddda7f01376d6cd48bd16fc4313a4aaa961dd1ee
 volumes:
   postgres_data: {}
   redis_data: {}
   storage_data: {}
 networks:
+  firecrawl_integration:
+    external: true
+    name: lobby-firecrawl-integration
   default: {}
   proxy:
     external: true
