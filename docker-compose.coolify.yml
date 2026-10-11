@@ -1,0 +1,383 @@
+services:
+  postgres:
+    image: pgvector/pgvector@sha256:7b822b0aac60967beb1ea5e576b8602c94c300a157d187f385ae3e0da199b90a
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: lobbystack
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?POSTGRES_PASSWORD is required}
+      LOBBYSTACK_MIGRATOR_PASSWORD: ${LOBBYSTACK_MIGRATOR_PASSWORD:?LOBBYSTACK_MIGRATOR_PASSWORD
+        is required}
+      LOBBYSTACK_AUTH_PASSWORD: ${LOBBYSTACK_AUTH_PASSWORD:?LOBBYSTACK_AUTH_PASSWORD
+        is required}
+      LOBBYSTACK_APP_PASSWORD: ${LOBBYSTACK_APP_PASSWORD:?LOBBYSTACK_APP_PASSWORD
+        is required}
+      LOBBYSTACK_WORKER_PASSWORD: ${LOBBYSTACK_WORKER_PASSWORD:?LOBBYSTACK_WORKER_PASSWORD
+        is required}
+      LOBBYSTACK_DISPATCHER_PASSWORD: ${LOBBYSTACK_DISPATCHER_PASSWORD:?LOBBYSTACK_DISPATCHER_PASSWORD
+        is required}
+      LOBBYSTACK_READONLY_PASSWORD: ${LOBBYSTACK_READONLY_PASSWORD:?LOBBYSTACK_READONLY_PASSWORD
+        is required}
+    volumes:
+    - postgres_data:/var/lib/postgresql/data
+    - ./docker/postgres/init/roles.sh:/docker-entrypoint-initdb.d/10-roles.sh:ro
+    healthcheck:
+      test:
+      - CMD-SHELL
+      - pg_isready -U postgres -d lobbystack
+      interval: 5s
+      timeout: 5s
+      retries: 20
+    security_opt:
+    - no-new-privileges:true
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
+        max-file: '3'
+    mem_limit: 1g
+    cpus: 1.0
+    networks:
+    - default
+  redis:
+    image: redis@sha256:858f009f9709ce576febc734aa78b8f6d624b82571f9ddb6bda4377c833b3499
+    restart: unless-stopped
+    command:
+    - redis-server
+    - --appendonly
+    - 'yes'
+    - --appendfsync
+    - everysec
+    - --maxmemory-policy
+    - noeviction
+    - --maxmemory
+    - 192mb
+    volumes:
+    - redis_data:/data
+    healthcheck:
+      test:
+      - CMD
+      - redis-cli
+      - ping
+      interval: 5s
+      timeout: 3s
+      retries: 20
+    security_opt:
+    - no-new-privileges:true
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
+        max-file: '3'
+    mem_limit: 256m
+    cpus: 1.0
+    networks:
+    - default
+  migrator:
+    build:
+      context: .
+      dockerfile: Dockerfile.migrator
+      args:
+        SERVICE_VERSION: ddda7f01376d6cd48bd16fc4313a4aaa961dd1ee
+    environment:
+      DATABASE_URL: postgres://postgres:${POSTGRES_PASSWORD:?POSTGRES_PASSWORD is
+        required}@postgres:5432/lobbystack
+      OTEL_SERVICE_NAME: lobbystack-migrator
+      OTEL_EXPORTER_OTLP_ENDPOINT: ''
+      OTEL_EXPORTER_OTLP_HEADERS: ''
+    depends_on:
+      postgres:
+        condition: service_healthy
+    security_opt:
+    - no-new-privileges:true
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
+        max-file: '3'
+    mem_limit: 1g
+    cpus: 1.0
+    networks:
+    - default
+    image: lobbystack-dadakaev-migrator:ddda7f01376d6cd48bd16fc4313a4aaa961dd1ee
+  admin:
+    build:
+      context: .
+      dockerfile: Dockerfile.admin
+      args:
+        SERVICE_VERSION: ddda7f01376d6cd48bd16fc4313a4aaa961dd1ee
+        NEXT_PUBLIC_TURNSTILE_SITE_KEY: ''
+        NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN: ''
+        NEXT_PUBLIC_POSTHOG_HOST: ''
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      LOBBYSTACK_MAINTENANCE_MODE: ${LOBBYSTACK_MAINTENANCE_MODE:-false}
+      LOBBYSTACK_CERTIFICATION_MODE: 'true'
+      LOBBYSTACK_CERTIFICATION_EMAILS: ''
+      LOBBYSTACK_CERTIFICATION_PHONES: ''
+      LOBBYSTACK_CERTIFICATION_CALENDARS: ''
+      PORT: 3000
+      APP_BASE_URL: https://lobby.apps.dadakaev.tech
+      NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN: ''
+      NEXT_PUBLIC_POSTHOG_HOST: ''
+      NEXT_PUBLIC_TURNSTILE_SITE_KEY: ''
+      TURNSTILE_SECRET_KEY: ''
+      OPENAI_API_KEY: ''
+      AI_CHAT_API_KEY: ''
+      AI_CHAT_BASE_URL: ${AI_CHAT_BASE_URL:-https://api.openai.com/v1}
+      AI_CHAT_MODEL: gpt-4.1-mini
+      AI_CHAT_PROVIDER_NAME: ${AI_CHAT_PROVIDER_NAME:-openai}
+      AI_CHAT_REASONING_EFFORT: ''
+      LIVE_PROTOTYPE_ENABLED: 'false'
+      OPENAI_WEBHOOK_SECRET: ''
+      WORKER_INTERNAL_URL: http://worker:3002
+      WEB_CALL_ALLOWED_ORIGINS: ${WEB_CALL_ALLOWED_ORIGINS:-}
+      WEB_CALL_PUBLIC_BUSINESS_SLUG: ''
+      AI_CHAT_INPUT_COST_PER_MILLION_TOKENS: ''
+      AI_CHAT_OUTPUT_COST_PER_MILLION_TOKENS: ''
+      AI_CHAT_CACHED_INPUT_COST_PER_MILLION_TOKENS: ''
+      AI_CHAT_PRICING_VERSION: ${AI_CHAT_PRICING_VERSION:-}
+      AI_CHAT_PRICING_SOURCE: ${AI_CHAT_PRICING_SOURCE:-}
+      AI_CHAT_PRICING_EFFECTIVE_DATE: ${AI_CHAT_PRICING_EFFECTIVE_DATE:-}
+      AI_EMBEDDING_API_KEY: ''
+      AI_EMBEDDING_BASE_URL: ${AI_EMBEDDING_BASE_URL:-https://api.openai.com/v1}
+      AI_EMBEDDING_MODEL: text-embedding-3-small
+      AI_EMBEDDING_PROVIDER_NAME: ${AI_EMBEDDING_PROVIDER_NAME:-openai}
+      AI_EMBEDDING_REVISION: ${AI_EMBEDDING_REVISION:-1}
+      WIDGET_SESSION_SECRET: ${WIDGET_SESSION_SECRET:?WIDGET_SESSION_SECRET is required}
+      WIDGET_KEY_ISSUANCE_ENABLED: 'false'
+      PUBLIC_API_RATE_LIMIT_PER_MINUTE: ${PUBLIC_API_RATE_LIMIT_PER_MINUTE:-120}
+      TRUSTED_CLIENT_IP_HEADER: ${TRUSTED_CLIENT_IP_HEADER:-}
+      CONTENT_RETENTION_ENABLED: ${CONTENT_RETENTION_ENABLED:-true}
+      CONTENT_RETENTION_POLICY_JSON: ${CONTENT_RETENTION_POLICY_JSON:-}
+      PROSPECT_DEMO_OPERATOR_EMAIL: ''
+      DATABASE_URL: postgres://lobbystack_app:${LOBBYSTACK_APP_PASSWORD:?LOBBYSTACK_APP_PASSWORD
+        is required}@postgres:5432/lobbystack
+      LOBBYSTACK_AUTH_PASSWORD: ${LOBBYSTACK_AUTH_PASSWORD:?LOBBYSTACK_AUTH_PASSWORD
+        is required}
+      LOBBYSTACK_WORKER_PASSWORD: ${LOBBYSTACK_WORKER_PASSWORD:?LOBBYSTACK_WORKER_PASSWORD
+        is required}
+      LOBBYSTACK_DISPATCHER_PASSWORD: ${LOBBYSTACK_DISPATCHER_PASSWORD:?LOBBYSTACK_DISPATCHER_PASSWORD
+        is required}
+      BETTER_AUTH_SECRET: ${BETTER_AUTH_SECRET:?BETTER_AUTH_SECRET is required}
+      REQUIRE_EMAIL_VERIFICATION: 'false'
+      INTERNAL_SERVICE_SECRET: ${INTERNAL_SERVICE_SECRET:?INTERNAL_SERVICE_SECRET
+        is required}
+      INTERNAL_SERVICE_TOKEN: ${INTERNAL_SERVICE_TOKEN:?INTERNAL_SERVICE_TOKEN is
+        required}
+      ENCRYPTION_KEY: ${ENCRYPTION_KEY:?ENCRYPTION_KEY is required}
+      OTP_HASH_SECRET: ${OTP_HASH_SECRET:?OTP_HASH_SECRET is required}
+      TWILIO_ACCOUNT_SID: ''
+      TWILIO_ALERT_SMS_FROM: ''
+      TWILIO_AUTH_TOKEN: ''
+      NUMBER_CLAIM_TOKEN_SECRET: ${NUMBER_CLAIM_TOKEN_SECRET:-}
+      TWILIO_SMS_WEBHOOK_URL: ''
+      TWILIO_STATUS_CALLBACK_URL: ''
+      POLAR_WEBHOOK_SECRET: ''
+      POLAR_ACCEPT_LEGACY_BUSINESS_IDS: ''
+      POLAR_ACCESS_TOKEN: ''
+      POLAR_ORGANIZATION_ID: ''
+      POLAR_API_BASE_URL: ''
+      POLAR_STARTER_MONTHLY_PRODUCT_ID: ''
+      POLAR_STARTER_ANNUAL_PRODUCT_ID: ''
+      POLAR_PRO_MONTHLY_PRODUCT_ID: ''
+      POLAR_PRO_ANNUAL_PRODUCT_ID: ''
+      RESEND_WEBHOOK_SECRET: ''
+      GOOGLE_CLIENT_ID: ''
+      GOOGLE_CLIENT_SECRET: ''
+      GOOGLE_REDIRECT_URI: https://lobby.apps.dadakaev.tech/api/calendar/google/callback
+      REDIS_URL: redis://redis:6379
+      STORAGE_PROVIDER: local
+      LOCAL_STORAGE_PATH: /var/lib/lobbystack/storage
+      LOCAL_STORAGE_SIGNING_SECRET: ${LOCAL_STORAGE_SIGNING_SECRET:?LOCAL_STORAGE_SIGNING_SECRET
+        is required}
+      S3_ENDPOINT: ${S3_ENDPOINT:-}
+      S3_BUCKET: ${S3_BUCKET:-}
+      S3_REGION: ${S3_REGION:-}
+      S3_ACCESS_KEY_ID: ${S3_ACCESS_KEY_ID:-}
+      S3_SECRET_ACCESS_KEY: ${S3_SECRET_ACCESS_KEY:-}
+      S3_FORCE_PATH_STYLE: ${S3_FORCE_PATH_STYLE:-false}
+      OTEL_SERVICE_NAME: lobbystack-admin
+      OTEL_EXPORTER_OTLP_ENDPOINT: ''
+      OTEL_EXPORTER_OTLP_HEADERS: ''
+      DEPLOYMENT_MODE: self_hosted_standard
+      AUTH_TRUSTED_ORIGINS: https://lobby.apps.dadakaev.tech
+      NEXT_TELEMETRY_DISABLED: '1'
+      AI_SUMMARY_MODEL: gpt-4.1-mini
+      AI_DELEGATION_MODEL: gpt-4.1-mini
+      AI_DELEGATION_SERVICE_TIER: default
+      AI_SUMMARY_REASONING_EFFORT: ''
+      AI_DELEGATION_REASONING_EFFORT: ''
+      AI_EMBEDDING_INPUT_COST_PER_MILLION_TOKENS: ''
+    depends_on:
+      migrator:
+        condition: service_completed_successfully
+      redis:
+        condition: service_healthy
+    volumes:
+    - storage_data:/var/lib/lobbystack/storage
+    healthcheck:
+      test:
+      - CMD
+      - node
+      - -e
+      - fetch('http://127.0.0.1:3000/api/health/live').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))
+      interval: 30s
+      timeout: 5s
+      start_period: 20s
+      retries: 4
+    security_opt:
+    - no-new-privileges:true
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
+        max-file: '3'
+    mem_limit: 2g
+    cpus: 2.0
+    networks:
+      default: {}
+      proxy:
+        aliases:
+        - lobby-admin-dadakaev
+    image: lobbystack-dadakaev-admin:ddda7f01376d6cd48bd16fc4313a4aaa961dd1ee
+    labels:
+      caddy: lobby.apps.dadakaev.tech
+      caddy.reverse_proxy: '{{upstreams 3000}}'
+      caddy.encode: zstd gzip
+      caddy_ingress_network: coolify
+      caddy.header.X-Robots-Tag: noindex, nofollow
+  worker:
+    build:
+      context: .
+      dockerfile: Dockerfile.worker
+      args:
+        SERVICE_VERSION: ddda7f01376d6cd48bd16fc4313a4aaa961dd1ee
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      LOBBYSTACK_MAINTENANCE_MODE: ${LOBBYSTACK_MAINTENANCE_MODE:-false}
+      LOBBYSTACK_CERTIFICATION_MODE: 'true'
+      LOBBYSTACK_CERTIFICATION_EMAILS: ''
+      LOBBYSTACK_CERTIFICATION_PHONES: ''
+      LOBBYSTACK_CERTIFICATION_CALENDARS: ''
+      PORT: 3002
+      APP_BASE_URL: https://lobby.apps.dadakaev.tech
+      DATABASE_URL: postgres://lobbystack_worker:${LOBBYSTACK_WORKER_PASSWORD:?LOBBYSTACK_WORKER_PASSWORD
+        is required}@postgres:5432/lobbystack
+      LOBBYSTACK_DISPATCHER_PASSWORD: ${LOBBYSTACK_DISPATCHER_PASSWORD:?LOBBYSTACK_DISPATCHER_PASSWORD
+        is required}
+      REDIS_URL: redis://redis:6379
+      REDIS_PREFIX: lobbystack
+      CONTENT_RETENTION_ENABLED: ${CONTENT_RETENTION_ENABLED:-true}
+      CONTENT_RETENTION_POLICY_JSON: ${CONTENT_RETENTION_POLICY_JSON:-}
+      SMTP_HOST: ''
+      SMTP_PORT: ''
+      SMTP_SECURE: ''
+      SMTP_USERNAME: ''
+      SMTP_PASSWORD: ''
+      EMAIL_FROM: ${EMAIL_FROM:-LobbyStack <no-reply@localhost>}
+      EMAIL_REPLY_TO: ${EMAIL_REPLY_TO:-}
+      STORAGE_PROVIDER: local
+      LOCAL_STORAGE_PATH: /var/lib/lobbystack/storage
+      LOCAL_STORAGE_SIGNING_SECRET: ${LOCAL_STORAGE_SIGNING_SECRET:?LOCAL_STORAGE_SIGNING_SECRET
+        is required}
+      S3_ENDPOINT: ${S3_ENDPOINT:-}
+      S3_BUCKET: ${S3_BUCKET:-}
+      S3_REGION: ${S3_REGION:-}
+      S3_ACCESS_KEY_ID: ${S3_ACCESS_KEY_ID:-}
+      S3_SECRET_ACCESS_KEY: ${S3_SECRET_ACCESS_KEY:-}
+      S3_FORCE_PATH_STYLE: ${S3_FORCE_PATH_STYLE:-false}
+      OPENAI_API_KEY: ''
+      AI_CHAT_API_KEY: ''
+      AI_CHAT_BASE_URL: ${AI_CHAT_BASE_URL:-https://api.openai.com/v1}
+      AI_CHAT_MODEL: gpt-4.1-mini
+      AI_CHAT_PROVIDER_NAME: ${AI_CHAT_PROVIDER_NAME:-openai}
+      AI_CHAT_REASONING_EFFORT: ''
+      AI_SUMMARY_MODEL: gpt-4.1-mini
+      AI_SUMMARY_REASONING_EFFORT: ''
+      AI_DELEGATION_MODEL: gpt-4.1-mini
+      AI_DELEGATION_REASONING_EFFORT: ''
+      AI_DELEGATION_SERVICE_TIER: default
+      LIVE_PROTOTYPE_ENABLED: 'false'
+      INTERNAL_SERVICE_TOKEN: ${INTERNAL_SERVICE_TOKEN:?INTERNAL_SERVICE_TOKEN is
+        required}
+      TWILIO_SIP_TRUNK_SID: ''
+      AI_CHAT_INPUT_COST_PER_MILLION_TOKENS: ''
+      AI_CHAT_OUTPUT_COST_PER_MILLION_TOKENS: ''
+      AI_CHAT_CACHED_INPUT_COST_PER_MILLION_TOKENS: ''
+      AI_CHAT_PRICING_VERSION: ${AI_CHAT_PRICING_VERSION:-}
+      AI_CHAT_PRICING_SOURCE: ${AI_CHAT_PRICING_SOURCE:-}
+      AI_CHAT_PRICING_EFFECTIVE_DATE: ${AI_CHAT_PRICING_EFFECTIVE_DATE:-}
+      AI_EMBEDDING_API_KEY: ''
+      AI_EMBEDDING_BASE_URL: ${AI_EMBEDDING_BASE_URL:-https://api.openai.com/v1}
+      AI_EMBEDDING_MODEL: text-embedding-3-small
+      AI_EMBEDDING_PROVIDER_NAME: ${AI_EMBEDDING_PROVIDER_NAME:-openai}
+      AI_EMBEDDING_REVISION: ${AI_EMBEDDING_REVISION:-1}
+      AI_EMBEDDING_INPUT_COST_PER_MILLION_TOKENS: ''
+      TWILIO_ACCOUNT_SID: ''
+      TWILIO_ALERT_SMS_FROM: ''
+      TWILIO_AUTH_TOKEN: ''
+      TWILIO_STATUS_CALLBACK_URL: ''
+      ENCRYPTION_KEY: ${ENCRYPTION_KEY:?ENCRYPTION_KEY is required}
+      OTP_HASH_SECRET: ${OTP_HASH_SECRET:?OTP_HASH_SECRET is required}
+      OTEL_SERVICE_NAME: lobbystack-worker
+      OTEL_EXPORTER_OTLP_ENDPOINT: ''
+      OTEL_EXPORTER_OTLP_HEADERS: ''
+      FIRECRAWL_API_KEY: ''
+      FIRECRAWL_BASE_URL: ''
+      GOOGLE_CLIENT_ID: ''
+      GOOGLE_CLIENT_SECRET: ''
+      GOOGLE_REDIRECT_URI: https://lobby.apps.dadakaev.tech/api/calendar/google/callback
+      POLAR_ACCESS_TOKEN: ''
+      POLAR_ORGANIZATION_ID: ''
+      POLAR_API_BASE_URL: ''
+      POLAR_STARTER_MONTHLY_PRODUCT_ID: ''
+      POLAR_STARTER_ANNUAL_PRODUCT_ID: ''
+      POLAR_PRO_MONTHLY_PRODUCT_ID: ''
+      POLAR_PRO_ANNUAL_PRODUCT_ID: ''
+      POSTHOG_API_KEY: ''
+      POSTHOG_HOST: ''
+      DEPLOYMENT_MODE: self_hosted_standard
+      AUTH_TRUSTED_ORIGINS: https://lobby.apps.dadakaev.tech
+      WIDGET_KEY_ISSUANCE_ENABLED: 'false'
+      NEXT_TELEMETRY_DISABLED: '1'
+    volumes:
+    - storage_data:/var/lib/lobbystack/storage
+    depends_on:
+      migrator:
+        condition: service_completed_successfully
+      redis:
+        condition: service_healthy
+    healthcheck:
+      test:
+      - CMD
+      - node
+      - -e
+      - fetch('http://127.0.0.1:3002/health/ready').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))
+      interval: 10s
+      timeout: 5s
+      start_period: 20s
+      retries: 12
+    security_opt:
+    - no-new-privileges:true
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
+        max-file: '3'
+    mem_limit: 1g
+    cpus: 1.0
+    networks:
+    - default
+    image: lobbystack-dadakaev-worker:ddda7f01376d6cd48bd16fc4313a4aaa961dd1ee
+volumes:
+  postgres_data: {}
+  redis_data: {}
+  storage_data: {}
+networks:
+  default: {}
+  proxy:
+    external: true
+    name: coolify
