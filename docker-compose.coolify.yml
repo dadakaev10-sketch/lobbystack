@@ -73,6 +73,7 @@ services:
     networks:
     - default
   migrator:
+    restart: 'no'
     build:
       context: .
       dockerfile: Dockerfile.migrator
